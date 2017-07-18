@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Chat Application/LoginViewController.swift"
+            timestampString = "521991218.00609"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "10"
+            endingLineNumber = "10">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Chat_Application.LoginViewController.__deallocating_deinit"
+                  moduleName = "Chat Application"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/idivljak/Desktop/IOSChatApp/Chat%20Application/Chat%20Application/LoginViewController.swift"
+                  timestampString = "522057666.757957"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Chat_Application.LoginViewController.init (nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; Chat_Application.LoginViewController"
+                  moduleName = "Chat Application"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/idivljak/Desktop/IOSChatApp/Chat%20Application/Chat%20Application/LoginViewController.swift"
+                  timestampString = "522057666.761053"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "70">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Chat_Application.LoginViewController.__allocating_init (nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; Chat_Application.LoginViewController"
+                  moduleName = "Chat Application"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/idivljak/Desktop/IOSChatApp/Chat%20Application/Chat%20Application/LoginViewController.swift"
+                  timestampString = "522057666.763415"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "23">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Chat_Application.LoginViewController.__allocating_init (coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;Chat_Application.LoginViewController&gt;"
+                  moduleName = "Chat Application"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/idivljak/Desktop/IOSChatApp/Chat%20Application/Chat%20Application/LoginViewController.swift"
+                  timestampString = "522057666.766476"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Chat_Application.LoginViewController.init (coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;Chat_Application.LoginViewController&gt;"
+                  moduleName = "Chat Application"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/idivljak/Desktop/IOSChatApp/Chat%20Application/Chat%20Application/LoginViewController.swift"
+                  timestampString = "522057666.768904"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "28">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
