@@ -1,0 +1,11 @@
+/* 
+  Localizable.strings
+  Chat Application
+
+  Created by Ivan Divljak on 7/17/17.
+  Copyright © 2017 Ivan Divljak. All rights reserved.
+*/
+
+
+"question1" = "Вы действительно хотите окончательно удалить разговор?";
+"conve" = "Удалить беседу";
