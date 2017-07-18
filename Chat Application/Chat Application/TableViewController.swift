@@ -121,42 +121,23 @@ extension TableViewController: UITableViewDelegate, UITableViewDataSource {
             let chatroomToDelete = chatRooms[indexPath.row]
             confirmDelete(chatroom : chatroomToDelete)
             
-            
         }
     }
-    func handleDeleteChatroom(alertAction: UIAlertAction!) -> Void {
-        if let indexPath = deleteChatroomIndexPath {
-            tableView.beginUpdates()
-            
-            chatroomDao.delete(chatroom: chatRooms[indexPath.row])
-            
-            chatRooms.remove(at: indexPath.row)
-            
-            tableView.deleteRows(at: [indexPath as IndexPath], with: .automatic)
-            
-            deleteChatroomIndexPath = nil
-            
-            tableView.endUpdates()
-        }
-    }
-    
-    func cancelDeleteChatroom(alertAction: UIAlertAction!) {
-        deleteChatroomIndexPath = nil
-    }
-    
     
     func confirmDelete(chatroom : Chatroom) {
-        // TODO: Look up localization in iOS
-        // TODO: Think about reusability here
-        let alert = UIAlertController(title: NSLocalizedString("conve", comment: ""), message: NSLocalizedString("question1", comment: ""), preferredStyle: .actionSheet)
-        
-        let DeleteAction = UIAlertAction(title: "Delete", style: .destructive, handler: handleDeleteChatroom)
-        let CancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: cancelDeleteChatroom)
-        
-        alert.addAction(DeleteAction)
-        alert.addAction(CancelAction)
-        
-        self.present(alert, animated: true, completion: nil)
+        DialogUtils.showYesNoDialog(self, choises: [("Yes",.destructive),("No",.cancel)]) { (data) in
+            switch data {
+            case "No":
+                self.deleteChatroomIndexPath = nil
+                
+            case "Yes":
+                
+                self.chatroomDao.delete(chatroom: chatroom)
+            default:
+                print ("Nothing happened")
+                
+            }
+        }
     }
     
 }

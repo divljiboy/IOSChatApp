@@ -27,7 +27,6 @@ class ChatroomDao{
         let databaseRef: DatabaseReference = Database.database().reference().child(Chatroom_Tag)
         
         refHandle = databaseRef.observe(.value, with: { (snapshot) in
-            print("usao")
             if snapshot.exists() {
                 
                 self.chatroomList.removeAll()
@@ -49,14 +48,32 @@ class ChatroomDao{
         
         
     }
-    func delete(chatroom : Chatroom){
+    func delete(chatroom : Chatroom ){
         
         guard let chatroomId = chatroom.id else {
             return
         }
         
-        let databaseRef : DatabaseReference = Database.database().reference().child(Chatroom_Tag).child(chatroomId)
-        databaseRef.removeValue()
+        let databaseRef : DatabaseReference = Database.database().reference().child(Chatroom_Tag)
+        databaseRef.child(chatroomId).removeValue()
+        
+        databaseRef.observeSingleEvent(of: .value) { (datasnapshot, string) in
+            
+            self.chatroomList.removeAll()
+            
+            for item in datasnapshot.children {
+                
+                guard let singleChatroom = item as? DataSnapshot else {
+                    continue
+                }
+                
+                let chatroom = Chatroom( snapshot: singleChatroom)
+                self.chatroomList.append(chatroom)
+            }
+            
+            self.delegate?.Loaded(chatrooms: self.chatroomList)
+        }
+        
         
     }
     
