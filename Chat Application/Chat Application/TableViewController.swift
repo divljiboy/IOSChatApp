@@ -14,7 +14,7 @@ class TableViewController: UIViewController,  GIDSignInUIDelegate{
     
     
     @IBOutlet weak var navigationBar: UINavigationItem!
-   
+    
     
     @IBOutlet weak var signOutButton: UIButton!
     
@@ -24,7 +24,6 @@ class TableViewController: UIViewController,  GIDSignInUIDelegate{
     
     let chatroomDao = ChatroomDao()
     var window: UIWindow?
-    
     var deleteChatroomIndexPath: NSIndexPath? = nil
     
     
@@ -41,8 +40,6 @@ class TableViewController: UIViewController,  GIDSignInUIDelegate{
         (UIApplication.shared.delegate as? AppDelegate)?.SignInDelegate = updateUI
         
         (UIApplication.shared.delegate as? AppDelegate)?.SignOutDelegate = updateUI
-        
-        //updateUI()
         GIDSignIn.sharedInstance().uiDelegate = self
         
     }
@@ -82,7 +79,7 @@ class TableViewController: UIViewController,  GIDSignInUIDelegate{
         
         GIDSignIn.sharedInstance().disconnect()
     }
-   
+    
     
 }
 
@@ -112,17 +109,9 @@ extension TableViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        // performSegue(withIdentifier: "selectedSegue", sender: chatRooms[indexPath.row])
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        if segue.identifier == "selectedSegue" {
-            guard let object = sender as? Chatroom ,
-                let destinationViewController = segue.destination as? SelectedViewController else { return }
-            
-            destinationViewController.chatroom = object
-        }
         
     }
     
@@ -167,14 +156,8 @@ extension TableViewController: UITableViewDelegate, UITableViewDataSource {
         alert.addAction(DeleteAction)
         alert.addAction(CancelAction)
         
-        // Support display in iPad
-        alert.popoverPresentationController?.sourceView = self.view
-        alert.popoverPresentationController?.sourceRect = CGRect(x:self.view.bounds.size.width / 2.0, y:self.view.bounds.size.height / 2.0, width:1.0,height: 1.0)
-        
         self.present(alert, animated: true, completion: nil)
     }
-    
-    
     
 }
 

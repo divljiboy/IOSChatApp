@@ -19,8 +19,6 @@ class SelectedViewController: UIViewController {
     
     var chatroom : Chatroom!
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -34,7 +32,6 @@ class SelectedViewController: UIViewController {
     @IBAction func cancelButtonClicked(_ sender: UIBarButtonItem) {
         
         navigationController?.popViewController(animated: true)
-        
         dismiss(animated: true, completion: nil)
     }
     
@@ -44,11 +41,9 @@ class SelectedViewController: UIViewController {
                let editDescriptionField=editDesc.text else {
                 return
         }
-        
         let chatRoom = Chatroom(name: editNameField, description: editDescriptionField)
         ChatroomDao().write(chat: chatRoom)
         navigationController?.popViewController(animated: true)
-        
         dismiss(animated: true, completion: nil)
     }
     

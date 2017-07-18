@@ -10,39 +10,41 @@
 		1CDFF0D0E008401EE5AED0C4 /* Pods_Chat_Application.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75FC93AD724A285C3710486A /* Pods_Chat_Application.framework */; };
 		3051ED271F1CFD9100DC1D7C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3051ED261F1CFD9100DC1D7C /* GoogleService-Info.plist */; };
 		309EC4E41F1CF1D300BB94C4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309EC4E31F1CF1D300BB94C4 /* AppDelegate.swift */; };
-		309EC4E61F1CF1D300BB94C4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309EC4E51F1CF1D300BB94C4 /* ViewController.swift */; };
 		309EC4EB1F1CF1D300BB94C4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 309EC4EA1F1CF1D300BB94C4 /* Assets.xcassets */; };
 		309EC4EE1F1CF1D300BB94C4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 309EC4EC1F1CF1D300BB94C4 /* LaunchScreen.storyboard */; };
 		309EC4F81F1CF36300BB94C4 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309EC4F71F1CF36300BB94C4 /* TableViewController.swift */; };
 		309EC4FA1F1CF36A00BB94C4 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309EC4F91F1CF36A00BB94C4 /* TableViewCell.swift */; };
 		309EC4FC1F1CF37000BB94C4 /* SelectedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309EC4FB1F1CF37000BB94C4 /* SelectedViewController.swift */; };
-		309EC4FE1F1CF37600BB94C4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309EC4FD1F1CF37600BB94C4 /* LoginViewController.swift */; };
 		309EC50B1F1CF4A300BB94C4 /* UserDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309EC50A1F1CF4A300BB94C4 /* UserDao.swift */; };
 		309EC50D1F1CF4AA00BB94C4 /* ChatroomDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309EC50C1F1CF4AA00BB94C4 /* ChatroomDao.swift */; };
 		309EC5101F1CF62500BB94C4 /* Chatroom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309EC50F1F1CF62500BB94C4 /* Chatroom.swift */; };
 		309EC5121F1CF6CC00BB94C4 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309EC5111F1CF6CC00BB94C4 /* User.swift */; };
-		30EDCB981F1DEF66004C5B17 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30EDCB971F1DEF66004C5B17 /* Main.storyboard */; };
+		30EDCB9B1F1DFDB3004C5B17 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30EDCB9D1F1DFDB3004C5B17 /* Main.storyboard */; };
+		30EDCBA71F1DFE30004C5B17 /* LocalizableRUS.strings in Resources */ = {isa = PBXBuildFile; fileRef = 30EDCBA51F1DFE30004C5B17 /* LocalizableRUS.strings */; };
+		30EDCBAA1F1DFE42004C5B17 /* LocalisationEn.strings in Resources */ = {isa = PBXBuildFile; fileRef = 30EDCBA81F1DFE42004C5B17 /* LocalisationEn.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		3051ED261F1CFD9100DC1D7C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		309EC4E01F1CF1D300BB94C4 /* Chat Application.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Chat Application.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		309EC4E31F1CF1D300BB94C4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		309EC4E51F1CF1D300BB94C4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		309EC4EA1F1CF1D300BB94C4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		309EC4ED1F1CF1D300BB94C4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		309EC4EF1F1CF1D300BB94C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		309EC4F71F1CF36300BB94C4 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		309EC4F91F1CF36A00BB94C4 /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		309EC4FB1F1CF37000BB94C4 /* SelectedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectedViewController.swift; sourceTree = "<group>"; };
-		309EC4FD1F1CF37600BB94C4 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		309EC50A1F1CF4A300BB94C4 /* UserDao.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDao.swift; sourceTree = "<group>"; };
 		309EC50C1F1CF4AA00BB94C4 /* ChatroomDao.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatroomDao.swift; sourceTree = "<group>"; };
 		309EC50F1F1CF62500BB94C4 /* Chatroom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chatroom.swift; sourceTree = "<group>"; };
 		309EC5111F1CF6CC00BB94C4 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		30EDCB971F1DEF66004C5B17 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		30EDCB991F1DF61C004C5B17 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
-		30EDCB9A1F1DF626004C5B17 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		30EDCB9C1F1DFDB3004C5B17 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		30EDCB9E1F1DFDC0004C5B17 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		30EDCB9F1F1DFDC0004C5B17 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		30EDCBA01F1DFDCA004C5B17 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
+		30EDCBA11F1DFDCA004C5B17 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		30EDCBA61F1DFE30004C5B17 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = "Chat Application/ru.lproj/LocalizableRUS.strings"; sourceTree = SOURCE_ROOT; };
+		30EDCBA91F1DFE42004C5B17 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = "Chat Application/en.lproj/LocalisationEn.strings"; sourceTree = SOURCE_ROOT; };
 		75FC93AD724A285C3710486A /* Pods_Chat_Application.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Chat_Application.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		904BA1DF2BF2628839E3503B /* Pods-Chat Application.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chat Application.release.xcconfig"; path = "Pods/Target Support Files/Pods-Chat Application/Pods-Chat Application.release.xcconfig"; sourceTree = "<group>"; };
 		F5D81F2C6074D4D57309C5C5 /* Pods-Chat Application.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chat Application.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Chat Application/Pods-Chat Application.debug.xcconfig"; sourceTree = "<group>"; };
@@ -82,16 +84,14 @@
 			isa = PBXGroup;
 			children = (
 				3051ED261F1CFD9100DC1D7C /* GoogleService-Info.plist */,
-				30EDCB971F1DEF66004C5B17 /* Main.storyboard */,
+				30EDCB9D1F1DFDB3004C5B17 /* Main.storyboard */,
 				30EDCB961F1DEF0E004C5B17 /* Localisation */,
 				309EC50E1F1CF61900BB94C4 /* Model */,
 				309EC5011F1CF47C00BB94C4 /* Dao */,
 				309EC4E31F1CF1D300BB94C4 /* AppDelegate.swift */,
 				309EC4F71F1CF36300BB94C4 /* TableViewController.swift */,
 				309EC4F91F1CF36A00BB94C4 /* TableViewCell.swift */,
-				309EC4E51F1CF1D300BB94C4 /* ViewController.swift */,
 				309EC4FB1F1CF37000BB94C4 /* SelectedViewController.swift */,
-				309EC4FD1F1CF37600BB94C4 /* LoginViewController.swift */,
 				309EC4EA1F1CF1D300BB94C4 /* Assets.xcassets */,
 				309EC4EC1F1CF1D300BB94C4 /* LaunchScreen.storyboard */,
 				309EC4EF1F1CF1D300BB94C4 /* Info.plist */,
@@ -120,6 +120,8 @@
 		30EDCB961F1DEF0E004C5B17 /* Localisation */ = {
 			isa = PBXGroup;
 			children = (
+				30EDCBA81F1DFE42004C5B17 /* LocalisationEn.strings */,
+				30EDCBA51F1DFE30004C5B17 /* LocalizableRUS.strings */,
 			);
 			path = Localisation;
 			sourceTree = "<group>";
@@ -187,6 +189,8 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				Base,
+				en,
+				ru,
 			);
 			mainGroup = 309EC4D71F1CF1D300BB94C4;
 			productRefGroup = 309EC4E11F1CF1D300BB94C4 /* Products */;
@@ -203,10 +207,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				30EDCB981F1DEF66004C5B17 /* Main.storyboard in Resources */,
+				30EDCB9B1F1DFDB3004C5B17 /* Main.storyboard in Resources */,
 				309EC4EE1F1CF1D300BB94C4 /* LaunchScreen.storyboard in Resources */,
 				309EC4EB1F1CF1D300BB94C4 /* Assets.xcassets in Resources */,
+				30EDCBA71F1DFE30004C5B17 /* LocalizableRUS.strings in Resources */,
 				3051ED271F1CFD9100DC1D7C /* GoogleService-Info.plist in Resources */,
+				30EDCBAA1F1DFE42004C5B17 /* LocalisationEn.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,8 +271,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				309EC4FE1F1CF37600BB94C4 /* LoginViewController.swift in Sources */,
-				309EC4E61F1CF1D300BB94C4 /* ViewController.swift in Sources */,
 				309EC5101F1CF62500BB94C4 /* Chatroom.swift in Sources */,
 				309EC4FA1F1CF36A00BB94C4 /* TableViewCell.swift in Sources */,
 				309EC50B1F1CF4A300BB94C4 /* UserDao.swift in Sources */,
@@ -285,10 +289,36 @@
 			isa = PBXVariantGroup;
 			children = (
 				309EC4ED1F1CF1D300BB94C4 /* Base */,
-				30EDCB991F1DF61C004C5B17 /* en */,
-				30EDCB9A1F1DF626004C5B17 /* ru */,
+				30EDCB9F1F1DFDC0004C5B17 /* en */,
+				30EDCBA11F1DFDCA004C5B17 /* ru */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		30EDCB9D1F1DFDB3004C5B17 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				30EDCB9C1F1DFDB3004C5B17 /* Base */,
+				30EDCB9E1F1DFDC0004C5B17 /* en */,
+				30EDCBA01F1DFDCA004C5B17 /* ru */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		30EDCBA51F1DFE30004C5B17 /* LocalizableRUS.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				30EDCBA61F1DFE30004C5B17 /* ru */,
+			);
+			name = LocalizableRUS.strings;
+			sourceTree = "<group>";
+		};
+		30EDCBA81F1DFE42004C5B17 /* LocalisationEn.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				30EDCBA91F1DFE42004C5B17 /* en */,
+			);
+			name = LocalisationEn.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -429,7 +459,7 @@
 				309EC4F11F1CF1D300BB94C4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		309EC4F21F1CF1D300BB94C4 /* Build configuration list for PBXNativeTarget "Chat Application" */ = {
 			isa = XCConfigurationList;
@@ -438,7 +468,7 @@
 				309EC4F41F1CF1D300BB94C4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};
