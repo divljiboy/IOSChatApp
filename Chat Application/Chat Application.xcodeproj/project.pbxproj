@@ -20,12 +20,12 @@
 		309EC5101F1CF62500BB94C4 /* Chatroom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309EC50F1F1CF62500BB94C4 /* Chatroom.swift */; };
 		309EC5121F1CF6CC00BB94C4 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309EC5111F1CF6CC00BB94C4 /* User.swift */; };
 		30EDCB9B1F1DFDB3004C5B17 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30EDCB9D1F1DFDB3004C5B17 /* Main.storyboard */; };
-		30EDCBA71F1DFE30004C5B17 /* LocalizableRUS.strings in Resources */ = {isa = PBXBuildFile; fileRef = 30EDCBA51F1DFE30004C5B17 /* LocalizableRUS.strings */; };
 		30EDCBAC1F1E0083004C5B17 /* DialogUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EDCBAB1F1E0083004C5B17 /* DialogUtils.swift */; };
-		30EDCBB41F1E0E26004C5B17 /* LocalizableRUS.strings in Resources */ = {isa = PBXBuildFile; fileRef = 30EDCBB21F1E0E26004C5B17 /* LocalizableRUS.strings */; };
+		30EDCBC81F1E2CBD004C5B17 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 30EDCBC61F1E2CBD004C5B17 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		304056C21F1E2D7A00EA2E14 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = "Chat Application/ru.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		3051ED261F1CFD9100DC1D7C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		309EC4E01F1CF1D300BB94C4 /* Chat Application.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Chat Application.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		309EC4E31F1CF1D300BB94C4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -40,13 +40,12 @@
 		309EC50F1F1CF62500BB94C4 /* Chatroom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chatroom.swift; sourceTree = "<group>"; };
 		309EC5111F1CF6CC00BB94C4 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		30EDCB9C1F1DFDB3004C5B17 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		30EDCB9E1F1DFDC0004C5B17 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
-		30EDCB9F1F1DFDC0004C5B17 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
-		30EDCBA01F1DFDCA004C5B17 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
-		30EDCBA11F1DFDCA004C5B17 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
-		30EDCBA61F1DFE30004C5B17 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = "Chat Application/ru.lproj/LocalizableRUS.strings"; sourceTree = SOURCE_ROOT; };
 		30EDCBAB1F1E0083004C5B17 /* DialogUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DialogUtils.swift; sourceTree = "<group>"; };
-		30EDCBB31F1E0E26004C5B17 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = "Chat Application/ru.lproj/LocalizableRUS.strings"; sourceTree = "<group>"; };
+		30EDCBC21F1E2C71004C5B17 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		30EDCBC31F1E2C72004C5B17 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		30EDCBC41F1E2C79004C5B17 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
+		30EDCBC51F1E2C79004C5B17 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		30EDCBC71F1E2CBD004C5B17 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = "Chat Application/en.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		75FC93AD724A285C3710486A /* Pods_Chat_Application.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Chat_Application.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		904BA1DF2BF2628839E3503B /* Pods-Chat Application.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chat Application.release.xcconfig"; path = "Pods/Target Support Files/Pods-Chat Application/Pods-Chat Application.release.xcconfig"; sourceTree = "<group>"; };
 		F5D81F2C6074D4D57309C5C5 /* Pods-Chat Application.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chat Application.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Chat Application/Pods-Chat Application.debug.xcconfig"; sourceTree = "<group>"; };
@@ -85,7 +84,7 @@
 		309EC4E21F1CF1D300BB94C4 /* Chat Application */ = {
 			isa = PBXGroup;
 			children = (
-				30EDCBB21F1E0E26004C5B17 /* LocalizableRUS.strings */,
+				30EDCBC61F1E2CBD004C5B17 /* Localizable.strings */,
 				3051ED261F1CFD9100DC1D7C /* GoogleService-Info.plist */,
 				30EDCB9D1F1DFDB3004C5B17 /* Main.storyboard */,
 				30EDCB961F1DEF0E004C5B17 /* Localisation */,
@@ -124,7 +123,6 @@
 		30EDCB961F1DEF0E004C5B17 /* Localisation */ = {
 			isa = PBXGroup;
 			children = (
-				30EDCBA51F1DFE30004C5B17 /* LocalizableRUS.strings */,
 			);
 			path = Localisation;
 			sourceTree = "<group>";
@@ -210,11 +208,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				30EDCBB41F1E0E26004C5B17 /* LocalizableRUS.strings in Resources */,
+				30EDCBC81F1E2CBD004C5B17 /* Localizable.strings in Resources */,
 				30EDCB9B1F1DFDB3004C5B17 /* Main.storyboard in Resources */,
 				309EC4EE1F1CF1D300BB94C4 /* LaunchScreen.storyboard in Resources */,
 				309EC4EB1F1CF1D300BB94C4 /* Assets.xcassets in Resources */,
-				30EDCBA71F1DFE30004C5B17 /* LocalizableRUS.strings in Resources */,
 				3051ED271F1CFD9100DC1D7C /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -293,8 +290,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				309EC4ED1F1CF1D300BB94C4 /* Base */,
-				30EDCB9F1F1DFDC0004C5B17 /* en */,
-				30EDCBA11F1DFDCA004C5B17 /* ru */,
+				30EDCBC31F1E2C72004C5B17 /* en */,
+				30EDCBC51F1E2C79004C5B17 /* ru */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -303,26 +300,19 @@
 			isa = PBXVariantGroup;
 			children = (
 				30EDCB9C1F1DFDB3004C5B17 /* Base */,
-				30EDCB9E1F1DFDC0004C5B17 /* en */,
-				30EDCBA01F1DFDCA004C5B17 /* ru */,
+				30EDCBC21F1E2C71004C5B17 /* en */,
+				30EDCBC41F1E2C79004C5B17 /* ru */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		30EDCBA51F1DFE30004C5B17 /* LocalizableRUS.strings */ = {
+		30EDCBC61F1E2CBD004C5B17 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				30EDCBA61F1DFE30004C5B17 /* ru */,
+				30EDCBC71F1E2CBD004C5B17 /* en */,
+				304056C21F1E2D7A00EA2E14 /* ru */,
 			);
-			name = LocalizableRUS.strings;
-			sourceTree = "<group>";
-		};
-		30EDCBB21F1E0E26004C5B17 /* LocalizableRUS.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				30EDCBB31F1E0E26004C5B17 /* ru */,
-			);
-			name = LocalizableRUS.strings;
+			name = Localizable.strings;
 			path = ..;
 			sourceTree = "<group>";
 		};

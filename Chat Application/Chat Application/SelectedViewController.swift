@@ -30,9 +30,10 @@ class SelectedViewController: UIViewController {
     }
     
     @IBAction func cancelButtonClicked(_ sender: UIBarButtonItem) {
-        
+
         navigationController?.popViewController(animated: true)
         dismiss(animated: true, completion: nil)
+        
     }
     
     @IBAction func saveButtonClicked(_ sender: UIBarButtonItem) {
@@ -45,6 +46,7 @@ class SelectedViewController: UIViewController {
         ChatroomDao().write(chat: chatRoom)
         navigationController?.popViewController(animated: true)
         dismiss(animated: true, completion: nil)
+        
     }
     
     

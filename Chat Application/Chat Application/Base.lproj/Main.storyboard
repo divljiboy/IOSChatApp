@@ -14,9 +14,7 @@
         <scene sceneID="J9Y-yi-Gt3">
             <objects>
                 <navigationController id="pPa-pR-lsD" sceneMemberID="viewController">
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="414" height="736"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="G4k-qR-CmK">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="G4k-qR-CmK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -37,25 +35,25 @@
                         <viewControllerLayoutGuide type="bottom" id="4Dg-2e-zB4"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="EFJ-Dw-b43">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UzB-EW-9QJ" customClass="GIDSignInButton">
-                                <rect key="frame" x="70" y="346" width="274" height="44"/>
+                                <rect key="frame" x="66" y="311.5" width="243" height="44"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="bOu-eZ-7ek"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="71" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Lgu-My-jDh">
-                                <rect key="frame" x="0.0" y="64" width="414" height="622"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="553"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" textLabel="is7-6y-d8F" detailTextLabel="GS2-Ni-Hk9" rowHeight="71" style="IBUITableViewCellStyleSubtitle" id="aIy-jn-h0V" customClass="TableViewCell" customModule="Chat_Application" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="71"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="71"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aIy-jn-h0V" id="RgB-n7-W0z">
-                                            <rect key="frame" x="0.0" y="0.0" width="381" height="70.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="70.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="is7-6y-d8F">
@@ -83,7 +81,7 @@
                                 </prototypes>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sBa-n9-yxT">
-                                <rect key="frame" x="0.0" y="686" width="414" height="50"/>
+                                <rect key="frame" x="0.0" y="617" width="375" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="92o-Ja-9Xj"/>
                                 </constraints>
@@ -109,7 +107,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="qpY-6z-Tnt">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="fwt-DX-WP1">
+                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="fwt-DX-WP1">
                             <connections>
                                 <segue destination="XKT-E9-6CT" kind="show" id="uh7-Mt-8Z0"/>
                             </connections>
@@ -125,6 +123,24 @@
             </objects>
             <point key="canvasLocation" x="908.4375" y="1573.4154929577464"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="aX2-cV-M9r">
+            <objects>
+                <viewController id="p5R-XG-5hV" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Q8E-sI-99A"/>
+                        <viewControllerLayoutGuide type="bottom" id="Cpv-be-bqZ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8Nj-de-umu">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jEw-gn-Ib5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2882" y="1232"/>
+        </scene>
         <!--Selected View Controller-->
         <scene sceneID="ent-cE-Uo0">
             <objects>
@@ -134,32 +150,32 @@
                         <viewControllerLayoutGuide type="bottom" id="0Zm-4A-FCE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="9Gh-e4-mBF">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Pul-aJ-pE1">
-                                <rect key="frame" x="157" y="95" width="150" height="30"/>
+                                <rect key="frame" x="153" y="95" width="119" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kUv-4D-6oo">
-                                <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                                <rect key="frame" x="-4" y="20" width="383" height="44"/>
                             </navigationBar>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Desciption" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ros-OX-V90">
-                                <rect key="frame" x="20" y="144" width="82" height="21"/>
+                                <rect key="frame" x="16" y="144" width="82" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1aA-Jc-TTk">
-                                <rect key="frame" x="157" y="139" width="150" height="30"/>
+                                <rect key="frame" x="153" y="139" width="119" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rlh-jl-HUP">
-                                <rect key="frame" x="20" y="100" width="45" height="21"/>
+                                <rect key="frame" x="16" y="100" width="45" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -196,6 +212,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="375" height="667"/>
                     <connections>
                         <outlet property="editDesc" destination="1aA-Jc-TTk" id="pKw-Oy-gdl"/>
                         <outlet property="editName" destination="Pul-aJ-pE1" id="B7C-x9-XAP"/>
@@ -203,16 +221,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BFg-zb-mrH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2751.1999999999998" y="1572.8635682158922"/>
+            <point key="canvasLocation" x="2772" y="1960"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="8Np-iT-kdC">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="XKT-E9-6CT" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="414" height="736"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="cim-p7-l1Y">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="cim-p7-l1Y">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

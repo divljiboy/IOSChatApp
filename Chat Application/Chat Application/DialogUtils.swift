@@ -17,7 +17,7 @@ public class DialogUtils: NSObject {
     public static func showYesNoDialog(_ controller: UIViewController, choises: [(String, UIAlertActionStyle)], completion: @escaping (_ selected: String) -> ()) {
         
         
-        let alert = UIAlertController(title: NSLocalizedString("conve", comment: ""), message: NSLocalizedString("question1", comment: ""), preferredStyle: .actionSheet)
+        let alert = UIAlertController(title: NSLocalizedString("Delete Conversation", comment: ""), message: NSLocalizedString("question1", comment: ""), preferredStyle: .actionSheet)
         for choise in choises {
             let action = UIAlertAction(title: NSLocalizedString(choise.0, comment: ""), style: choise.1, handler: {
                 (alert: UIAlertAction!) -> Void in

@@ -120,7 +120,7 @@ extension TableViewController: UITableViewDelegate, UITableViewDataSource {
             deleteChatroomIndexPath = indexPath as NSIndexPath
             let chatroomToDelete = chatRooms[indexPath.row]
             confirmDelete(chatroom : chatroomToDelete)
-            
+                        
         }
     }
     
