@@ -11,7 +11,7 @@ import Firebase
 
 class UserDao{
     
-    var User_Tag : String="user_profiles"
+    var userTag : String="user_profiles"
     var refHandle : UInt!
     var userList : [User]=[]
     
@@ -19,7 +19,7 @@ class UserDao{
     func get() {
         
         
-        let databaseRef : DatabaseReference = Database.database().reference().child(User_Tag)
+        let databaseRef : DatabaseReference = Database.database().reference().child(userTag)
         
         refHandle = databaseRef.observe(.value, with: { (snapshot) in
             
@@ -46,14 +46,14 @@ class UserDao{
             return
         }
         
-        let databaseRef : DatabaseReference = Database.database().reference().child(User_Tag).child(userId)
+        let databaseRef : DatabaseReference = Database.database().reference().child(userTag).child(userId)
         databaseRef.removeValue()
         
     }
     
     func write(user : User){
         
-        let databaseRef : DatabaseReference = Database.database().reference().child(User_Tag)
+        let databaseRef : DatabaseReference = Database.database().reference().child(userTag)
         
         
         databaseRef.observeSingleEvent(of: .value, with: { (snapshot) in

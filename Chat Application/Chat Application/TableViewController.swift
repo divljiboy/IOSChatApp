@@ -98,7 +98,7 @@ extension TableViewController: UITableViewDelegate, UITableViewDataSource {
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         
         
-        let cell = tableView.dequeueReusableCell( withIdentifier: "cell", for: indexPath) as! TableViewCell
+        let cell = tableView.dequeueReusableCell( withIdentifier: "tableCell", for: indexPath) as! TableViewCell
         
         cell.setupCellWith(chatroom: chatRooms[indexPath.row])
         
@@ -109,10 +109,21 @@ extension TableViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        performSegue(withIdentifier: "selectedConversation", sender: chatRooms[indexPath.row])
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "selectedConversation" {
+            
+            guard let selectedChatroom = sender as? Chatroom else {
+                 print("Error parsing chatroom")
+                 return
+            }
+            let controller = segue.destination as! MessagesViewController
+            controller.selectedChatroom = selectedChatroom
         
+        }
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
@@ -120,7 +131,7 @@ extension TableViewController: UITableViewDelegate, UITableViewDataSource {
             deleteChatroomIndexPath = indexPath as NSIndexPath
             let chatroomToDelete = chatRooms[indexPath.row]
             confirmDelete(chatroom : chatroomToDelete)
-                        
+            
         }
     }
     

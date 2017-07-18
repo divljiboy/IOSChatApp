@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Chat Application/TableViewController.swift"
-            timestampString = "522071603.514495"
+            timestampString = "522079718.633157"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "137"
-            endingLineNumber = "137"
+            startingLineNumber = "147"
+            endingLineNumber = "147"
             landmarkName = "confirmDelete(chatroom:)"
             landmarkType = "7">
          </BreakpointContent>

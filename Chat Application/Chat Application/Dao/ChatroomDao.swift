@@ -78,7 +78,6 @@ class ChatroomDao{
     }
     
     func write(chat : Chatroom){
-        print ("upisujem")
         let databaseRef : DatabaseReference = Database.database().reference().child(Chatroom_Tag).childByAutoId()
         
         databaseRef.setValue(["id": databaseRef.key,"name":chat.name,
