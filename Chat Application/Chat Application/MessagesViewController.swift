@@ -7,38 +7,49 @@
 //
 
 import UIKit
+import Firebase
 
 class MessagesViewController: UIViewController {
     
+    
+    @IBOutlet weak var sendText: UITextView!
+    
+    @IBOutlet weak var sendButton: UIButton!
     let messagesDao = MessagesDao()
     var messagesList = [Message]()
     
     var selectedChatroom: Chatroom = Chatroom()
-
+    
     @IBOutlet weak var tableView: UITableView!
-
+    
     override func viewDidLoad() {
+        
         super.viewDidLoad()
-        
-        
         tableView.delegate = self
         tableView.dataSource = self
         tableView.tableFooterView = UIView()
         messagesDao.getMessages(chatRoom: selectedChatroom)
-
         messagesDao.delegate = self
         
-        // Do any additional setup after loading the view.
+       
     }
-
+    
     override func didReceiveMemoryWarning() {
+        
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+      
     }
     
-    
-    
-
+    @IBAction func sendButtonClicked(_ sender: UIButton) {
+        
+        guard let editNameField = sendText.text else {
+            return
+        }
+        let message = Message(name: editNameField)
+        messagesDao.write(message: message, chatroom: selectedChatroom)
+        
+    }
+  
 }
 
 
@@ -56,55 +67,28 @@ extension MessagesViewController: UITableViewDelegate, UITableViewDataSource {
     @available(iOS 2.0, *)
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         
-        // TODO: implement logic
-        let cell = tableView.dequeueReusableCell( withIdentifier: "cell", for: indexPath) as! TableViewCell
-        
-       // cell.setupCellWith(message : messagesList[indexPath.row])
-        
-        
-        return cell
-    }
-    
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-    }
-    
-   /* func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            deleteChatroomIndexPath = indexPath as NSIndexPath
-            let chatroomToDelete = chatRooms[indexPath.row]
-            confirmDelete(chatroom : chatroomToDelete)
+        if Auth.auth().currentUser?.uid == messagesList[indexPath.row].client?.id{
             
+            let cell = tableView.dequeueReusableCell( withIdentifier: "incommingCell", for: indexPath) as! MessagesTableViewCell
+           cell.setupCellWith(message : messagesList[indexPath.row])
+            return cell
+        }else
+        {
+            let cell = tableView.dequeueReusableCell( withIdentifier: "outgoingCell", for: indexPath) as! MessagesTableViewCell
+            cell.setupCellWith(message : messagesList[indexPath.row])
+            return cell
         }
+        
     }
     
-    func confirmDelete(chatroom : Chatroom) {
-        DialogUtils.showYesNoDialog(self, choises: [("Yes",.destructive),("No",.cancel)]) { (data) in
-            switch data {
-            case "No":
-                self.deleteChatroomIndexPath = nil
-                
-            case "Yes":
-                
-                self.chatroomDao.delete(chatroom: chatroom)
-            default:
-                print ("Nothing happened")
-                
-            }
-        }
-    }*/
+    
     
 }
 
 
 extension MessagesViewController: MessageDaoDelegate {
     
-    func Loaded(messages: [Message]) {
+    func loaded(messages: [Message]) {
         
         messagesList = messages
         tableView.reloadData()

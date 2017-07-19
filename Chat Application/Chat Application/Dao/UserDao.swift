@@ -11,65 +11,69 @@ import Firebase
 
 class UserDao{
     
-    var userTag : String="user_profiles"
+    let clientTag = "client_profiles"
     var refHandle : UInt!
-    var userList : [User]=[]
+    var clientList : [Client]=[]
     
     
     func get() {
         
         
-        let databaseRef : DatabaseReference = Database.database().reference().child(userTag)
+        let databaseRef : DatabaseReference = Database.database().reference().child(clientTag)
         
         refHandle = databaseRef.observe(.value, with: { (snapshot) in
             
             if snapshot.exists() {
                 
-                self.userList.removeAll()
+                self.clientList.removeAll()
                 
                 for item in snapshot.children {
                     
                     guard let singleChatroom = item as? DataSnapshot else {
                         continue
                     }
-                    let user = User( snapshot: singleChatroom)
-                    self.userList.append(user)
+                    let client = Client( snapshot: singleChatroom)
+                    self.clientList.append(client)
                 }
             }
         })
         
         
     }
-    func delete(user : User){
+    func delete(client : Client){
         
-        guard let userId = user.id else {
+        guard let clientId = client.id else {
             return
         }
         
-        let databaseRef : DatabaseReference = Database.database().reference().child(userTag).child(userId)
+        let databaseRef : DatabaseReference = Database.database().reference().child(clientTag).child(clientId)
         databaseRef.removeValue()
         
     }
     
-    func write(user : User){
+    func write(client : Client){
         
-        let databaseRef : DatabaseReference = Database.database().reference().child(userTag)
+        let databaseRef : DatabaseReference = Database.database().reference().child(clientTag)
         
         
         databaseRef.observeSingleEvent(of: .value, with: { (snapshot) in
             
-            guard let userID = user.id else {
-                return
+            guard let clientID = client.id,
+                let userID = Auth.auth().currentUser?.uid else {
+                    return
             }
             
-            if snapshot.hasChild(userID){
+            if snapshot.hasChild(clientID){
                 print("Already in database")
                 return
                 
             }else{
                 
-                databaseRef.child((Auth.auth().currentUser?.uid)!).setValue(["id": Auth.auth().currentUser?.uid,"name":user.name,
-                                                                             "email": user.email, "url": user.url])
+                let dictionary : [String:Any] = ["id": userID,
+                                                 "name":client.name ?? "",
+                                                 "email": client.email ?? "",
+                                                 "url": client.url ?? ""]
+                databaseRef.child(userID).setValue(dictionary)
             }
         })
         

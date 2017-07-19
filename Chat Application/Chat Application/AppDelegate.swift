@@ -15,9 +15,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     var window: UIWindow?
-    var SignInDelegate : (()->())?
+    var signInDelegate : (()->())?
     
-    var SignOutDelegate : (()->())?
+    var signOutDelegate : (()->())?
     
     var databaseRef: DatabaseReference!
     
@@ -85,7 +85,7 @@ extension AppDelegate : GIDSignInDelegate {
         Auth.auth().signIn(with: credential) { (user, error) in
             print("User Signed Into Firebase")
             
-        self.SignInDelegate?()
+            self.signInDelegate?()
             
         }
         
@@ -97,7 +97,7 @@ extension AppDelegate : GIDSignInDelegate {
         do {
             try
                 Auth.auth().signOut()
-            GIDSignIn.sharedInstance().signOut()
+               GIDSignIn.sharedInstance().signOut()
             
         } catch let signOutError as NSError {
             
@@ -105,7 +105,7 @@ extension AppDelegate : GIDSignInDelegate {
             
         }
         
-        self.SignOutDelegate?()
+        self.signOutDelegate?()
         
     }
     

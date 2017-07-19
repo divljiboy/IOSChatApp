@@ -8,47 +8,45 @@
 
 /* Begin PBXBuildFile section */
 		1CDFF0D0E008401EE5AED0C4 /* Pods_Chat_Application.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75FC93AD724A285C3710486A /* Pods_Chat_Application.framework */; };
+		303627501F1F828A0083C7AC /* MessagesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3036274F1F1F828A0083C7AC /* MessagesTableViewCell.swift */; };
 		304056C41F1E33B100EA2E14 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304056C31F1E33B100EA2E14 /* Message.swift */; };
 		304056C61F1E34A000EA2E14 /* MessagesDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304056C51F1E34A000EA2E14 /* MessagesDao.swift */; };
 		304056C81F1E404500EA2E14 /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304056C71F1E404500EA2E14 /* MessagesViewController.swift */; };
-		304056CA1F1E433F00EA2E14 /* IncommingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304056C91F1E433F00EA2E14 /* IncommingTableViewCell.swift */; };
-		304056CC1F1E437100EA2E14 /* OutgoingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304056CB1F1E437100EA2E14 /* OutgoingTableViewCell.swift */; };
 		3051ED271F1CFD9100DC1D7C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3051ED261F1CFD9100DC1D7C /* GoogleService-Info.plist */; };
 		309EC4E41F1CF1D300BB94C4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309EC4E31F1CF1D300BB94C4 /* AppDelegate.swift */; };
 		309EC4EB1F1CF1D300BB94C4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 309EC4EA1F1CF1D300BB94C4 /* Assets.xcassets */; };
 		309EC4EE1F1CF1D300BB94C4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 309EC4EC1F1CF1D300BB94C4 /* LaunchScreen.storyboard */; };
-		309EC4F81F1CF36300BB94C4 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309EC4F71F1CF36300BB94C4 /* TableViewController.swift */; };
+		309EC4F81F1CF36300BB94C4 /* ChatroomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309EC4F71F1CF36300BB94C4 /* ChatroomViewController.swift */; };
 		309EC4FA1F1CF36A00BB94C4 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309EC4F91F1CF36A00BB94C4 /* TableViewCell.swift */; };
 		309EC4FC1F1CF37000BB94C4 /* SelectedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309EC4FB1F1CF37000BB94C4 /* SelectedViewController.swift */; };
 		309EC50B1F1CF4A300BB94C4 /* UserDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309EC50A1F1CF4A300BB94C4 /* UserDao.swift */; };
 		309EC50D1F1CF4AA00BB94C4 /* ChatroomDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309EC50C1F1CF4AA00BB94C4 /* ChatroomDao.swift */; };
 		309EC5101F1CF62500BB94C4 /* Chatroom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309EC50F1F1CF62500BB94C4 /* Chatroom.swift */; };
-		309EC5121F1CF6CC00BB94C4 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309EC5111F1CF6CC00BB94C4 /* User.swift */; };
+		309EC5121F1CF6CC00BB94C4 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309EC5111F1CF6CC00BB94C4 /* Client.swift */; };
 		30EDCB9B1F1DFDB3004C5B17 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30EDCB9D1F1DFDB3004C5B17 /* Main.storyboard */; };
 		30EDCBAC1F1E0083004C5B17 /* DialogUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EDCBAB1F1E0083004C5B17 /* DialogUtils.swift */; };
 		30EDCBC81F1E2CBD004C5B17 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 30EDCBC61F1E2CBD004C5B17 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3036274F1F1F828A0083C7AC /* MessagesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesTableViewCell.swift; sourceTree = "<group>"; };
 		304056C21F1E2D7A00EA2E14 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = "Chat Application/ru.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		304056C31F1E33B100EA2E14 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		304056C51F1E34A000EA2E14 /* MessagesDao.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesDao.swift; sourceTree = "<group>"; };
 		304056C71F1E404500EA2E14 /* MessagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
-		304056C91F1E433F00EA2E14 /* IncommingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IncommingTableViewCell.swift; path = ../IncommingTableViewCell.swift; sourceTree = "<group>"; };
-		304056CB1F1E437100EA2E14 /* OutgoingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutgoingTableViewCell.swift; sourceTree = "<group>"; };
 		3051ED261F1CFD9100DC1D7C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		309EC4E01F1CF1D300BB94C4 /* Chat Application.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Chat Application.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		309EC4E31F1CF1D300BB94C4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		309EC4EA1F1CF1D300BB94C4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		309EC4ED1F1CF1D300BB94C4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		309EC4EF1F1CF1D300BB94C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		309EC4F71F1CF36300BB94C4 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		309EC4F71F1CF36300BB94C4 /* ChatroomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatroomViewController.swift; sourceTree = "<group>"; };
 		309EC4F91F1CF36A00BB94C4 /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		309EC4FB1F1CF37000BB94C4 /* SelectedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectedViewController.swift; sourceTree = "<group>"; };
 		309EC50A1F1CF4A300BB94C4 /* UserDao.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDao.swift; sourceTree = "<group>"; };
 		309EC50C1F1CF4AA00BB94C4 /* ChatroomDao.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatroomDao.swift; sourceTree = "<group>"; };
 		309EC50F1F1CF62500BB94C4 /* Chatroom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chatroom.swift; sourceTree = "<group>"; };
-		309EC5111F1CF6CC00BB94C4 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		309EC5111F1CF6CC00BB94C4 /* Client.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
 		30EDCB9C1F1DFDB3004C5B17 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		30EDCBAB1F1E0083004C5B17 /* DialogUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DialogUtils.swift; sourceTree = "<group>"; };
 		30EDCBC21F1E2C71004C5B17 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
@@ -97,20 +95,18 @@
 				30EDCBC61F1E2CBD004C5B17 /* Localizable.strings */,
 				3051ED261F1CFD9100DC1D7C /* GoogleService-Info.plist */,
 				30EDCB9D1F1DFDB3004C5B17 /* Main.storyboard */,
-				30EDCB961F1DEF0E004C5B17 /* Localisation */,
 				309EC50E1F1CF61900BB94C4 /* Model */,
 				309EC5011F1CF47C00BB94C4 /* Dao */,
 				309EC4E31F1CF1D300BB94C4 /* AppDelegate.swift */,
-				309EC4F71F1CF36300BB94C4 /* TableViewController.swift */,
+				309EC4F71F1CF36300BB94C4 /* ChatroomViewController.swift */,
 				309EC4F91F1CF36A00BB94C4 /* TableViewCell.swift */,
 				309EC4FB1F1CF37000BB94C4 /* SelectedViewController.swift */,
 				309EC4EA1F1CF1D300BB94C4 /* Assets.xcassets */,
 				309EC4EC1F1CF1D300BB94C4 /* LaunchScreen.storyboard */,
 				309EC4EF1F1CF1D300BB94C4 /* Info.plist */,
 				30EDCBAB1F1E0083004C5B17 /* DialogUtils.swift */,
+				3036274F1F1F828A0083C7AC /* MessagesTableViewCell.swift */,
 				304056C71F1E404500EA2E14 /* MessagesViewController.swift */,
-				304056C91F1E433F00EA2E14 /* IncommingTableViewCell.swift */,
-				304056CB1F1E437100EA2E14 /* OutgoingTableViewCell.swift */,
 			);
 			path = "Chat Application";
 			sourceTree = "<group>";
@@ -129,17 +125,10 @@
 			isa = PBXGroup;
 			children = (
 				309EC50F1F1CF62500BB94C4 /* Chatroom.swift */,
-				309EC5111F1CF6CC00BB94C4 /* User.swift */,
+				309EC5111F1CF6CC00BB94C4 /* Client.swift */,
 				304056C31F1E33B100EA2E14 /* Message.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		30EDCB961F1DEF0E004C5B17 /* Localisation */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Localisation;
 			sourceTree = "<group>";
 		};
 		3AE15BE38C418950D2E29C61 /* Pods */ = {
@@ -294,11 +283,10 @@
 				309EC50D1F1CF4AA00BB94C4 /* ChatroomDao.swift in Sources */,
 				304056C81F1E404500EA2E14 /* MessagesViewController.swift in Sources */,
 				30EDCBAC1F1E0083004C5B17 /* DialogUtils.swift in Sources */,
-				309EC4F81F1CF36300BB94C4 /* TableViewController.swift in Sources */,
+				303627501F1F828A0083C7AC /* MessagesTableViewCell.swift in Sources */,
+				309EC4F81F1CF36300BB94C4 /* ChatroomViewController.swift in Sources */,
 				304056C41F1E33B100EA2E14 /* Message.swift in Sources */,
-				304056CA1F1E433F00EA2E14 /* IncommingTableViewCell.swift in Sources */,
-				304056CC1F1E437100EA2E14 /* OutgoingTableViewCell.swift in Sources */,
-				309EC5121F1CF6CC00BB94C4 /* User.swift in Sources */,
+				309EC5121F1CF6CC00BB94C4 /* Client.swift in Sources */,
 				309EC4E41F1CF1D300BB94C4 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

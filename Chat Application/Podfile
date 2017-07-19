@@ -13,6 +13,7 @@ target 'Chat Application' do
   pod 'Firebase/Database'
   pod 'GoogleSignIn'
   pod 'ObjectMapper', '~> 2.2'
+  pod 'Kingfisher', '~> 3.0'
 
 
 end

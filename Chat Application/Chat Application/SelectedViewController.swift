@@ -16,22 +16,15 @@ class SelectedViewController: UIViewController {
     
     @IBOutlet weak var editId: UITextField!
     
-    
     var chatroom : Chatroom!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        if chatroom != nil{
-            editName.text = chatroom.name
-            editDesc.text = chatroom.description
-            editId.text = chatroom.id
-        }
     }
     
     @IBAction func cancelButtonClicked(_ sender: UIBarButtonItem) {
 
-        navigationController?.popViewController(animated: true)
+        //navigationController?.popViewController(animated: true)
         dismiss(animated: true, completion: nil)
         
     }
@@ -44,7 +37,7 @@ class SelectedViewController: UIViewController {
         }
         let chatRoom = Chatroom(name: editNameField, description: editDescriptionField)
         ChatroomDao().write(chat: chatRoom)
-        navigationController?.popViewController(animated: true)
+        //navigationController?.popViewController(animated: true)
         dismiss(animated: true, completion: nil)
         
     }

@@ -10,10 +10,10 @@ import Foundation
 import Firebase
 
 protocol MessageDaoDelegate: class {
-    func Loaded(messages: [Message])
+    func loaded(messages: [Message])
 }
 
-class MessagesDao{
+class MessagesDao {
     
     var messagesList = [Message]()
     private var refHandle: UInt!
@@ -46,12 +46,10 @@ class MessagesDao{
                     self.messagesList.append(message)
                 }
                 
-                self.delegate?.Loaded(messages : self.messagesList)
+                self.delegate?.loaded(messages : self.messagesList)
             }
             
         })
-        
-        
     }
     
     
@@ -62,10 +60,19 @@ class MessagesDao{
             return
         }
         
+        let date = String(describing: Date())
+        
         let databaseRef : DatabaseReference = Database.database().reference().child(messageTag).child(chatroomId).childByAutoId()
         
-        databaseRef.setValue(["id": databaseRef.key,"name":message.name as Any,
-                              "date": message.date as Any,"userid": Auth.auth().currentUser as Any])
+        guard let user = Auth.auth().currentUser else {
+          return
+        }
+        let client = Client(user:user)
+        
+        let dictionary : [String : Any] = ["id": databaseRef.key,"name": message.name ?? "",
+                                           "date": date,"client": client.toJSON()]
+        
+        databaseRef.setValue(dictionary)
         
     }
 }

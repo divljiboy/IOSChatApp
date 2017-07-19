@@ -10,7 +10,7 @@ import Foundation
 import Firebase
 
 protocol ChatroomDaoDelegate: class {
-    func Loaded(chatrooms: [Chatroom])
+    func loaded(chatrooms: [Chatroom])
 }
 
 class ChatroomDao{
@@ -18,13 +18,14 @@ class ChatroomDao{
     var chatroomList = [Chatroom]()
     private var refHandle: UInt!
     
-    private var Chatroom_Tag:String = "Chatrooms"
+    // Tag notation, also use let for constants
+    private let chatroomTag = "Chatrooms"
     
     weak var delegate: ChatroomDaoDelegate?
     
     func get() {
         
-        let databaseRef: DatabaseReference = Database.database().reference().child(Chatroom_Tag)
+        let databaseRef: DatabaseReference = Database.database().reference().child(chatroomTag)
         
         refHandle = databaseRef.observe(.value, with: { (snapshot) in
             if snapshot.exists() {
@@ -41,7 +42,7 @@ class ChatroomDao{
                     self.chatroomList.append(chatroom)
                 }
                 
-                self.delegate?.Loaded(chatrooms: self.chatroomList)
+                self.delegate?.loaded(chatrooms: self.chatroomList)
             }
             
         })
@@ -54,7 +55,7 @@ class ChatroomDao{
             return
         }
         
-        let databaseRef : DatabaseReference = Database.database().reference().child(Chatroom_Tag)
+        let databaseRef : DatabaseReference = Database.database().reference().child(chatroomTag)
         databaseRef.child(chatroomId).removeValue()
         
         databaseRef.observeSingleEvent(of: .value) { (datasnapshot, string) in
@@ -71,14 +72,15 @@ class ChatroomDao{
                 self.chatroomList.append(chatroom)
             }
             
-            self.delegate?.Loaded(chatrooms: self.chatroomList)
+            self.delegate?.loaded(chatrooms: self.chatroomList)
         }
         
         
     }
     
+    
     func write(chat : Chatroom){
-        let databaseRef : DatabaseReference = Database.database().reference().child(Chatroom_Tag).childByAutoId()
+        let databaseRef : DatabaseReference = Database.database().reference().child(chatroomTag).childByAutoId()
         
         databaseRef.setValue(["id": databaseRef.key,"name":chat.name,
                               "description": chat.description])

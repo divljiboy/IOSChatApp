@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 import GoogleSignIn
 
-class TableViewController: UIViewController,  GIDSignInUIDelegate{
+class ChatroomViewController: UIViewController,  GIDSignInUIDelegate{
     
     
     @IBOutlet weak var navigationBar: UINavigationItem!
@@ -37,9 +37,9 @@ class TableViewController: UIViewController,  GIDSignInUIDelegate{
         
         chatroomDao.delegate = self
         
-        (UIApplication.shared.delegate as? AppDelegate)?.SignInDelegate = updateUI
+        (UIApplication.shared.delegate as? AppDelegate)?.signInDelegate = updateUI
         
-        (UIApplication.shared.delegate as? AppDelegate)?.SignOutDelegate = updateUI
+        (UIApplication.shared.delegate as? AppDelegate)?.signOutDelegate = updateUI
         GIDSignIn.sharedInstance().uiDelegate = self
         
     }
@@ -51,15 +51,11 @@ class TableViewController: UIViewController,  GIDSignInUIDelegate{
             signOutButton.isHidden = false
             tableView.isHidden = false
             
-            guard let realUser = Auth.auth().currentUser ,
-                let realUserName = realUser.displayName,
-                let realUserEmail = realUser.email ,
-                let realUserURL = realUser.photoURL?.absoluteString else {
-                    return
+            guard let user = Auth.auth().currentUser else {
+                print("Error parsing user")
+                return
             }
-            let user = User(id: realUser.uid, name: realUserName, email: realUserEmail, url: realUserURL)
-            
-            userDao.write(user: user)
+            userDao.write(client: Client(user: user) )
             chatroomDao.get()
             tableView.reloadData()
             self.navigationController?.isNavigationBarHidden = false
@@ -80,10 +76,30 @@ class TableViewController: UIViewController,  GIDSignInUIDelegate{
         GIDSignIn.sharedInstance().disconnect()
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        performSegue(withIdentifier: "selectedConversation", sender: chatRooms[indexPath.row])
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "selectedConversation" {
+            
+            guard let selectedChatroom = sender as? Chatroom else {
+                print("Error parsing chatroom")
+                return
+            }
+            let controller = segue.destination as! MessagesViewController
+            controller.selectedChatroom = selectedChatroom
+            
+        }
+    }
+    
+    
     
 }
 
-extension TableViewController: UITableViewDelegate, UITableViewDataSource {
+extension ChatroomViewController: UITableViewDelegate, UITableViewDataSource {
     
     
     @available(iOS 2.0, *)
@@ -107,24 +123,6 @@ extension TableViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        performSegue(withIdentifier: "selectedConversation", sender: chatRooms[indexPath.row])
-        
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "selectedConversation" {
-            
-            guard let selectedChatroom = sender as? Chatroom else {
-                 print("Error parsing chatroom")
-                 return
-            }
-            let controller = segue.destination as! MessagesViewController
-            controller.selectedChatroom = selectedChatroom
-        
-        }
-    }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
@@ -148,14 +146,15 @@ extension TableViewController: UITableViewDelegate, UITableViewDataSource {
                 print ("Nothing happened")
                 
             }
+            
         }
     }
     
 }
 
-extension TableViewController: ChatroomDaoDelegate {
+extension ChatroomViewController: ChatroomDaoDelegate {
     
-    func Loaded(chatrooms: [Chatroom]) {
+    func loaded(chatrooms: [Chatroom]) {
         
         chatRooms = chatrooms
         tableView.reloadData()

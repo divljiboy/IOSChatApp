@@ -8,31 +8,30 @@
 
 import Foundation
 import Firebase
+import ObjectMapper
 
 class Message {
     
     var name:String?
-    var date : Date?
+    var date : String?
     var id:String?
-    var userID: String?
+    var client: Client?
     
     init(){
     }
     
     
-    init(id:String,name:String,date: Date,userID : String){
+    init(id:String,name:String,date: String,client: Client){
         
         self.id = id
         self.name = name
         self.date = date
-        self.userID = userID
+        self.client = client
     }
     
-    init(name:String,date: Date,userID : String) {
+    init(name:String) {
         
         self.name = name
-        self.date = date
-        self.userID = userID
         
     }
     init(snapshot: DataSnapshot) {
@@ -43,7 +42,15 @@ class Message {
         }
         self.id = snapshotValue["id"] as? String
         self.name = snapshotValue["name"] as? String
-        self.date = snapshotValue["date"] as? Date
-        self.userID = snapshotValue["userid"] as? String
+        self.date = snapshotValue["date"] as? String
+        
+        guard let snapshotClient = snapshotValue["client"] as? [String:AnyObject] else {
+            print ("Snapshot value did not cast properly ")
+            return
+        }
+        self.client = Client(snapshot: snapshotClient)
+        
+        
+        
     }
 }
