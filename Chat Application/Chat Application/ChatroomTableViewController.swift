@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 import GoogleSignIn
 
-class ChatroomViewController: UIViewController,  GIDSignInUIDelegate{
+class ChatroomTableViewController: UIViewController,  GIDSignInUIDelegate{
     
     
     @IBOutlet weak var navigationBar: UINavigationItem!
@@ -89,7 +89,7 @@ class ChatroomViewController: UIViewController,  GIDSignInUIDelegate{
                 print("Error parsing chatroom")
                 return
             }
-            let controller = segue.destination as! MessagesViewController
+            let controller = segue.destination as! MessagesTableViewController
             controller.selectedChatroom = selectedChatroom
             
         }
@@ -99,7 +99,7 @@ class ChatroomViewController: UIViewController,  GIDSignInUIDelegate{
     
 }
 
-extension ChatroomViewController: UITableViewDelegate, UITableViewDataSource {
+extension ChatroomTableViewController: UITableViewDelegate, UITableViewDataSource {
     
     
     @available(iOS 2.0, *)
@@ -152,7 +152,7 @@ extension ChatroomViewController: UITableViewDelegate, UITableViewDataSource {
     
 }
 
-extension ChatroomViewController: ChatroomDaoDelegate {
+extension ChatroomTableViewController: ChatroomDaoDelegate {
     
     func loaded(chatrooms: [Chatroom]) {
         

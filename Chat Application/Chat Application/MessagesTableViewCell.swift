@@ -15,10 +15,14 @@ class MessagesTableViewCell: UITableViewCell {
     
     @IBOutlet weak var messageTextView: UITextView!
     
+    
+    
+    
     @IBOutlet weak var dateLabel: UILabel!
     override func awakeFromNib() {
         
         super.awakeFromNib()
+        
         
     }
     
@@ -27,12 +31,33 @@ class MessagesTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
         
     }
-    func setupCellWith(message: Message) {
+    
+    func setupCellWithoutgoing(message: Message) {
         
         let url = URL(string: (message.client?.url)!)
         messageImageView.kf.setImage(with: url)
+        messageImageView.layer.cornerRadius = 15
+        messageImageView.layer.masksToBounds = true
         messageTextView.text = message.name
-        dateLabel.text = message.date
+        messageTextView.layer.cornerRadius = 15
+        messageTextView.layer.masksToBounds = true
+        messageTextView.backgroundColor = UIColor(red: 247/255, green: 247/255, blue: 247/255, alpha: 1)
+        
+        
+    }
+    func setupCellWithincomming(message: Message) {
+        
+        let url = URL(string: (message.client?.url)!)
+        messageImageView.kf.setImage(with: url)
+        messageImageView.layer.cornerRadius = 15
+        messageImageView.layer.masksToBounds = true
+        messageTextView.text = message.name
+        messageTextView.layer.cornerRadius = 15
+        messageTextView.layer.masksToBounds = true
+        messageTextView.backgroundColor = UIColor.gray
+        messageTextView.backgroundColor = UIColor(red: 139/255, green: 157/255, blue: 195/255, alpha: 1)
+        
+        
         
     }
     
