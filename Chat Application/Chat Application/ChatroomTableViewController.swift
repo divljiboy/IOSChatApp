@@ -6,7 +6,7 @@
 //  Copyright © 2017 Ivan Divljak. All rights reserved.
 //
 
-import UIKit
+import Foundation
 import Firebase
 import GoogleSignIn
 

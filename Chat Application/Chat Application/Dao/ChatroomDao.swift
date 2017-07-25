@@ -20,6 +20,8 @@ class ChatroomDao{
     
     // Tag notation, also use let for constants
     private let chatroomTag = "Chatrooms"
+    private var messageTag:String = "Messages"
+    
     
     weak var delegate: ChatroomDaoDelegate?
     
@@ -57,6 +59,9 @@ class ChatroomDao{
         
         let databaseRef : DatabaseReference = Database.database().reference().child(chatroomTag)
         databaseRef.child(chatroomId).removeValue()
+        let messagesReference : DatabaseReference = Database.database().reference().child(messageTag)
+        messagesReference.child(chatroomId).removeValue()
+
         
         databaseRef.observeSingleEvent(of: .value) { (datasnapshot, string) in
             
@@ -74,6 +79,7 @@ class ChatroomDao{
             
             self.delegate?.loaded(chatrooms: self.chatroomList)
         }
+        
         
         
     }

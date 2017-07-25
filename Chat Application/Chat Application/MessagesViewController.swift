@@ -9,11 +9,10 @@
 import UIKit
 import Firebase
 
-class MessagesTableViewController: UIViewController,UITextFieldDelegate{
+class MessagesTableViewController: UIViewController,UITextViewDelegate{
     
     
     @IBOutlet weak var sendText: UITextView!
-    
     @IBOutlet weak var sendButton: UIButton!
     let messagesDao = MessagesDao()
     var messagesList = [Message]()
@@ -33,8 +32,10 @@ class MessagesTableViewController: UIViewController,UITextFieldDelegate{
         messagesDao.getMessages(chatRoom: selectedChatroom)
         messagesDao.delegate = self
         tableView.separatorStyle = .none
-        
         defaultFrame = self.view.frame
+        sendText.delegate = self
+        self.hideKeyboardWhenTappedAround()
+        
         
         NotificationCenter.default.addObserver(
             self,
@@ -47,19 +48,21 @@ class MessagesTableViewController: UIViewController,UITextFieldDelegate{
         
     }
     
-    func textFieldShouldReturn(_ sendText: UITextField) -> Bool {
-        self.view.endEditing(true)
-        return false
-    }
-    func moveViewWithKeyboard(height: CGFloat) {
-        self.view.frame = defaultFrame.offsetBy(dx: 0, dy: height)
-    }
-    
     override func didReceiveMemoryWarning() {
         
         super.didReceiveMemoryWarning()
         
     }
+    
+    func textViewShouldReturn(textView: UITextView!) -> Bool {
+        sendText.resignFirstResponder()
+        return true;
+    }
+    func moveViewWithKeyboard(height: CGFloat) {
+        self.view.frame = defaultFrame.offsetBy(dx: 0, dy: height)
+    }
+    
+    
     func keyBoardWillHide(notification: NSNotification) {
           moveViewWithKeyboard(height: 0)
         
@@ -77,12 +80,23 @@ class MessagesTableViewController: UIViewController,UITextFieldDelegate{
         }
         let message = Message(name: editNameField)
         messagesDao.write(message: message, chatroom: selectedChatroom)
+        sendText.text = ""
         
     }
     
 }
 
-
+extension UIViewController {
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    func dismissKeyboard() {
+        view.endEditing(true)
+    }
+}
 extension MessagesTableViewController: UITableViewDelegate, UITableViewDataSource {
     
     
