@@ -8,12 +8,10 @@
 
 import Foundation
 import Firebase
-import ObjectMapper
 import GoogleSignIn
 
 
 class Client {
-    
     
     var id : String?
     var name : String?
@@ -21,28 +19,17 @@ class Client {
     var url : String?
     
     
-    required init?(map: Map) {
-        
-    }
-    
-    // Mappable
-    func mapping(map: Map) {
-        self.id    <- map["id"]
-        self.name  <- map["name"]
-        self.email <- map["email"]
-        self.url   <- map["url"]
-        
-    }
     
     init() {}
     
-    init(id:String,name: String,email: String, url: String){
+    init(id:String, name: String, email: String, url: String){
         self.id = id
         self.name = name
         self.email = email
         self.url = url
     }
-    func toJSON()-> NSDictionary{
+    
+    func toJSON()-> NSDictionary {
         
         return ["id": self.id ?? "",
                 "name": self.name ?? "",

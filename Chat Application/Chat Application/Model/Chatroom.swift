@@ -17,25 +17,25 @@ class Chatroom  {
     var url:String?
     
     init(){
+        
     }
     
-    
-    init(id:String,name:String,description:String){
-        
+    init(id:String, name: String, description: String){
         self.id=id
         self.name=name
         self.description=description
     }
     
-    init(name:String,description:String) {
+    init(name: String, description: String) {
         
         self.name=name
         self.description=description
         
     }
+    
     init(snapshot: DataSnapshot) {
         
-        guard let snapshotValue = snapshot.value as? [String:AnyObject]else {
+        guard let snapshotValue = snapshot.value as? [String:AnyObject] else {
             print ("Snapshot value did not cast properly ")
             return
         }

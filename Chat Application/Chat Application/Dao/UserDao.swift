@@ -17,18 +17,11 @@ class UserDao{
     
     
     func get() {
-        
-        
         let databaseRef : DatabaseReference = Database.database().reference().child(clientTag)
-        
         refHandle = databaseRef.observe(.value, with: { (snapshot) in
-            
             if snapshot.exists() {
-                
                 self.clientList.removeAll()
-                
                 for item in snapshot.children {
-                    
                     guard let singleChatroom = item as? DataSnapshot else {
                         continue
                     }
@@ -37,38 +30,26 @@ class UserDao{
                 }
             }
         })
-        
-        
     }
-    func delete(client : Client){
-        
+    func delete(client : Client) {
         guard let clientId = client.id else {
             return
         }
-        
         let databaseRef : DatabaseReference = Database.database().reference().child(clientTag).child(clientId)
         databaseRef.removeValue()
-        
     }
     
     func write(client : Client){
-        
         let databaseRef : DatabaseReference = Database.database().reference().child(clientTag)
-        
-        
         databaseRef.observeSingleEvent(of: .value, with: { (snapshot) in
-            
             guard let clientID = client.id,
-                let userID = Auth.auth().currentUser?.uid else {
+                  let userID = Auth.auth().currentUser?.uid else {
                     return
             }
-            
-            if snapshot.hasChild(clientID){
+            if snapshot.hasChild(clientID) {
                 print("Already in database")
                 return
-                
-            }else{
-                
+            } else {
                 let dictionary : [String:Any] = ["id": userID,
                                                  "name":client.name ?? "",
                                                  "email": client.email ?? "",
@@ -76,7 +57,5 @@ class UserDao{
                 databaseRef.child(userID).setValue(dictionary)
             }
         })
-        
     }
-    
 }

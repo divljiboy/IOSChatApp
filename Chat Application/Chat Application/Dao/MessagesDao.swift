@@ -24,55 +24,38 @@ class MessagesDao {
     
     func getMessages(chatRoom: Chatroom) {
         guard let chatroomId = chatRoom.id else {
-            print("Didnt get coorect id")
+            print("Didnt get correct id")
             return
         }
-        
         let databaseRef: DatabaseReference = Database.database().reference().child(messageTag).child(chatroomId)
-        
         refHandle = databaseRef.observe(.value, with: { (snapshot) in
             if snapshot.exists() {
-                
                 self.messagesList.removeAll()
-                
                 for item in snapshot.children {
-                    
                     guard let singleMessage = item as? DataSnapshot else {
                         continue
                     }
-                    
                     let message = Message( snapshot: singleMessage)
-                    
                     self.messagesList.append(message)
                 }
-                
                 self.delegate?.loaded(messages : self.messagesList)
             }
-            
         })
     }
     
     
-    func write(message : Message, chatroom: Chatroom){
-        
+    func write(message: Message, chatroom: Chatroom){
         guard let chatroomId = chatroom.id else {
             print("Didnt get correct id")
             return
         }
-        
         let date = String(describing: Date())
-        
         let databaseRef : DatabaseReference = Database.database().reference().child(messageTag).child(chatroomId).childByAutoId()
-        
         guard let user = Auth.auth().currentUser else {
-          return
+            return
         }
-        let client = Client(user:user)
-        
-        let dictionary : [String : Any] = ["id": databaseRef.key,"name": message.name ?? "",
-                                           "date": date,"client": client.toJSON()]
-        
-        databaseRef.setValue(dictionary)
-        
+        let client = Client(user: user)
+            databaseRef.setValue(["id": databaseRef.key,"name": message.name ?? "",
+                                  "date": date,"client": client.toJSON()])
     }
 }

@@ -11,9 +11,7 @@ import UIKit
 class SelectedViewController: UIViewController {
     
     @IBOutlet weak var editName: UITextField!
-    
     @IBOutlet weak var editDesc: UITextField!
-    
     @IBOutlet weak var editId: UITextField!
     
     var chatroom : Chatroom!
@@ -23,21 +21,17 @@ class SelectedViewController: UIViewController {
     }
     
     @IBAction func cancelButtonClicked(_ sender: UIBarButtonItem) {
-
         dismiss(animated: true, completion: nil)
-        
     }
     
     @IBAction func saveButtonClicked(_ sender: UIBarButtonItem) {
-        
         guard let editNameField = editName.text ,
                let editDescriptionField=editDesc.text else {
                 return
         }
         let chatRoom = Chatroom(name: editNameField, description: editDescriptionField)
         ChatroomDao().write(chat: chatRoom)
-        dismiss(animated: true, completion: nil)
-        
+        self.navigationController?.popViewController(animated: true)
     }
     
     
