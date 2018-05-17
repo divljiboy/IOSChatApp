@@ -21,7 +21,7 @@ class MessagesTableViewController: UIViewController {
     var selectedChatroom: Chatroom!
     var messagesList: [Message] = []
     let showLocationSegue = "showLocation"
-    var locationManager: CLLocationManager!
+    let showMapSegue = "showMap"
     
     // This is how we observe the keyboard position
     override var inputAccessoryView: UIView? {
@@ -48,11 +48,6 @@ class MessagesTableViewController: UIViewController {
         messagesDao.delegate = self
         tableView.separatorStyle = .none
         
-        locationManager = CLLocationManager()
-        locationManager.delegate = self
-        locationManager.requestAlwaysAuthorization()
-
-        
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardFrameChanged(notification:)), name: NSNotification.Name(rawValue: ALKeyboardFrameDidChangeNotification), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
@@ -74,7 +69,8 @@ class MessagesTableViewController: UIViewController {
         
         leftButton.setImage(#imageLiteral(resourceName: "icons8-user-96"), for: .normal)
         
-        leftButton.addTarget(self, action: #selector(sendMessage), for: .touchUpInside)
+        rightButton.addTarget(self, action: #selector(sendMessage), for: .touchUpInside)
+        leftButton.addTarget(self, action: #selector(showMap), for: .touchUpInside)
         
         keyboardObserver.isUserInteractionEnabled = false
         
@@ -94,6 +90,10 @@ class MessagesTableViewController: UIViewController {
         textInputBar.keyboardObserver = keyboardObserver
         
         view.addSubview(textInputBar)
+    }
+    
+    @objc func showMap() {
+        self.performSegue(withIdentifier: showMapSegue, sender: nil)
     }
     
     @objc func keyboardFrameChanged(notification: NSNotification) {
@@ -132,9 +132,7 @@ extension MessagesTableViewController: UITableViewDelegate, UITableViewDataSourc
 
     @available(iOS 2.0, *)
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-
         return messagesList.count
-
     }
 
 
@@ -183,19 +181,4 @@ extension MessagesTableViewController: MessageDaoDelegate {
         tableView.reloadData()
     }
 
-
-}
-
-extension MessagesTableViewController: CLLocationManagerDelegate {
-    
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        if status == .authorizedAlways {
-            if CLLocationManager.isMonitoringAvailable(for: CLBeaconRegion.self) {
-                if CLLocationManager.isRangingAvailable() {
-                    // do stuff
-                }
-            }
-        }
-    }
-    
 }

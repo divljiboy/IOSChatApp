@@ -27,6 +27,10 @@
 		30EDCBC81F1E2CBD004C5B17 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 30EDCBC61F1E2CBD004C5B17 /* Localizable.strings */; };
 		30F25BA920AAE4AB005827CF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 30F25BA820AAE4AA005827CF /* GoogleService-Info.plist */; };
 		30F25BAB20AB08EB005827CF /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F25BAA20AB08EB005827CF /* LocationViewController.swift */; };
+		30F25BF620AC474A005827CF /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 30F25BF520AC4749005827CF /* art.scnassets */; };
+		30F25BF920AC4769005827CF /* FloatExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F25BF820AC4769005827CF /* FloatExtension.swift */; };
+		30F25BFB20AC4786005827CF /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F25BFA20AC4786005827CF /* StringExtension.swift */; };
+		30F25C0120AC4CCC005827CF /* MapPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F25C0020AC4CCC005827CF /* MapPreviewViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +57,11 @@
 		30EDCBC71F1E2CBD004C5B17 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = "Chat Application/en.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		30F25BA820AAE4AA005827CF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		30F25BAA20AB08EB005827CF /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
+		30F25BF520AC4749005827CF /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
+		30F25BF820AC4769005827CF /* FloatExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatExtension.swift; sourceTree = "<group>"; };
+		30F25BFA20AC4786005827CF /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		30F25BFC20AC4CAD005827CF /* Chat Application-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Chat Application-Bridging-Header.h"; sourceTree = "<group>"; };
+		30F25C0020AC4CCC005827CF /* MapPreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPreviewViewController.swift; sourceTree = "<group>"; };
 		75FC93AD724A285C3710486A /* Pods_Chat_Application.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Chat_Application.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		904BA1DF2BF2628839E3503B /* Pods-Chat Application.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chat Application.release.xcconfig"; path = "Pods/Target Support Files/Pods-Chat Application/Pods-Chat Application.release.xcconfig"; sourceTree = "<group>"; };
 		F5D81F2C6074D4D57309C5C5 /* Pods-Chat Application.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chat Application.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Chat Application/Pods-Chat Application.debug.xcconfig"; sourceTree = "<group>"; };
@@ -91,6 +100,7 @@
 		309EC4E21F1CF1D300BB94C4 /* Chat Application */ = {
 			isa = PBXGroup;
 			children = (
+				30F25BF720AC4759005827CF /* Extension */,
 				30EDCBC61F1E2CBD004C5B17 /* Localizable.strings */,
 				30F25BA820AAE4AA005827CF /* GoogleService-Info.plist */,
 				30EDCB9D1F1DFDB3004C5B17 /* Main.storyboard */,
@@ -105,8 +115,11 @@
 				309EC4EF1F1CF1D300BB94C4 /* Info.plist */,
 				30EDCBAB1F1E0083004C5B17 /* DialogUtils.swift */,
 				3036274F1F1F828A0083C7AC /* MessagesTableViewCell.swift */,
+				30F25BF520AC4749005827CF /* art.scnassets */,
 				304056C71F1E404500EA2E14 /* MessagesViewController.swift */,
 				30F25BAA20AB08EB005827CF /* LocationViewController.swift */,
+				30F25BFC20AC4CAD005827CF /* Chat Application-Bridging-Header.h */,
+				30F25C0020AC4CCC005827CF /* MapPreviewViewController.swift */,
 			);
 			path = "Chat Application";
 			sourceTree = "<group>";
@@ -129,6 +142,15 @@
 				304056C31F1E33B100EA2E14 /* Message.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		30F25BF720AC4759005827CF /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				30F25BF820AC4769005827CF /* FloatExtension.swift */,
+				30F25BFA20AC4786005827CF /* StringExtension.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		3AE15BE38C418950D2E29C61 /* Pods */ = {
@@ -214,6 +236,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				30EDCBC81F1E2CBD004C5B17 /* Localizable.strings in Resources */,
+				30F25BF620AC474A005827CF /* art.scnassets in Resources */,
 				3013DC6C1F209A0E00BF8EAC /* Main.storyboard in Resources */,
 				30F25BA920AAE4AB005827CF /* GoogleService-Info.plist in Resources */,
 				309EC4EE1F1CF1D300BB94C4 /* LaunchScreen.storyboard in Resources */,
@@ -250,6 +273,8 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Chat Application/Pods-Chat Application-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/ALTextInputBar/ALTextInputBar.framework",
+				"${BUILT_PRODUCTS_DIR}/Chatto/Chatto.framework",
+				"${BUILT_PRODUCTS_DIR}/ChattoAdditions/ChattoAdditions.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
@@ -257,6 +282,8 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ALTextInputBar.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Chatto.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ChattoAdditions.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
@@ -293,12 +320,15 @@
 			files = (
 				309EC5101F1CF62500BB94C4 /* Chatroom.swift in Sources */,
 				309EC4FA1F1CF36A00BB94C4 /* TableViewCell.swift in Sources */,
+				30F25C0120AC4CCC005827CF /* MapPreviewViewController.swift in Sources */,
 				309EC50B1F1CF4A300BB94C4 /* UserDao.swift in Sources */,
 				309EC4FC1F1CF37000BB94C4 /* SelectedViewController.swift in Sources */,
+				30F25BFB20AC4786005827CF /* StringExtension.swift in Sources */,
 				304056C61F1E34A000EA2E14 /* MessagesDao.swift in Sources */,
 				309EC50D1F1CF4AA00BB94C4 /* ChatroomDao.swift in Sources */,
 				304056C81F1E404500EA2E14 /* MessagesViewController.swift in Sources */,
 				30F25BAB20AB08EB005827CF /* LocationViewController.swift in Sources */,
+				30F25BF920AC4769005827CF /* FloatExtension.swift in Sources */,
 				30EDCBAC1F1E0083004C5B17 /* DialogUtils.swift in Sources */,
 				303627501F1F828A0083C7AC /* MessagesTableViewCell.swift in Sources */,
 				309EC4F81F1CF36300BB94C4 /* ChatroomTableViewController.swift in Sources */,
@@ -455,11 +485,15 @@
 			baseConfigurationReference = F5D81F2C6074D4D57309C5C5 /* Pods-Chat Application.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = NUHGDUME29;
 				INFOPLIST_FILE = "Chat Application/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.chatApplication.faculty;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Chat Application/Chat Application-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
 			};
@@ -470,11 +504,14 @@
 			baseConfigurationReference = 904BA1DF2BF2628839E3503B /* Pods-Chat Application.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = NUHGDUME29;
 				INFOPLIST_FILE = "Chat Application/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.chatApplication.faculty;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Chat Application/Chat Application-Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
 			};

@@ -1,5 +1,8 @@
 PODS:
   - ALTextInputBar (1.1.8)
+  - Chatto (3.3.1)
+  - ChattoAdditions (3.3.1):
+    - Chatto
   - Firebase (4.0.3):
     - Firebase/Core (= 4.0.3)
   - Firebase/Auth (4.0.3):
@@ -50,6 +53,8 @@ PODS:
 
 DEPENDENCIES:
   - ALTextInputBar
+  - Chatto (= 3.3.1)
+  - ChattoAdditions (= 3.3.1)
   - Firebase
   - Firebase/Auth
   - Firebase/Core
@@ -58,6 +63,8 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   ALTextInputBar: 6c160c51958903c5f7b9d158e19f9c4113ae351b
+  Chatto: 24a6c9b0c91b08130466888b8b61563b90191c6f
+  ChattoAdditions: cc74cd3dd371aa3f70e5ab8568a4f383f0c0eb8c
   Firebase: 9e33fdfbca37cab635c693883caa90a4475b842b
   FirebaseAnalytics: ad41720e3e67fc63fbe3d2948d3e26932a8de311
   FirebaseAuth: ebb6abcbabae00fc47446d690c19ce68d8484fde
@@ -69,6 +76,6 @@ SPEC CHECKSUMS:
   GTMOAuth2: 7fc9c10f5c745f4d9850419ea88889fe3baa6b7d
   GTMSessionFetcher: 5ad62e8200fa00ed011fe5e08d27fef72c5b1429
 
-PODFILE CHECKSUM: 1cf6b1d7b0310937e297ebbe47388a8f507a076f
+PODFILE CHECKSUM: 3800c8001c73b7bb391dfbe1ab8b697024c2ee80
 
 COCOAPODS: 1.4.0.rc.1
