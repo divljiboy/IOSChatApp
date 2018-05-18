@@ -11,7 +11,7 @@ import ARKit
 import SceneKit
 import CoreLocation
 
-class LocationViewController: UIViewController, ARSCNViewDelegate, CLLocationManagerDelegate {
+class LocationViewController: BaseViewController, ARSCNViewDelegate, CLLocationManagerDelegate {
     
     @IBOutlet weak var sceneView: ARSCNView!
     @IBOutlet weak var statusTextView: UITextView!

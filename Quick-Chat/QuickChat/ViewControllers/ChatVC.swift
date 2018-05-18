@@ -26,39 +26,32 @@ import Photos
 import Firebase
 import CoreLocation
 
-class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate,  UINavigationControllerDelegate, UIImagePickerControllerDelegate, CLLocationManagerDelegate {
+class ChatVC: BaseViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate,  UINavigationControllerDelegate, UIImagePickerControllerDelegate, CLLocationManagerDelegate {
     
     //MARK: Properties
-    @IBOutlet var inputBar: UIView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var inputTextField: UITextField!
-    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
-    override var inputAccessoryView: UIView? {
-        get {
-            self.inputBar.frame.size.height = self.barHeight
-            self.inputBar.clipsToBounds = true
-            return self.inputBar
-        }
-    }
+   
     override var canBecomeFirstResponder: Bool{
         return true
     }
     let locationManager = CLLocationManager()
     var items = [Message]()
     let imagePicker = UIImagePickerController()
-    let barHeight: CGFloat = 50
     let showLocationVRSegue = "showLocationVR"
     var currentUser: User?
     var canSendLocation = true
     
-
+    @IBOutlet weak var inputViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
+    
     //MARK: Methods
     func customization() {
         self.imagePicker.delegate = self
-        self.tableView.estimatedRowHeight = self.barHeight
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        self.tableView.estimatedRowHeight = UITableViewAutomaticDimension
         self.tableView.rowHeight = UITableViewAutomaticDimension
-        self.tableView.contentInset.bottom = self.barHeight
-        self.tableView.scrollIndicatorInsets.bottom = self.barHeight
         self.navigationItem.title = self.currentUser?.name
         self.navigationItem.setHidesBackButton(true, animated: false)
         let icon = UIImage.init(named: "back")?.withRenderingMode(.alwaysOriginal)
@@ -75,7 +68,7 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITe
             DispatchQueue.main.async {
                 if let state = weakSelf?.items.isEmpty, state == false {
                     weakSelf?.tableView.reloadData()
-                    weakSelf?.tableView.scrollToRow(at: IndexPath.init(row: self.items.count - 1, section: 0), at: .bottom, animated: false)
+                    //self.tableView.scrollToRow(at: IndexPath.init(row: self.items.count - 1, section: 0), at: .bottom, animated: false)
                 }
             }
         })
@@ -117,27 +110,7 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITe
         }
     }
     
-    func animateExtraButtons(toHide: Bool)  {
-        switch toHide {
-        case true:
-            self.bottomConstraint.constant = 0
-            UIView.animate(withDuration: 0.3) {
-                self.inputBar.layoutIfNeeded()
-            }
-        default:
-            self.bottomConstraint.constant = -50
-            UIView.animate(withDuration: 0.3) {
-                self.inputBar.layoutIfNeeded()
-            }
-        }
-    }
-    
-    @IBAction func showMessage(_ sender: Any) {
-       self.animateExtraButtons(toHide: true)
-    }
-    
     @IBAction func selectGallery(_ sender: Any) {
-        self.animateExtraButtons(toHide: true)
         let status = PHPhotoLibrary.authorizationStatus()
         if (status == .authorized || status == .notDetermined) {
             self.imagePicker.sourceType = .savedPhotosAlbum;
@@ -147,7 +120,6 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITe
     }
     
     @IBAction func selectCamera(_ sender: Any) {
-        self.animateExtraButtons(toHide: true)
         let status = AVCaptureDevice.authorizationStatus(for: AVMediaType.video)
         if (status == .authorized || status == .notDetermined) {
             self.imagePicker.sourceType = .camera
@@ -158,16 +130,11 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITe
     
     @IBAction func selectLocation(_ sender: Any) {
         self.canSendLocation = true
-        self.animateExtraButtons(toHide: true)
         if self.checkLocationPermission() {
             self.locationManager.startUpdatingLocation()
         } else {
             self.locationManager.requestWhenInUseAuthorization()
         }
-    }
-    
-    @IBAction func showOptions(_ sender: Any) {
-        self.animateExtraButtons(toHide: false)
     }
     
     @IBAction func sendMessage(_ sender: Any) {
@@ -183,12 +150,36 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITe
     @objc func showKeyboard(notification: Notification) {
         if let frame = notification.userInfo![UIKeyboardFrameEndUserInfoKey] as? NSValue {
             let height = frame.cgRectValue.height
-            self.tableView.contentInset.bottom = height
-            self.tableView.scrollIndicatorInsets.bottom = height
+            self.tableView.contentInset.bottom = height - 20
+            //self.tableView.scrollIndicatorInsets.bottom = height
+            self.bottomConstraint.constant = height - 20
             if self.items.count > 0 {
                 self.tableView.scrollToRow(at: IndexPath.init(row: self.items.count - 1, section: 0), at: .bottom, animated: true)
             }
+            UIView.animate(withDuration: 3, delay: 0, options: [],
+                           animations: {
+                            self.loadViewIfNeeded()
+            },
+                           completion: nil
+            )
+            
         }
+    }
+    
+    //MARK: NotificationCenter handlers
+    @objc func hideKeyboard(notification: Notification) {
+            self.tableView.contentInset.bottom = 0
+            self.tableView.scrollIndicatorInsets.bottom = 0
+            self.bottomConstraint.constant = 0
+            UIView.animate(withDuration: 3, delay: 0, options: [],
+                           animations: {
+                            self.loadViewIfNeeded()
+            },
+                           completion: nil
+            )
+            if self.items.count > 0 {
+                self.tableView.scrollToRow(at: IndexPath.init(row: self.items.count - 1, section: 0), at: .bottom, animated: true)
+            }
     }
 
     //MARK: Delegates
@@ -223,6 +214,7 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITe
                         if state == true {
                             DispatchQueue.main.async {
                                 self.tableView.reloadData()
+                                self.tableView.scrollToRow(at: IndexPath.init(row: self.items.count - 1, section: 0), at: .bottom, animated: false)
                             }
                         }
                     })
@@ -249,6 +241,7 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITe
                         if state == true {
                             DispatchQueue.main.async {
                                 self.tableView.reloadData()
+                                self.tableView.scrollToRow(at: IndexPath.init(row: self.items.count - 1, section: 0), at: .bottom, animated: false)
                             }
                         }
                     })
@@ -259,6 +252,7 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITe
             }
             return cell
         }
+        self.tableView.scrollToRow(at: IndexPath.init(row: self.items.count - 1, section: 0), at: .bottom, animated: false)
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -301,6 +295,7 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITe
                 let coordinate = String(lastLocation.coordinate.latitude) + ":" + String(lastLocation.coordinate.longitude)
                 let message = Message.init(type: .location, content: coordinate, owner: .sender, timestamp: Int(Date().timeIntervalSince1970), isRead: false)
                 MessageRemoteRepository.send(message: message, toID: self.currentUser!.id, completion: {(_) in
+                    self.tableView.scrollToRow(at: IndexPath.init(row: self.items.count - 1, section: 0), at: .bottom, animated: true)
                 })
                 self.canSendLocation = false
             }
@@ -310,9 +305,10 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITe
     //MARK: ViewController lifecycle
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.inputBar.backgroundColor = UIColor.clear
         self.view.layoutIfNeeded()
         NotificationCenter.default.addObserver(self, selector: #selector(ChatVC.showKeyboard(notification:)), name: Notification.Name.UIKeyboardWillShow, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(ChatVC.hideKeyboard(notification:)), name: Notification.Name.UIKeyboardWillHide, object: nil)
     }
     
     override func viewWillDisappear(_ animated: Bool) {

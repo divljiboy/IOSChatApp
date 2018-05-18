@@ -25,7 +25,7 @@ import UIKit
 import Firebase
 import AudioToolbox
 
-class ConversationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ConversationsVC: BaseViewController, UITableViewDelegate, UITableViewDataSource {
     
     //MARK: Properties
     @IBOutlet weak var tableView: UITableView!
@@ -37,6 +37,8 @@ class ConversationsVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     }()
     var items = [Conversation]()
     var selectedUser: User?
+    
+    let showSelectedSegue = "showSelected"
     
     //MARK: Methods
     func customization()  {
@@ -120,7 +122,7 @@ class ConversationsVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     @objc func pushToUserMesssages(notification: NSNotification) {
         if let user = notification.userInfo?["user"] as? User {
             self.selectedUser = user
-            self.performSegue(withIdentifier: "segue", sender: self)
+            self.performSegue(withIdentifier: showSelectedSegue, sender: self)
         }
     }
     
@@ -135,7 +137,7 @@ class ConversationsVC: UIViewController, UITableViewDelegate, UITableViewDataSou
 
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "segue" {
+        if segue.identifier == showSelectedSegue {
             let vc = segue.destination as! ChatVC
             vc.currentUser = self.selectedUser
         }
@@ -200,7 +202,7 @@ class ConversationsVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if self.items.count > 0 {
             self.selectedUser = self.items[indexPath.row].user
-            self.performSegue(withIdentifier: "segue", sender: self)
+            self.performSegue(withIdentifier: showSelectedSegue, sender: self)
         }
     }
        

@@ -26,22 +26,17 @@ import UIKit
 
 class LandingVC: UIViewController {
     
-    //MARK: Properties
-    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        get {
-            return UIInterfaceOrientationMask.portrait
-        }
-    }
+    let homeScreenSegue = "homeScreen"
+    let signInSegue = "signIn"
 
     //MARK: Push to relevant ViewController
     func pushTo(viewController: ViewControllerType)  {
         switch viewController {
         case .conversations:
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "Navigation") as! NavVC
-            self.present(vc, animated: false, completion: nil)
+            self.show(vc, sender: nil)
         case .welcome:
-            let vc = self.storyboard?.instantiateViewController(withIdentifier: "Welcome") as! WelcomeVC
-            self.present(vc, animated: false, completion: nil)
+            self.performSegue(withIdentifier: signInSegue, sender: nil)
         }
     }
     

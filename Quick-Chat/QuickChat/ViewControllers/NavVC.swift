@@ -30,17 +30,14 @@ class NavVC: UINavigationController, UICollectionViewDelegate, UICollectionViewD
     //MARK: Properties
     @IBOutlet var contactsView: UIView!
     @IBOutlet var profileView: UIView!
-    @IBOutlet var previewView: UIView!
-    @IBOutlet var mapPreviewView: UIView!
-    @IBOutlet weak var mapVIew: MKMapView!
-    @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var previewImageView: UIImageView!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var profilePicView: RoundedImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     var topAnchorContraint: NSLayoutConstraint!
     let darkView = UIView.init()
+    let showPreviewSegue = "showPreview"
+    let showMapSegue = "showMap"
     var items = [User]()
     
     //MARK: Methods
@@ -89,24 +86,6 @@ class NavVC: UINavigationController, UICollectionViewDelegate, UICollectionViewD
         self.profilePicView.layer.borderColor = GlobalVariables.purple.cgColor
         self.profilePicView.layer.borderWidth = 3
         self.view.layoutIfNeeded()
-    //PreviewView Customization
-        extraViewsContainer.addSubview(self.previewView)
-        self.previewView.isHidden = true
-        self.previewView.translatesAutoresizingMaskIntoConstraints = false
-        self.previewView.leadingAnchor.constraint(equalTo: extraViewsContainer.leadingAnchor).isActive = true
-        self.previewView.topAnchor.constraint(equalTo: extraViewsContainer.topAnchor).isActive = true
-        self.previewView.trailingAnchor.constraint(equalTo: extraViewsContainer.trailingAnchor).isActive = true
-        self.previewView.bottomAnchor.constraint(equalTo: extraViewsContainer.bottomAnchor).isActive = true
-        self.scrollView.minimumZoomScale = 1.0
-        self.scrollView.maximumZoomScale = 3.0
-    //MapPreView Customization
-        extraViewsContainer.addSubview(self.mapPreviewView)
-        self.mapPreviewView.isHidden = true
-        self.mapPreviewView.translatesAutoresizingMaskIntoConstraints = false
-        self.mapPreviewView.leadingAnchor.constraint(equalTo: extraViewsContainer.leadingAnchor).isActive = true
-        self.mapPreviewView.topAnchor.constraint(equalTo: extraViewsContainer.topAnchor).isActive = true
-        self.mapPreviewView.trailingAnchor.constraint(equalTo: extraViewsContainer.trailingAnchor).isActive = true
-        self.mapPreviewView.bottomAnchor.constraint(equalTo: extraViewsContainer.bottomAnchor).isActive = true
         //NotificationCenter for showing extra views
         NotificationCenter.default.addObserver(self, selector: #selector(self.showExtraViews(notification:)), name: NSNotification.Name(rawValue: "showExtraView"), object: nil)
         self.fetchUsers()
@@ -129,9 +108,7 @@ class NavVC: UINavigationController, UICollectionViewDelegate, UICollectionViewD
             self.darkView.isHidden = true
             self.profileView.isHidden = true
             self.contactsView.isHidden = true
-            self.previewView.isHidden = true
-            self.mapPreviewView.isHidden = true
-            self.mapVIew.removeAnnotations(self.mapVIew.annotations)
+            
             let vc = self.viewControllers.last
             vc?.inputAccessoryView?.isHidden = false
         })
@@ -139,48 +116,59 @@ class NavVC: UINavigationController, UICollectionViewDelegate, UICollectionViewD
     
     //Show extra view
     @objc func showExtraViews(notification: NSNotification)  {
-        let transform = CGAffineTransform.init(scaleX: 0.94, y: 0.94)
-        self.topAnchorContraint.constant = 0
-        self.darkView.isHidden = false
         if let type = notification.userInfo?["viewType"] as? ShowExtraView {
-            UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
-                self.view.layoutIfNeeded()
-                self.darkView.alpha = 0.8
-                if (type == .contacts || type == .profile) {
-                    self.view.transform = transform
-                }
-            })
+            
             switch type {
             case .contacts:
+                self.darkView.isHidden = false
+                let transform = CGAffineTransform.init(scaleX: 0.94, y: 0.94)
+                self.topAnchorContraint.constant = 0
+                UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
+                    self.view.layoutIfNeeded()
+                    self.darkView.alpha = 0.8
+                    if (type == .contacts || type == .profile) {
+                        self.view.transform = transform
+                    }
+                })
+                
                 self.contactsView.isHidden = false
                 if self.items.count == 0 {
+                    
                 }
             case .profile:
+                let transform = CGAffineTransform.init(scaleX: 0.94, y: 0.94)
+                self.topAnchorContraint.constant = 0
+                UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
+                    self.view.layoutIfNeeded()
+                    self.darkView.alpha = 0.8
+                    if (type == .contacts || type == .profile) {
+                        self.view.transform = transform
+                    }
+                })
+                self.darkView.isHidden = false
                 self.profileView.isHidden = false
             case .preview:
-                self.previewView.isHidden = false
-                self.previewImageView.image = notification.userInfo?["pic"] as? UIImage
-                self.scrollView.contentSize = self.previewImageView.frame.size
+                self.performSegue(withIdentifier: showPreviewSegue, sender: notification.userInfo?["pic"])
             case .map:
-                self.mapPreviewView.isHidden = false
-                let coordinate = notification.userInfo?["location"] as? CLLocationCoordinate2D
-                let annotation = MKPointAnnotation.init()
-                annotation.coordinate = coordinate!
-                self.mapVIew.addAnnotation(annotation)
-                self.mapVIew.showAnnotations(self.mapVIew.annotations, animated: false)
+                self.performSegue(withIdentifier: showMapSegue, sender: notification.userInfo?["location"] as? CLLocationCoordinate2D)
+                
             }
         }
     }
-    
-    //Preview view scrollview's zoom calculation
-    func zoomRectForScale(scale: CGFloat, center: CGPoint) -> CGRect {
-        var zoomRect = CGRect.zero
-        zoomRect.size.height = self.previewImageView.frame.size.height / scale
-        zoomRect.size.width  = self.previewImageView.frame.size.width  / scale
-        let newCenter = self.previewImageView.convert(center, from: self.scrollView)
-        zoomRect.origin.x = newCenter.x - (zoomRect.size.width / 2.0)
-        zoomRect.origin.y = newCenter.y - (zoomRect.size.height / 2.0)
-        return zoomRect
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == showPreviewSegue {
+            guard let controller = segue.destination as? ImagePreviewViewController,
+                 let image = sender as? UIImage else {
+                return
+            }
+            controller.image = image
+        } else if segue.identifier == showMapSegue {
+            guard let controller = segue.destination as? MapPreviewViewController,
+                let coordinate = sender as? CLLocationCoordinate2D else {
+                    return
+            }
+            controller.coordinate = coordinate
+        }
     }
     
     //Downloads users list for Contacts View
@@ -206,15 +194,6 @@ class NavVC: UINavigationController, UICollectionViewDelegate, UICollectionViewD
                     weakSelf = nil
                 }
             })
-        }
-    }
-    
-    //Extra gesture to allow user double tap for zooming of preview view scrollview
-    @IBAction func doubleTapGesture(_ sender: UITapGestureRecognizer) {
-        if self.scrollView.zoomScale == 1 {
-            self.scrollView.zoom(to: zoomRectForScale(scale: self.scrollView.maximumZoomScale, center: sender.location(in: sender.view)), animated: true)
-        } else {
-            self.scrollView.setZoomScale(1, animated: true)
         }
     }
     
@@ -283,11 +262,6 @@ class NavVC: UINavigationController, UICollectionViewDelegate, UICollectionViewD
                 return CGSize.init(width: width, height: height)
             }
         }
-    }
-    
-    //Preview view scrollview zooming
-    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
-        return self.previewImageView
     }
 
     //MARK: ViewController lifeCycle
