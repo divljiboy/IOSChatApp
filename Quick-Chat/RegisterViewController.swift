@@ -31,7 +31,8 @@ class RegisterViewController: BaseViewController, UIImagePickerControllerDelegat
         
         self.imagePicker.delegate = self
         registerView.layer.cornerRadius = 10
-        // Do any additional setup after loading the view.
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
+        self.view.addGestureRecognizer(tapGesture)
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -48,6 +49,10 @@ class RegisterViewController: BaseViewController, UIImagePickerControllerDelegat
     
     @IBAction func backClicked(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    @objc func dismissKeyboard () {
+        self.view.endEditing(true)
     }
     
     func cloundsAnimation() {

@@ -34,6 +34,10 @@
 		30B2D21C20D28675002BA300 /* ReceiverTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30B2D21A20D28675002BA300 /* ReceiverTableViewCell.xib */; };
 		30B2D22020D286B1002BA300 /* SenderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B2D21E20D286B1002BA300 /* SenderTableViewCell.swift */; };
 		30B2D22120D286B1002BA300 /* SenderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30B2D21F20D286B1002BA300 /* SenderTableViewCell.xib */; };
+		30B2D22420D28D66002BA300 /* ConversationsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B2D22220D28D66002BA300 /* ConversationsTableViewCell.swift */; };
+		30B2D22520D28D66002BA300 /* ConversationsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30B2D22320D28D66002BA300 /* ConversationsTableViewCell.xib */; };
+		30B2D22C20D293F7002BA300 /* UINavigationBarNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B2D22B20D293F7002BA300 /* UINavigationBarNavigation.swift */; };
+		30B2D22E20D29441002BA300 /* CaGradientLayerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B2D22D20D29441002BA300 /* CaGradientLayerExtension.swift */; };
 		30E029A420AD7AD600623B0E /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E029A320AD7AD600623B0E /* LocationViewController.swift */; };
 		30E029A820AD7B6F00623B0E /* FloatExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E029A620AD7B6E00623B0E /* FloatExtension.swift */; };
 		30E029A920AD7B6F00623B0E /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E029A720AD7B6E00623B0E /* StringExtension.swift */; };
@@ -73,6 +77,10 @@
 		30B2D21A20D28675002BA300 /* ReceiverTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReceiverTableViewCell.xib; sourceTree = "<group>"; };
 		30B2D21E20D286B1002BA300 /* SenderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SenderTableViewCell.swift; sourceTree = "<group>"; };
 		30B2D21F20D286B1002BA300 /* SenderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SenderTableViewCell.xib; sourceTree = "<group>"; };
+		30B2D22220D28D66002BA300 /* ConversationsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationsTableViewCell.swift; sourceTree = "<group>"; };
+		30B2D22320D28D66002BA300 /* ConversationsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConversationsTableViewCell.xib; sourceTree = "<group>"; };
+		30B2D22B20D293F7002BA300 /* UINavigationBarNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationBarNavigation.swift; sourceTree = "<group>"; };
+		30B2D22D20D29441002BA300 /* CaGradientLayerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaGradientLayerExtension.swift; sourceTree = "<group>"; };
 		30E029A320AD7AD600623B0E /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 		30E029A620AD7B6E00623B0E /* FloatExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatExtension.swift; sourceTree = "<group>"; };
 		30E029A720AD7B6E00623B0E /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
@@ -170,7 +178,6 @@
 				22A92BB71D59EBD6005D76F7 /* Assets.xcassets */,
 				22A92BBC1D59EBD6005D76F7 /* Info.plist */,
 				22EA578E1E1D28DD0008FFB2 /* newMessage.wav */,
-				30E029B020AD87DE00623B0E /* GradientView.swift */,
 				307938A220ADACAA00AFDBFF /* LaunchScreen.storyboard */,
 			);
 			path = QuickChat;
@@ -179,6 +186,8 @@
 		307938A620ADB22A00AFDBFF /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				30E029B020AD87DE00623B0E /* GradientView.swift */,
+				30B2D22620D28F9A002BA300 /* UIButton */,
 				307938A720ADB22F00AFDBFF /* ProgressHud */,
 			);
 			path = UI;
@@ -199,8 +208,17 @@
 				30B2D21A20D28675002BA300 /* ReceiverTableViewCell.xib */,
 				30B2D21E20D286B1002BA300 /* SenderTableViewCell.swift */,
 				30B2D21F20D286B1002BA300 /* SenderTableViewCell.xib */,
+				30B2D22220D28D66002BA300 /* ConversationsTableViewCell.swift */,
+				30B2D22320D28D66002BA300 /* ConversationsTableViewCell.xib */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		30B2D22620D28F9A002BA300 /* UIButton */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UIButton;
 			sourceTree = "<group>";
 		};
 		30E029A520AD7B6E00623B0E /* Extension */ = {
@@ -208,6 +226,8 @@
 			children = (
 				30E029A620AD7B6E00623B0E /* FloatExtension.swift */,
 				30E029A720AD7B6E00623B0E /* StringExtension.swift */,
+				30B2D22B20D293F7002BA300 /* UINavigationBarNavigation.swift */,
+				30B2D22D20D29441002BA300 /* CaGradientLayerExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -320,6 +340,7 @@
 				224AFA9D1D867DE7004E7CCD /* Main.storyboard in Resources */,
 				300BB9E920D26F4F001E81E8 /* GoogleService-Info.plist in Resources */,
 				30B2D21C20D28675002BA300 /* ReceiverTableViewCell.xib in Resources */,
+				30B2D22520D28D66002BA300 /* ConversationsTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -389,6 +410,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				30B2D22020D286B1002BA300 /* SenderTableViewCell.swift in Sources */,
+				30B2D22E20D29441002BA300 /* CaGradientLayerExtension.swift in Sources */,
 				2284BC451DC3582F00E36E8A /* ChatVC.swift in Sources */,
 				2274709E1DCCF9BF00645401 /* LandingVC.swift in Sources */,
 				22A5FC5F1DEB185B00624E2B /* NavVC.swift in Sources */,
@@ -402,6 +424,7 @@
 				3079389F20AD98FE00AFDBFF /* MessageRemoteRepository.swift in Sources */,
 				307938A120AD9E3D00AFDBFF /* RegisterViewController.swift in Sources */,
 				224AFAA91D86890A004E7CCD /* WelcomeVC.swift in Sources */,
+				30B2D22420D28D66002BA300 /* ConversationsTableViewCell.swift in Sources */,
 				30E029A920AD7B6F00623B0E /* StringExtension.swift in Sources */,
 				220698841E066E4900F2284B /* Helper Files.swift in Sources */,
 				307938A520ADB1C600AFDBFF /* BaseViewControllerV.swift in Sources */,
@@ -410,6 +433,7 @@
 				307938AB20AEAE1C00AFDBFF /* ImagePreviewViewController.swift in Sources */,
 				22873DAA1DC790550021690E /* Message.swift in Sources */,
 				22EA57911E1D32520008FFB2 /* VCCells.swift in Sources */,
+				30B2D22C20D293F7002BA300 /* UINavigationBarNavigation.swift in Sources */,
 				307938A920ADB23C00AFDBFF /* ProgressHUD.swift in Sources */,
 				224834B11DB539A50019153C /* User.swift in Sources */,
 			);

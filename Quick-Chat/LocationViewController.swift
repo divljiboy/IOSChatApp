@@ -33,7 +33,7 @@ class LocationViewController: BaseViewController, ARSCNViewDelegate, CLLocationM
     }
     
     var modelNode:SCNNode!
-    let rootNodeName = "Car"
+    let rootNodeName = "diamonds1"
     
     var originalTransform:SCNMatrix4!
     
@@ -60,7 +60,7 @@ class LocationViewController: BaseViewController, ARSCNViewDelegate, CLLocationM
             locationManager.startUpdatingLocation()
         }
         // Set the initial status
-        status = "Getting user location..."
+        status = ""
         // Set a padding in the text view
         statusTextView.textContainerInset = UIEdgeInsetsMake(30.0, 10.0, 10.0, 0.0)
     }
@@ -89,8 +89,7 @@ class LocationViewController: BaseViewController, ARSCNViewDelegate, CLLocationM
     }
     
     func setStatusText() {
-        var text = "Status: \(status!)\n"
-        text += "Distance: \(String(format: "%.2f m", distance))"
+        var text = "Distance: \(String(format: "%.2f m", distance))"
         print(distance)
         statusTextView.text = text
     }
@@ -118,12 +117,12 @@ class LocationViewController: BaseViewController, ARSCNViewDelegate, CLLocationM
         self.distance = Float(pinLocation.distance(from: self.userLocation))
         
         if self.modelNode == nil {
-            let modelScene = SCNScene(named: "art.scnassets/Car.dae")!
+            let modelScene = SCNScene(named: "art.scnassets/diamonds1.dae")!
             self.modelNode = modelScene.rootNode.childNode(withName: rootNodeName, recursively: true)!
             
             // Move model's pivot to its center in the Y axis
             let (minBox, maxBox) = self.modelNode.boundingBox
-            //self.modelNode.pivot = SCNMatrix4MakeTranslation(0, (maxBox.y - minBox.y)/2, 0)
+            self.modelNode.pivot = SCNMatrix4MakeTranslation(0, (maxBox.y - minBox.y)/2, 0)
             
             // Save original transform to calculate future rotations
             self.originalTransform = self.modelNode.transform
@@ -133,13 +132,6 @@ class LocationViewController: BaseViewController, ARSCNViewDelegate, CLLocationM
             
             // Add the model to the scene
             sceneView.scene.rootNode.addChildNode(self.modelNode)
-            
-            // Create arrow from the emoji
-            let arrow = makeBillboardNode("⬇️".image()!)
-            // Position it on top of the car
-            arrow.position = SCNVector3Make(0, 4, 0)
-            // Add it as a child of the car model
-            self.modelNode.addChildNode(arrow)
         } else {
             // Begin animation
             SCNTransaction.begin()
@@ -154,19 +146,12 @@ class LocationViewController: BaseViewController, ARSCNViewDelegate, CLLocationM
     }
     
     func positionModel(_ location: CLLocation) {
-        // Rotate node
-        self.modelNode.transform = rotateNode(Float(-1 * (self.heading - 180).toRadians()), self.originalTransform)
         
         // Translate node
         self.modelNode.position = translateNode(location)
         
         // Scale node
         self.modelNode.scale = scaleNode(location)
-    }
-    
-    func rotateNode(_ angleInRadians: Float, _ transform: SCNMatrix4) -> SCNMatrix4 {
-        let rotation = SCNMatrix4MakeRotation(angleInRadians, 0, 1, 0)
-        return SCNMatrix4Mult(transform, rotation)
     }
     
     func translateNode (_ location: CLLocation) -> SCNVector3 {

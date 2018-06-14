@@ -10,6 +10,9 @@ import UIKit
 
 class BaseViewController: UIViewController {
     
+    let colors: [UIColor] = [UIColor.mtsNavigationBarColor, UIColor.mtsMediumNavigationBarColor, UIColor.mtsSecondNavigationBarColor]
+    let locations: [NSNumber] = [0.0, 0.5, 0.9]
+    
     let progressHUD = ProgressHUD(text: "Please wait")
     
     override func viewDidLoad() {
@@ -35,6 +38,17 @@ class BaseViewController: UIViewController {
     }
     
     /**
+     Set visible navigation bar and it's style.
+     
+     - Parameter color:       Navigation bar color.
+     - Parameter borderColor: Navigation bar border color.
+     
+     */
+    func setVisibleNavigation() {
+        navigationController?.navigationBar.setGradientBackground(colors: colors, locations: locations)
+    }
+    
+    /**
      Hide spinner.
      */
     func stopActivityIndicatorSpinner() {
@@ -43,4 +57,19 @@ class BaseViewController: UIViewController {
         }
     }
     
+}
+
+extension UIColor {
+    
+    class var mtsMediumNavigationBarColor: UIColor {
+        return UIColor(red: 237 / 255, green: 26 / 255, blue: 59 / 255, alpha: 1)
+    }
+    
+    class var mtsNavigationBarColor: UIColor {
+        return UIColor(red: 177 / 255, green: 13 / 255, blue: 40 / 255, alpha: 1)
+    }
+    
+    class var mtsSecondNavigationBarColor: UIColor {
+        return UIColor(red: 245 / 255, green: 130 / 255, blue: 32 / 255, alpha: 1)
+    }
 }

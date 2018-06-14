@@ -4,8 +4,8 @@
   <contributor>
    <authoring_tool>SceneKit Collada Exporter v1.0</authoring_tool>
   </contributor>
-  <created>2018-05-17T07:57:39Z</created>
-  <modified>2018-05-17T07:57:39Z</modified>
+  <created>2018-06-14T13:04:48Z</created>
+  <modified>2018-06-14T13:04:48Z</modified>
   <unit meter="1.000000"/>
   <up_axis>Z_UP</up_axis>
  </asset>
@@ -101,7 +101,7 @@
     <matrix>1 0 0 -0.280394 0 -1.62921e-07 -1 -16.23676 0 1 -1.62921e-07 0.8109543 0 0 0 1 </matrix>
     <instance_camera url="#Camera-camera"/>
    </node>
-   <node id="diamondwhite" name="diamondwhite">
+   <node id="diamondwhite" name="diamonds1">
     <matrix>1 0 0 0 0 1 0 0 0 0 1 0.8604805 0 0 0 1 </matrix>
     <instance_geometry url="#geometry1">
      <bind_material>

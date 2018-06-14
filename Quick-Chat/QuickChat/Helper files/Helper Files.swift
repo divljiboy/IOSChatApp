@@ -47,11 +47,31 @@ class RoundedImageView: UIImageView {
 }
 
 class RoundedButton: UIButton {
+
     override func layoutSubviews() {
+        let colors: [UIColor] = [UIColor.mtsNavigationBarColor, UIColor.mtsMediumNavigationBarColor, UIColor.mtsSecondNavigationBarColor]
+        let locations: [NSNumber] = [0.0, 0.5, 0.9]
         super.layoutSubviews()
         let radius: CGFloat = self.bounds.size.height / 2.0
         self.layer.cornerRadius = radius
         self.clipsToBounds = true
+        self.applyGradient(colours: colors, locations: locations)
+    }
+}
+
+extension UIView {
+    func applyGradient(colours: [UIColor]) {
+        self.applyGradient(colours: colours, locations: nil)
+    }
+    
+    func applyGradient(colours: [UIColor], locations: [NSNumber]?) {
+        let gradient: CAGradientLayer = CAGradientLayer()
+        gradient.startPoint = CGPoint(x: 0, y: 1)
+        gradient.endPoint = CGPoint(x: 1, y: 0)
+        gradient.frame = self.bounds
+        gradient.colors = colours.map { $0.cgColor }
+        gradient.locations = locations
+        self.layer.insertSublayer(gradient, at: 0)
     }
 }
 

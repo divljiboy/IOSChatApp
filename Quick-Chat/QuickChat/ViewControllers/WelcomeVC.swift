@@ -74,7 +74,13 @@ class WelcomeVC: BaseViewController, UITextFieldDelegate, UINavigationController
     override func viewDidLoad() {
         super.viewDidLoad()
         self.customization()
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
+        self.view.addGestureRecognizer(tapGesture)
         
+    }
+    
+    @objc func dismissKeyboard () {
+        self.view.endEditing(true)
     }
     
     override func viewDidAppear(_ animated: Bool) {

@@ -60,6 +60,8 @@ class ConversationsVC: BaseViewController, UITableViewDelegate, UITableViewDataS
         //left bar button image fetching
         self.navigationItem.leftBarButtonItem = self.leftButton
         self.tableView.tableFooterView = UIView.init(frame: CGRect.zero)
+        self.tableView.register(UINib(nibName: String(describing: ConversationsTableViewCell.self), bundle: nil),
+                                forCellReuseIdentifier: String(describing: ConversationsTableViewCell.self))
         if let id = Auth.auth().currentUser?.uid {
             UserRemoteRepository.info(forUserID: id, completion: { [weak weakSelf = self] user in
                 let image = user.profilePic
@@ -184,7 +186,8 @@ class ConversationsVC: BaseViewController, UITableViewDelegate, UITableViewDataS
             }
             return cell
         default:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? ConversationsTBCell else {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ConversationsTableViewCell.self),
+                                                           for: indexPath) as? ConversationsTableViewCell else {
                 return UITableViewCell(style: .default, reuseIdentifier: "Cell")
             }
             cell.clearCellData()
