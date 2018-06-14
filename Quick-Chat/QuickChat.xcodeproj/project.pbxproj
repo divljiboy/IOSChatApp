@@ -30,6 +30,10 @@
 		307938A920ADB23C00AFDBFF /* ProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307938A820ADB23C00AFDBFF /* ProgressHUD.swift */; };
 		307938AB20AEAE1C00AFDBFF /* ImagePreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307938AA20AEAE1C00AFDBFF /* ImagePreviewViewController.swift */; };
 		307938AD20AEB47200AFDBFF /* MapPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307938AC20AEB47200AFDBFF /* MapPreviewViewController.swift */; };
+		30B2D21B20D28675002BA300 /* ReceiverTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B2D21920D28675002BA300 /* ReceiverTableViewCell.swift */; };
+		30B2D21C20D28675002BA300 /* ReceiverTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30B2D21A20D28675002BA300 /* ReceiverTableViewCell.xib */; };
+		30B2D22020D286B1002BA300 /* SenderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B2D21E20D286B1002BA300 /* SenderTableViewCell.swift */; };
+		30B2D22120D286B1002BA300 /* SenderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 30B2D21F20D286B1002BA300 /* SenderTableViewCell.xib */; };
 		30E029A420AD7AD600623B0E /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E029A320AD7AD600623B0E /* LocationViewController.swift */; };
 		30E029A820AD7B6F00623B0E /* FloatExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E029A620AD7B6E00623B0E /* FloatExtension.swift */; };
 		30E029A920AD7B6F00623B0E /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E029A720AD7B6E00623B0E /* StringExtension.swift */; };
@@ -65,6 +69,10 @@
 		307938A820ADB23C00AFDBFF /* ProgressHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressHUD.swift; sourceTree = "<group>"; };
 		307938AA20AEAE1C00AFDBFF /* ImagePreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePreviewViewController.swift; sourceTree = "<group>"; };
 		307938AC20AEB47200AFDBFF /* MapPreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPreviewViewController.swift; sourceTree = "<group>"; };
+		30B2D21920D28675002BA300 /* ReceiverTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiverTableViewCell.swift; sourceTree = "<group>"; };
+		30B2D21A20D28675002BA300 /* ReceiverTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReceiverTableViewCell.xib; sourceTree = "<group>"; };
+		30B2D21E20D286B1002BA300 /* SenderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SenderTableViewCell.swift; sourceTree = "<group>"; };
+		30B2D21F20D286B1002BA300 /* SenderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SenderTableViewCell.xib; sourceTree = "<group>"; };
 		30E029A320AD7AD600623B0E /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 		30E029A620AD7B6E00623B0E /* FloatExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatExtension.swift; sourceTree = "<group>"; };
 		30E029A720AD7B6E00623B0E /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
@@ -103,6 +111,7 @@
 		224AFA9E1D868371004E7CCD /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				30B2D21D20D28682002BA300 /* Cell */,
 				2274709D1DCCF9BF00645401 /* LandingVC.swift */,
 				224AFAA81D86890A004E7CCD /* WelcomeVC.swift */,
 				22A5FC5E1DEB185B00624E2B /* NavVC.swift */,
@@ -181,6 +190,17 @@
 				307938A820ADB23C00AFDBFF /* ProgressHUD.swift */,
 			);
 			path = ProgressHud;
+			sourceTree = "<group>";
+		};
+		30B2D21D20D28682002BA300 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				30B2D21920D28675002BA300 /* ReceiverTableViewCell.swift */,
+				30B2D21A20D28675002BA300 /* ReceiverTableViewCell.xib */,
+				30B2D21E20D286B1002BA300 /* SenderTableViewCell.swift */,
+				30B2D21F20D286B1002BA300 /* SenderTableViewCell.xib */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		30E029A520AD7B6E00623B0E /* Extension */ = {
@@ -296,8 +316,10 @@
 				22EA578F1E1D28DD0008FFB2 /* newMessage.wav in Resources */,
 				30E029AB20AD7BAB00623B0E /* art.scnassets in Resources */,
 				307938A320ADACAA00AFDBFF /* LaunchScreen.storyboard in Resources */,
+				30B2D22120D286B1002BA300 /* SenderTableViewCell.xib in Resources */,
 				224AFA9D1D867DE7004E7CCD /* Main.storyboard in Resources */,
 				300BB9E920D26F4F001E81E8 /* GoogleService-Info.plist in Resources */,
+				30B2D21C20D28675002BA300 /* ReceiverTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -366,12 +388,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30B2D22020D286B1002BA300 /* SenderTableViewCell.swift in Sources */,
 				2284BC451DC3582F00E36E8A /* ChatVC.swift in Sources */,
 				2274709E1DCCF9BF00645401 /* LandingVC.swift in Sources */,
 				22A5FC5F1DEB185B00624E2B /* NavVC.swift in Sources */,
 				30E029A420AD7AD600623B0E /* LocationViewController.swift in Sources */,
 				22B974C01DE9B5DF00E09490 /* Conversation.swift in Sources */,
 				2217853D1DCD1DAC00A69F88 /* ConversationsVC.swift in Sources */,
+				30B2D21B20D28675002BA300 /* ReceiverTableViewCell.swift in Sources */,
 				307938AD20AEB47200AFDBFF /* MapPreviewViewController.swift in Sources */,
 				30E029B120AD87DE00623B0E /* GradientView.swift in Sources */,
 				22A92BB11D59EBD6005D76F7 /* AppDelegate.swift in Sources */,

@@ -174,7 +174,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ub0-iA-SeX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1295" y="1091"/>
+            <point key="canvasLocation" x="-953" y="1088"/>
         </scene>
         <!--Register View Controller-->
         <scene sceneID="1M3-al-27C">
@@ -361,7 +361,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nR4-Ug-npW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1295" y="1875"/>
+            <point key="canvasLocation" x="-978" y="1870"/>
         </scene>
         <!--Image Preview View Controller-->
         <scene sceneID="ZuH-Dg-ict">
@@ -715,7 +715,7 @@
                                     <constraint firstItem="Cbs-0c-dEP" firstAttribute="top" secondItem="z7R-1B-pUQ" secondAttribute="bottom" constant="12.666666666666629" id="xPu-vP-hzv"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="30" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0I1-tm-nYA">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="interactive" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="30" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0I1-tm-nYA">
                                 <rect key="frame" x="0.0" y="88" width="375" height="589.66666666666663"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>

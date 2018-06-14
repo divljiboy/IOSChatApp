@@ -30,10 +30,6 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate, CLLocationManag
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var inputTextField: UITextField!
-   
-    override var canBecomeFirstResponder: Bool {
-        return true
-    }
     let locationManager = CLLocationManager()
     var items = [Message]()
     let imagePicker = UIImagePickerController()
@@ -49,6 +45,10 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate, CLLocationManag
         self.tableView.dataSource = self
         self.tableView.estimatedRowHeight = UITableViewAutomaticDimension
         self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.register(UINib(nibName: String(describing: SenderTableViewCell.self), bundle: nil),
+                                forCellReuseIdentifier: String(describing: SenderTableViewCell.self))
+        self.tableView.register(UINib(nibName: String(describing: ReceiverTableViewCell.self), bundle: nil),
+                                forCellReuseIdentifier: String(describing: ReceiverTableViewCell.self))
         self.navigationItem.title = self.currentUser?.name
         self.locationManager.delegate = self
     }
@@ -66,7 +66,7 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate, CLLocationManag
             DispatchQueue.main.async {
                 if let state = weakSelf?.items.isEmpty, state == false {
                     weakSelf?.tableView.reloadData()
-                    //self.tableView.scrollToRow(at: IndexPath.init(row: self.items.count - 1, section: 0), at: .bottom, animated: false)
+                    self.tableView.scrollToRow(at: IndexPath.init(row: self.items.count - 1, section: 0), at: .bottom, animated: false)
                 }
             }
         })
@@ -171,7 +171,11 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate, CLLocationManag
                        delay: TimeInterval(0),
                        options: animationCurve,
                        animations: { self.view.layoutIfNeeded() },
-                       completion: nil)
+                       completion: { _ in
+                if !self.items.isEmpty {
+                        self.tableView.scrollToRow(at: IndexPath.init(row: self.items.count - 1, section: 0), at: .bottom, animated: false)
+                }
+        })
         
     }
     
@@ -186,15 +190,16 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate, CLLocationManag
         let animationCurve: UIViewAnimationOptions = UIViewAnimationOptions(rawValue: animationCurveRaw)
         
         self.bottomConstraint.constant = 0
-        if !self.items.isEmpty {
-            self.tableView.scrollToRow(at: IndexPath.init(row: self.items.count - 1, section: 0), at: .bottom, animated: true)
-        }
         
         UIView.animate(withDuration: duration,
                        delay: TimeInterval(0),
                        options: animationCurve,
                        animations: { self.view.layoutIfNeeded() },
-                       completion: nil)
+                       completion: { _ in
+                        if !self.items.isEmpty {
+                            self.tableView.scrollToRow(at: IndexPath.init(row: self.items.count - 1, section: 0), at: .bottom, animated: false)
+                        }
+        })
         
     }
 
@@ -214,7 +219,8 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate, CLLocationManag
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch self.items[indexPath.row].owner {
         case .receiver:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "Receiver", for: indexPath) as? ReceiverCell else {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ReceiverTableViewCell.self),
+                                                           for: indexPath) as? ReceiverTableViewCell else {
                 return UITableViewCell(style: .default, reuseIdentifier: "Cell")
             }
             cell.clearCellData()
@@ -224,10 +230,6 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate, CLLocationManag
                     return UITableViewCell(style: .default, reuseIdentifier: "Cell")
                 }
                 cell.message.text = text
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                    self.tableView.scrollToRow(at: IndexPath.init(row: self.items.count - 1, section: 0), at: .bottom, animated: false)
-                }
             case .photo:
                 if let image = self.items[indexPath.row].image {
                     cell.messageBackground.image = image
@@ -247,13 +249,12 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate, CLLocationManag
                 cell.messageBackground.image = UIImage.init(named: "location")
                 cell.message.isHidden = true
                 DispatchQueue.main.async {
-                    self.tableView.reloadData()
                     self.tableView.scrollToRow(at: IndexPath.init(row: self.items.count - 1, section: 0), at: .bottom, animated: false)
                 }
             }
             return cell
         case .sender:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "Sender", for: indexPath) as? SenderCell else {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: SenderTableViewCell.self), for: indexPath) as? SenderTableViewCell else {
                 return UITableViewCell(style: .default, reuseIdentifier: "Cell")
             }
             cell.clearCellData()
