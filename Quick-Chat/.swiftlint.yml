@@ -1,0 +1,88 @@
+included:
+  - QuickChat
+excluded:
+  - Pods
+  - Carthage
+
+opt_in_rules:
+  - empty_count
+  - force_unwrapping
+  - first_where
+  - implicit_return
+  - redundant_nil_coalescing
+  - closure_end_indentation
+  - closure_spacing
+  - conditional_returns_on_newline
+  - operator_usage_whitespace
+  - unneeded_parentheses_in_closure_argument
+ 
+disabled_rules:
+  - trailing_whitespace
+ 
+force_unwrapping: error
+force_cast: error
+force_try: error
+ 
+weak_delegate: error
+ 
+line_length: 150
+trailing_whitespace: false
+
+cyclomatic_complexity:
+  warning: 20
+  error: 30
+
+type_body_length:
+  warning: 400
+  error: 500
+ 
+file_length:
+  warning: 500
+  error: 800
+ 
+function_parameter_count:
+  warning: 8
+
+function_body_length:
+  warning: 130
+  error: 130
+ 
+type_name:
+  min_length:
+    warning: 3
+    error: 2
+  max_length:
+    warning: 40
+    error: 50
+  excluded:
+    - T
+identifier_name:
+  min_length:
+    error: 3
+  max_length:
+    error: 40
+  excluded:
+    - id
+    - url
+    - map
+    - tag
+    - key
+    - faq
+    - x
+    - y
+    - z
+    - red
+    - row
+    - lhs
+    - rhs
+    - app
+    - to
+    - get
+    - put
+    - ok
+    - jwt
+    - add
+    - src
+    - iv
+ 
+reporter: "xcode"

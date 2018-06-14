@@ -20,22 +20,19 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
-
 import UIKit
 import Photos
 
 class WelcomeVC: BaseViewController, UITextFieldDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
     @IBOutlet weak var signInView: UIView!
-    //MARK: Properties
     @IBOutlet weak var loginEmailField: UITextField!
     @IBOutlet weak var loginPasswordField: UITextField!
     @IBOutlet weak var cloudsView: UIImageView!
     @IBOutlet weak var cloudsViewLeading: NSLayoutConstraint!
     var isLoginViewVisible = true
     
-    //MARK: Methods
-    func customization()  {
+    func customization() {
         signInView.layer.cornerRadius = 10
     }
    
@@ -48,14 +45,18 @@ class WelcomeVC: BaseViewController, UITextFieldDelegate, UINavigationController
     }
     
     func pushTomainView() {
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "Navigation") as! NavVC
-        self.show(vc, sender: nil)
+        guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "Navigation") as? NavVC else {
+            return
+        }
+        self.show(viewController, sender: nil)
     }
-    
-    
-    
+
     @IBAction func login(_ sender: Any) {
-        UserRemoteRepository.loginUser(withEmail: self.loginEmailField.text!, password: self.loginPasswordField.text!) { [weak weakSelf = self](status) in
+        guard let emailText = self.loginEmailField.text,
+            let passwordText = self.loginPasswordField.text else {
+                return
+        }
+        UserRemoteRepository.loginUser(withEmail: emailText, password: passwordText) { [weak weakSelf = self] status in
             DispatchQueue.main.async {
                 if status == true {
                     weakSelf?.pushTomainView()
@@ -70,8 +71,6 @@ class WelcomeVC: BaseViewController, UITextFieldDelegate, UINavigationController
         return true
     }
 
-    
-    //MARK: Viewcontroller lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         self.customization()

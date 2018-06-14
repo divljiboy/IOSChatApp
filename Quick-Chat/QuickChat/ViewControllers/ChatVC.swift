@@ -20,19 +20,18 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
-
 import UIKit
 import Photos
 import Firebase
 import CoreLocation
 
-class ChatVC: BaseViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate,  UINavigationControllerDelegate, UIImagePickerControllerDelegate, CLLocationManagerDelegate {
+class ChatVC: BaseViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate,
+UINavigationControllerDelegate, UIImagePickerControllerDelegate, CLLocationManagerDelegate {
     
-    //MARK: Properties
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var inputTextField: UITextField!
    
-    override var canBecomeFirstResponder: Bool{
+    override var canBecomeFirstResponder: Bool {
         return true
     }
     let locationManager = CLLocationManager()
@@ -42,10 +41,8 @@ class ChatVC: BaseViewController, UITableViewDelegate, UITableViewDataSource, UI
     var currentUser: User?
     var canSendLocation = true
     
-    @IBOutlet weak var inputViewHeight: NSLayoutConstraint!
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     
-    //MARK: Methods
     func customization() {
         self.imagePicker.delegate = self
         self.tableView.delegate = self
@@ -53,18 +50,19 @@ class ChatVC: BaseViewController, UITableViewDelegate, UITableViewDataSource, UI
         self.tableView.estimatedRowHeight = UITableViewAutomaticDimension
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.navigationItem.title = self.currentUser?.name
-        self.navigationItem.setHidesBackButton(true, animated: false)
-        let icon = UIImage.init(named: "back")?.withRenderingMode(.alwaysOriginal)
-        let backButton = UIBarButtonItem.init(image: icon!, style: .plain, target: self, action: #selector(self.dismissSelf))
-        self.navigationItem.leftBarButtonItem = backButton
         self.locationManager.delegate = self
     }
     
     //Downloads messages
     func fetchData() {
-        MessageRemoteRepository.downloadAllMessages(forUserID: self.currentUser!.id, completion: {[weak weakSelf = self] (message) in
+        guard let user = self.currentUser else {
+            return
+        }
+        MessageRemoteRepository.downloadAllMessages(forUserID: user.id, completion: {[weak weakSelf = self] message in
             weakSelf?.items.append(message)
-            weakSelf?.items.sort{ $0.timestamp < $1.timestamp }
+            weakSelf?.items.sort {
+                $0.timestamp < $1.timestamp
+            }
             DispatchQueue.main.async {
                 if let state = weakSelf?.items.isEmpty, state == false {
                     weakSelf?.tableView.reloadData()
@@ -72,7 +70,7 @@ class ChatVC: BaseViewController, UITableViewDelegate, UITableViewDataSource, UI
                 }
             }
         })
-        MessageRemoteRepository.markMessagesRead(forUserID: self.currentUser!.id)
+        MessageRemoteRepository.markMessagesRead(forUserID: user.id)
     }
     
     //Hides current viewcontroller
@@ -82,9 +80,12 @@ class ChatVC: BaseViewController, UITableViewDelegate, UITableViewDataSource, UI
         }
     }
     
-    func composeMessage(type: MessageType, content: Any)  {
+    func composeMessage(type: MessageType, content: Any) {
+        guard let user = self.currentUser else {
+            return
+        }
         let message = Message.init(type: type, content: content, owner: .sender, timestamp: Int(Date().timeIntervalSince1970), isRead: false)
-        MessageRemoteRepository.send(message: message, toID: self.currentUser!.id, completion: {(_) in
+        MessageRemoteRepository.send(message: message, toID: user.id, completion: { _ in
         })
     }
     
@@ -112,8 +113,8 @@ class ChatVC: BaseViewController, UITableViewDelegate, UITableViewDataSource, UI
     
     @IBAction func selectGallery(_ sender: Any) {
         let status = PHPhotoLibrary.authorizationStatus()
-        if (status == .authorized || status == .notDetermined) {
-            self.imagePicker.sourceType = .savedPhotosAlbum;
+        if status == .authorized || status == .notDetermined {
+            self.imagePicker.sourceType = .savedPhotosAlbum
             self.present(self.imagePicker, animated: true, completion: nil)
         }
         
@@ -121,7 +122,7 @@ class ChatVC: BaseViewController, UITableViewDelegate, UITableViewDataSource, UI
     
     @IBAction func selectCamera(_ sender: Any) {
         let status = AVCaptureDevice.authorizationStatus(for: AVMediaType.video)
-        if (status == .authorized || status == .notDetermined) {
+        if status == .authorized || status == .notDetermined {
             self.imagePicker.sourceType = .camera
             self.imagePicker.allowsEditing = false
             self.present(self.imagePicker, animated: true, completion: nil)
@@ -139,50 +140,64 @@ class ChatVC: BaseViewController, UITableViewDelegate, UITableViewDataSource, UI
     
     @IBAction func sendMessage(_ sender: Any) {
         if let text = self.inputTextField.text {
-            if text.count > 0 {
-                self.composeMessage(type: .text, content: self.inputTextField.text!)
+            if !text.isEmpty {
+                guard let text = self.inputTextField.text else {
+                    return
+                }
+                self.composeMessage(type: .text, content: text)
                 self.inputTextField.text = ""
             }
         }
     }
     
-    //MARK: NotificationCenter handlers
     @objc func showKeyboard(notification: Notification) {
-        if let frame = notification.userInfo![UIKeyboardFrameEndUserInfoKey] as? NSValue {
-            let height = frame.cgRectValue.height
-            self.tableView.contentInset.bottom = height - 20
-            //self.tableView.scrollIndicatorInsets.bottom = height
-            self.bottomConstraint.constant = height - 20
-            if self.items.count > 0 {
-                self.tableView.scrollToRow(at: IndexPath.init(row: self.items.count - 1, section: 0), at: .bottom, animated: true)
-            }
-            UIView.animate(withDuration: 3, delay: 0, options: [],
-                           animations: {
-                            self.loadViewIfNeeded()
-            },
-                           completion: nil
-            )
-            
+        
+        guard let userInfo = (notification as NSNotification).userInfo else {
+            return
         }
+        let endFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
+        let duration: TimeInterval = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue ?? 0
+        let animationCurveRawNSN = userInfo[UIKeyboardAnimationCurveUserInfoKey] as? NSNumber
+        let animationCurveRaw = animationCurveRawNSN?.uintValue ?? UIViewAnimationOptions().rawValue
+        let animationCurve: UIViewAnimationOptions = UIViewAnimationOptions(rawValue: animationCurveRaw)
+        if let height = endFrame?.size.height {
+            self.bottomConstraint.constant = height
+        }
+        if !self.items.isEmpty {
+            self.tableView.scrollToRow(at: IndexPath.init(row: self.items.count - 1, section: 0), at: .bottom, animated: true)
+        }
+        
+        UIView.animate(withDuration: duration,
+                       delay: TimeInterval(0),
+                       options: animationCurve,
+                       animations: { self.view.layoutIfNeeded() },
+                       completion: nil)
+        
     }
     
-    //MARK: NotificationCenter handlers
     @objc func hideKeyboard(notification: Notification) {
-            self.tableView.contentInset.bottom = 0
-            self.tableView.scrollIndicatorInsets.bottom = 0
-            self.bottomConstraint.constant = 0
-            UIView.animate(withDuration: 3, delay: 0, options: [],
-                           animations: {
-                            self.loadViewIfNeeded()
-            },
-                           completion: nil
-            )
-            if self.items.count > 0 {
-                self.tableView.scrollToRow(at: IndexPath.init(row: self.items.count - 1, section: 0), at: .bottom, animated: true)
-            }
+        guard let userInfo = (notification as NSNotification).userInfo else {
+            return
+        }
+        _ = (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
+        let duration: TimeInterval = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue ?? 0
+        let animationCurveRawNSN = userInfo[UIKeyboardAnimationCurveUserInfoKey] as? NSNumber
+        let animationCurveRaw = animationCurveRawNSN?.uintValue ?? UIViewAnimationOptions().rawValue
+        let animationCurve: UIViewAnimationOptions = UIViewAnimationOptions(rawValue: animationCurveRaw)
+        
+        self.bottomConstraint.constant = 0
+        if !self.items.isEmpty {
+            self.tableView.scrollToRow(at: IndexPath.init(row: self.items.count - 1, section: 0), at: .bottom, animated: true)
+        }
+        
+        UIView.animate(withDuration: duration,
+                       delay: TimeInterval(0),
+                       options: animationCurve,
+                       animations: { self.view.layoutIfNeeded() },
+                       completion: nil)
+        
     }
 
-    //MARK: Delegates
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.items.count
     }
@@ -199,18 +214,27 @@ class ChatVC: BaseViewController, UITableViewDelegate, UITableViewDataSource, UI
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch self.items[indexPath.row].owner {
         case .receiver:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "Receiver", for: indexPath) as! ReceiverCell
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "Receiver", for: indexPath) as? ReceiverCell else {
+                return UITableViewCell(style: .default, reuseIdentifier: "Cell")
+            }
             cell.clearCellData()
             switch self.items[indexPath.row].type {
             case .text:
-                cell.message.text = self.items[indexPath.row].content as! String
+                guard let text = self.items[indexPath.row].content as? String else {
+                    return UITableViewCell(style: .default, reuseIdentifier: "Cell")
+                }
+                cell.message.text = text
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                    self.tableView.scrollToRow(at: IndexPath.init(row: self.items.count - 1, section: 0), at: .bottom, animated: false)
+                }
             case .photo:
                 if let image = self.items[indexPath.row].image {
                     cell.messageBackground.image = image
                     cell.message.isHidden = true
                 } else {
                     cell.messageBackground.image = UIImage.init(named: "loading")
-                    self.items[indexPath.row].downloadImage(indexpathRow: indexPath.row, completion: { (state, index) in
+                    self.items[indexPath.row].downloadImage(indexpathRow: indexPath.row, completion: { state, _ in
                         if state == true {
                             DispatchQueue.main.async {
                                 self.tableView.reloadData()
@@ -222,22 +246,31 @@ class ChatVC: BaseViewController, UITableViewDelegate, UITableViewDataSource, UI
             case .location:
                 cell.messageBackground.image = UIImage.init(named: "location")
                 cell.message.isHidden = true
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                    self.tableView.scrollToRow(at: IndexPath.init(row: self.items.count - 1, section: 0), at: .bottom, animated: false)
+                }
             }
             return cell
         case .sender:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "Sender", for: indexPath) as! SenderCell
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "Sender", for: indexPath) as? SenderCell else {
+                return UITableViewCell(style: .default, reuseIdentifier: "Cell")
+            }
             cell.clearCellData()
             cell.profilePic.image = self.currentUser?.profilePic
             switch self.items[indexPath.row].type {
             case .text:
-                cell.message.text = self.items[indexPath.row].content as! String
+                guard let text = self.items[indexPath.row].content as? String else {
+                    return UITableViewCell(style: .default, reuseIdentifier: "Cell")
+                }
+                cell.message.text = text
             case .photo:
                 if let image = self.items[indexPath.row].image {
                     cell.messageBackground.image = image
                     cell.message.isHidden = true
                 } else {
                     cell.messageBackground.image = UIImage.init(named: "loading")
-                    self.items[indexPath.row].downloadImage(indexpathRow: indexPath.row, completion: { (state, index) in
+                    self.items[indexPath.row].downloadImage(indexpathRow: indexPath.row, completion: { state, _ in
                         if state == true {
                             DispatchQueue.main.async {
                                 self.tableView.reloadData()
@@ -252,7 +285,6 @@ class ChatVC: BaseViewController, UITableViewDelegate, UITableViewDataSource, UI
             }
             return cell
         }
-        self.tableView.scrollToRow(at: IndexPath.init(row: self.items.count - 1, section: 0), at: .bottom, animated: false)
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -260,13 +292,22 @@ class ChatVC: BaseViewController, UITableViewDelegate, UITableViewDataSource, UI
         switch self.items[indexPath.row].type {
         case .photo:
             if let photo = self.items[indexPath.row].image {
-                let info = ["viewType" : ShowExtraView.preview, "pic": photo] as [String : Any]
+                let info = ["viewType": ShowExtraView.preview, "pic": photo] as [String: Any]
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "showExtraView"), object: nil, userInfo: info)
                 self.inputAccessoryView?.isHidden = true
             }
         case .location:
-            let coordinates = (self.items[indexPath.row].content as! String).components(separatedBy: ":")
-            let location = CLLocation(latitude: CLLocationDegrees(coordinates[0])!, longitude: CLLocationDegrees(coordinates[1])!)
+            guard let text = self.items[indexPath.row].content as? String else {
+                return
+            }
+            
+            let coordinates = (text).components(separatedBy: ":")
+            
+            guard let latitude = CLLocationDegrees(coordinates[0]),
+                  let longtitude = CLLocationDegrees(coordinates[1]) else {
+                return
+            }
+            let location = CLLocation(latitude: latitude, longitude: longtitude)
             self.performSegue(withIdentifier: showLocationVRSegue, sender: location)
             self.inputAccessoryView?.isHidden = true
         default: break
@@ -278,11 +319,13 @@ class ChatVC: BaseViewController, UITableViewDelegate, UITableViewDataSource, UI
         return true
     }
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String: Any]) {
         if let pickedImage = info[UIImagePickerControllerEditedImage] as? UIImage {
             self.composeMessage(type: .photo, content: pickedImage)
         } else {
-            let pickedImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+            guard let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage else {
+                return
+            }
             self.composeMessage(type: .photo, content: pickedImage)
         }
         picker.dismiss(animated: true, completion: nil)
@@ -293,8 +336,12 @@ class ChatVC: BaseViewController, UITableViewDelegate, UITableViewDataSource, UI
         if let lastLocation = locations.last {
             if self.canSendLocation {
                 let coordinate = String(lastLocation.coordinate.latitude) + ":" + String(lastLocation.coordinate.longitude)
-                let message = Message.init(type: .location, content: coordinate, owner: .sender, timestamp: Int(Date().timeIntervalSince1970), isRead: false)
-                MessageRemoteRepository.send(message: message, toID: self.currentUser!.id, completion: {(_) in
+                let message = Message.init(type: .location, content: coordinate, owner: .sender,
+                                           timestamp: Int(Date().timeIntervalSince1970), isRead: false)
+                guard let id = self.currentUser?.id else {
+                    return
+                }
+                MessageRemoteRepository.send(message: message, toID: id, completion: { _ in
                     self.tableView.scrollToRow(at: IndexPath.init(row: self.items.count - 1, section: 0), at: .bottom, animated: true)
                 })
                 self.canSendLocation = false
@@ -302,19 +349,25 @@ class ChatVC: BaseViewController, UITableViewDelegate, UITableViewDataSource, UI
         }
     }
 
-    //MARK: ViewController lifecycle
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.view.layoutIfNeeded()
-        NotificationCenter.default.addObserver(self, selector: #selector(ChatVC.showKeyboard(notification:)), name: Notification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ChatVC.showKeyboard(notification:)),
+                                               name: Notification.Name.UIKeyboardWillShow, object: nil)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(ChatVC.hideKeyboard(notification:)), name: Notification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ChatVC.hideKeyboard(notification:)),
+                                               name: Notification.Name.UIKeyboardWillHide, object: nil)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        guard let id = self.currentUser?.id else {
+            return
+        }
+        MessageRemoteRepository.markMessagesRead(forUserID: id)
+    }
+    deinit {
         NotificationCenter.default.removeObserver(self)
-        MessageRemoteRepository.markMessagesRead(forUserID: self.currentUser!.id)
     }
     
     override func viewDidLoad() {
@@ -323,6 +376,3 @@ class ChatVC: BaseViewController, UITableViewDelegate, UITableViewDataSource, UI
         self.fetchData()
     }
 }
-
-
-

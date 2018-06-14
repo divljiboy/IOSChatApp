@@ -20,14 +20,12 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
-
 import Foundation
 import UIKit
 import Firebase
 
 class Message {
     
-    //MARK: Properties
     var owner: MessageOwner
     var type: MessageType
     var content: Any
@@ -37,13 +35,19 @@ class Message {
     private var toID: String?
     private var fromID: String?
     
-    func downloadImage(indexpathRow: Int, completion: @escaping (Bool, Int) -> Swift.Void)  {
+    func downloadImage(indexpathRow: Int, completion: @escaping (Bool, Int) -> Swift.Void) {
         if self.type == .photo {
-            let imageLink = self.content as! String
-            let imageURL = URL.init(string: imageLink)
-            URLSession.shared.dataTask(with: imageURL!, completionHandler: { (data, response, error) in
+            guard let imageLink = self.content as? String,
+                  let imageURL = URL.init(string: imageLink) else {
+                return
+            }
+            
+            URLSession.shared.dataTask(with: imageURL, completionHandler: { data, _, error in
                 if error == nil {
-                    self.image = UIImage.init(data: data!)
+                    guard let data = data else {
+                        return
+                    }
+                    self.image = UIImage.init(data: data)
                     completion(true, indexpathRow)
                 }
             }).resume()
@@ -52,15 +56,22 @@ class Message {
     
     func downloadLastMessage(forLocation: String, completion: @escaping () -> Swift.Void) {
         if let currentUserID = Auth.auth().currentUser?.uid {
-            Database.database().reference().child("conversations").child(forLocation).observe(.value, with: { (snapshot) in
+            Database.database().reference().child("conversations").child(forLocation).observe(.value, with: { snapshot in
                 if snapshot.exists() {
                     for snap in snapshot.children {
-                        let receivedMessage = (snap as! DataSnapshot).value as! [String: Any]
-                        self.content = receivedMessage["content"]!
-                        self.timestamp = receivedMessage["timestamp"] as! Int
-                        let messageType = receivedMessage["type"] as! String
-                        let fromID = receivedMessage["fromID"] as! String
-                        self.isRead = receivedMessage["isRead"] as! Bool
+                        guard let tempSnap = snap as? DataSnapshot,
+                              let receivedMessage = (tempSnap).value as? [String: Any],
+                              let content = receivedMessage["content"],
+                              let timeStamp = receivedMessage["timestamp"] as? Int,
+                              let messageType = receivedMessage["type"] as? String,
+                              let fromID = receivedMessage["fromID"] as? String,
+                              let isRead = receivedMessage["isRead"] as? Bool else {
+                            return
+                        }
+                        
+                        self.content = content
+                        self.timestamp = timeStamp
+                        self.isRead = isRead
                         var type = MessageType.text
                         switch messageType {
                         case "text":
@@ -84,7 +95,6 @@ class Message {
         }
     }
     
-    //MARK: Inits
     init(type: MessageType, content: Any, owner: MessageOwner, timestamp: Int, isRead: Bool) {
         self.type = type
         self.content = content

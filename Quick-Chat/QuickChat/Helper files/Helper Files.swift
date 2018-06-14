@@ -20,20 +20,19 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
-
 import Foundation
 import UIKit
 
 //Global variables
 struct GlobalVariables {
-    static let blue = UIColor.rbg(r: 129, g: 144, b: 255)
-    static let purple = UIColor.rbg(r: 161, g: 114, b: 255)
+    static let blue = UIColor.rbg(red: 129, green: 144, blue: 255)
+    static let purple = UIColor.rbg(red: 161, green: 114, blue: 255)
 }
 
 //Extensions
-extension UIColor{
-    class func rbg(r: CGFloat, g: CGFloat, b: CGFloat) -> UIColor {
-        let color = UIColor.init(red: r/255, green: g/255, blue: b/255, alpha: 1)
+extension UIColor {
+    class func rbg(red: CGFloat, green: CGFloat, blue: CGFloat) -> UIColor {
+        let color = UIColor.init(red: red / 255, green: green / 255, blue: blue / 255, alpha: 1)
         return color
     }
 }

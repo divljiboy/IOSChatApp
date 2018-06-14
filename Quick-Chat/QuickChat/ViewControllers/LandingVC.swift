@@ -19,34 +19,33 @@
 //  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
-
-
 import UIKit
-
 
 class LandingVC: UIViewController {
     
     let homeScreenSegue = "homeScreen"
     let signInSegue = "signIn"
 
-    //MARK: Push to relevant ViewController
-    func pushTo(viewController: ViewControllerType)  {
+    func pushTo(viewController: ViewControllerType) {
         switch viewController {
         case .conversations:
-            let vc = self.storyboard?.instantiateViewController(withIdentifier: "Navigation") as! NavVC
-            self.show(vc, sender: nil)
+            guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "Navigation") as? NavVC else {
+                return
+            }
+            self.show(viewController, sender: nil)
         case .welcome:
             self.performSegue(withIdentifier: signInSegue, sender: nil)
         }
     }
     
-    //MARK: Check if user is signed in or not
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if let userInformation = UserDefaults.standard.dictionary(forKey: "userInformation") {
-            let email = userInformation["email"] as! String
-            let password = userInformation["password"] as! String
-            UserRemoteRepository.loginUser(withEmail: email, password: password, completion: { [weak weakSelf = self] (status) in
+            guard let email = userInformation["email"] as? String,
+                  let password = userInformation["password"] as? String else {
+                return
+            }
+            UserRemoteRepository.loginUser(withEmail: email, password: password, completion: { [weak weakSelf = self] status in
                 DispatchQueue.main.async {
                     if status == true {
                         weakSelf?.pushTo(viewController: .conversations)

@@ -20,23 +20,17 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
-
 import Foundation
 import UIKit
 import Firebase
 
 class User: NSObject {
     
-    //MARK: Properties
     let name: String
     let email: String
     let id: String
     var profilePic: UIImage
     
-    
-
-    
-    //MARK: Inits
     init(name: String, email: String, id: String, profilePic: UIImage) {
         self.name = name
         self.email = email
@@ -44,4 +38,3 @@ class User: NSObject {
         self.profilePic = profilePic
     }
 }
-

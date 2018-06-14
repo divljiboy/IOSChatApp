@@ -88,7 +88,8 @@ import UIKit
         gradientLayer.colors = [startColor.cgColor, midColor.cgColor, endColor.cgColor]
         gradientLayer.startPoint = CGPoint(x: startPointX, y: startPointY)
         gradientLayer.endPoint = CGPoint(x: endPointX, y: endPointY)
-        gradientLayer.locations = [NSNumber(value: Float(firstLocation)) , NSNumber(value: Float(secondLocation)), NSNumber(value: Float(thirdLocation))]
+        gradientLayer.locations = [NSNumber(value: Float(firstLocation)), NSNumber(value: Float(secondLocation)),
+                                   NSNumber(value: Float(thirdLocation))]
         layer.shadowOpacity = 1
     }
 }

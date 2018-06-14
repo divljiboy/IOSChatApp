@@ -22,6 +22,7 @@
 		22B974C01DE9B5DF00E09490 /* Conversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B974BF1DE9B5DF00E09490 /* Conversation.swift */; };
 		22EA578F1E1D28DD0008FFB2 /* newMessage.wav in Resources */ = {isa = PBXBuildFile; fileRef = 22EA578E1E1D28DD0008FFB2 /* newMessage.wav */; };
 		22EA57911E1D32520008FFB2 /* VCCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EA57901E1D32520008FFB2 /* VCCells.swift */; };
+		300BB9E920D26F4F001E81E8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 300BB9E820D26F4F001E81E8 /* GoogleService-Info.plist */; };
 		3079389F20AD98FE00AFDBFF /* MessageRemoteRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3079389E20AD98FE00AFDBFF /* MessageRemoteRepository.swift */; };
 		307938A120AD9E3D00AFDBFF /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307938A020AD9E3D00AFDBFF /* RegisterViewController.swift */; };
 		307938A320ADACAA00AFDBFF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 307938A220ADACAA00AFDBFF /* LaunchScreen.storyboard */; };
@@ -29,7 +30,6 @@
 		307938A920ADB23C00AFDBFF /* ProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307938A820ADB23C00AFDBFF /* ProgressHUD.swift */; };
 		307938AB20AEAE1C00AFDBFF /* ImagePreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307938AA20AEAE1C00AFDBFF /* ImagePreviewViewController.swift */; };
 		307938AD20AEB47200AFDBFF /* MapPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307938AC20AEB47200AFDBFF /* MapPreviewViewController.swift */; };
-		30E029A220AD74C000623B0E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 30E029A120AD74C000623B0E /* GoogleService-Info.plist */; };
 		30E029A420AD7AD600623B0E /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E029A320AD7AD600623B0E /* LocationViewController.swift */; };
 		30E029A820AD7B6F00623B0E /* FloatExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E029A620AD7B6E00623B0E /* FloatExtension.swift */; };
 		30E029A920AD7B6F00623B0E /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E029A720AD7B6E00623B0E /* StringExtension.swift */; };
@@ -57,6 +57,7 @@
 		22B974BF1DE9B5DF00E09490 /* Conversation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Conversation.swift; path = QuickChat/Model/Conversation.swift; sourceTree = "<group>"; };
 		22EA578E1E1D28DD0008FFB2 /* newMessage.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = newMessage.wav; sourceTree = "<group>"; };
 		22EA57901E1D32520008FFB2 /* VCCells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VCCells.swift; path = QuickChat/ViewControllers/VCCells.swift; sourceTree = "<group>"; };
+		300BB9E820D26F4F001E81E8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		3079389E20AD98FE00AFDBFF /* MessageRemoteRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageRemoteRepository.swift; sourceTree = "<group>"; };
 		307938A020AD9E3D00AFDBFF /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		307938A220ADACAA00AFDBFF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -64,7 +65,6 @@
 		307938A820ADB23C00AFDBFF /* ProgressHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressHUD.swift; sourceTree = "<group>"; };
 		307938AA20AEAE1C00AFDBFF /* ImagePreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePreviewViewController.swift; sourceTree = "<group>"; };
 		307938AC20AEB47200AFDBFF /* MapPreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPreviewViewController.swift; sourceTree = "<group>"; };
-		30E029A120AD74C000623B0E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		30E029A320AD7AD600623B0E /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 		30E029A620AD7B6E00623B0E /* FloatExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatExtension.swift; sourceTree = "<group>"; };
 		30E029A720AD7B6E00623B0E /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
@@ -150,8 +150,8 @@
 			children = (
 				307938A620ADB22A00AFDBFF /* UI */,
 				30E029A520AD7B6E00623B0E /* Extension */,
-				30E029A120AD74C000623B0E /* GoogleService-Info.plist */,
 				22A92BB01D59EBD6005D76F7 /* AppDelegate.swift */,
+				300BB9E820D26F4F001E81E8 /* GoogleService-Info.plist */,
 				224AFA9C1D867DE7004E7CCD /* Main.storyboard */,
 				224AFA9E1D868371004E7CCD /* ViewControllers */,
 				30E029AC20AD83B400623B0E /* Repository */,
@@ -231,7 +231,7 @@
 				22A92BAA1D59EBD5005D76F7 /* Frameworks */,
 				22A92BAB1D59EBD5005D76F7 /* Resources */,
 				62D3364F6C35C0B3DF08236F /* [CP] Embed Pods Frameworks */,
-				59C78960725AB64FF0FC6829 /* [CP] Copy Pods Resources */,
+				300BB9E720D245A5001E81E8 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -249,7 +249,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0800;
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = Mexonis;
 				TargetAttributes = {
 					22A92BAC1D59EBD5005D76F7 = {
@@ -297,7 +297,7 @@
 				30E029AB20AD7BAB00623B0E /* art.scnassets in Resources */,
 				307938A320ADACAA00AFDBFF /* LaunchScreen.storyboard in Resources */,
 				224AFA9D1D867DE7004E7CCD /* Main.storyboard in Resources */,
-				30E029A220AD74C000623B0E /* GoogleService-Info.plist in Resources */,
+				300BB9E920D26F4F001E81E8 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -322,20 +322,18 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		59C78960725AB64FF0FC6829 /* [CP] Copy Pods Resources */ = {
+		300BB9E720D245A5001E81E8 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-QuickChat/Pods-QuickChat-resources.sh\"\n";
-			showEnvVarsInLog = 0;
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
 		};
 		62D3364F6C35C0B3DF08236F /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -409,6 +407,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -416,6 +415,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -464,6 +464,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -471,6 +472,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;

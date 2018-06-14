@@ -1,25 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7Vt-AS-fqb">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7Vt-AS-fqb">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="Avenir.ttc">
-            <string>Avenir-Book</string>
-        </array>
-        <array key="AvenirNext.ttc">
-            <string>AvenirNext-Medium</string>
-            <string>AvenirNext-Regular</string>
-        </array>
-    </customFonts>
     <scenes>
         <!--LandingVC-->
         <scene sceneID="0jb-GF-tm4">
@@ -227,6 +218,9 @@
                                         <state key="normal" title="Register" backgroundImage="button">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="register:" destination="3bi-b9-xIa" eventType="touchUpInside" id="cTS-zC-9HW"/>
+                                        </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hRM-px-gCo">
                                         <rect key="frame" x="20" y="208" width="299" height="1"/>
@@ -388,7 +382,8 @@
                                                 <gestureRecognizers/>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YdM-Zo-8Ml">
-                                                <rect key="frame" x="40" y="40" width="25" height="25"/>
+                                                <rect key="frame" x="40" y="40" width="30" height="30"/>
+                                                <color key="tintColor" red="0.0" green="0.99818962812423706" blue="0.00080166576663032174" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" image="close"/>
                                                 <connections>
                                                     <action selector="closeView:" destination="Duv-Ca-jpe" eventType="touchUpInside" id="iQ9-7k-wz3"/>
@@ -672,13 +667,13 @@
                                             <constraint firstItem="yU5-M1-Vdf" firstAttribute="centerY" secondItem="Cbs-0c-dEP" secondAttribute="centerY" id="deB-9d-OsM"/>
                                         </constraints>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z7R-1B-pUQ">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z7R-1B-pUQ">
                                         <rect key="frame" x="30" y="12.666666666666742" width="32" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="8Ol-jB-PAe"/>
                                             <constraint firstAttribute="width" constant="32" id="hI0-DJ-UeW"/>
                                         </constraints>
-                                        <state key="normal" backgroundImage="selectPhoto"/>
+                                        <state key="normal" image="selectPhoto"/>
                                         <connections>
                                             <action selector="selectGallery:" destination="j4r-Rx-g1K" eventType="touchUpInside" id="Uub-J9-yW4"/>
                                         </connections>
@@ -687,20 +682,18 @@
                                         <rect key="frame" x="171.66666666666666" y="12.666666666666742" width="32" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="32" id="sbK-bR-TmC"/>
-                                            <constraint firstAttribute="height" constant="25" id="yVq-0V-Mqj"/>
                                         </constraints>
-                                        <state key="normal" backgroundImage="selectCamera"/>
+                                        <state key="normal" image="selectCamera"/>
                                         <connections>
                                             <action selector="selectCamera:" destination="j4r-Rx-g1K" eventType="touchUpInside" id="lh9-ea-LvM"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wkz-Xg-Poz">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wkz-Xg-Poz">
                                         <rect key="frame" x="313" y="12.666666666666742" width="32" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="32" id="D4D-g2-P3B"/>
-                                            <constraint firstAttribute="height" constant="25" id="xpY-Vx-Gwa"/>
                                         </constraints>
-                                        <state key="normal" backgroundImage="selectLocation"/>
+                                        <state key="normal" image="selectLocation"/>
                                         <connections>
                                             <action selector="selectLocation:" destination="j4r-Rx-g1K" eventType="touchUpInside" id="lf5-LD-9Ub"/>
                                         </connections>
@@ -708,7 +701,9 @@
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstItem="bPy-aa-pXN" firstAttribute="height" secondItem="z7R-1B-pUQ" secondAttribute="height" id="2b0-q9-QQ6"/>
                                     <constraint firstItem="Cbs-0c-dEP" firstAttribute="centerX" secondItem="jci-6r-I5f" secondAttribute="centerX" id="8ef-WT-V3h"/>
+                                    <constraint firstItem="wkz-Xg-Poz" firstAttribute="height" secondItem="bPy-aa-pXN" secondAttribute="height" id="D84-jS-Hjr"/>
                                     <constraint firstItem="Cbs-0c-dEP" firstAttribute="leading" secondItem="jci-6r-I5f" secondAttribute="leading" id="GxY-N4-nqW"/>
                                     <constraint firstAttribute="bottom" secondItem="Cbs-0c-dEP" secondAttribute="bottom" id="L48-Uy-0aQ"/>
                                     <constraint firstItem="z7R-1B-pUQ" firstAttribute="leading" secondItem="jci-6r-I5f" secondAttribute="leading" constant="30" id="Msi-AH-DZW"/>
@@ -716,11 +711,11 @@
                                     <constraint firstItem="bPy-aa-pXN" firstAttribute="top" secondItem="z7R-1B-pUQ" secondAttribute="top" id="XcF-ws-aNW"/>
                                     <constraint firstAttribute="trailing" secondItem="wkz-Xg-Poz" secondAttribute="trailing" constant="30" id="Y1s-uy-BRX"/>
                                     <constraint firstItem="bPy-aa-pXN" firstAttribute="centerX" secondItem="jci-6r-I5f" secondAttribute="centerX" id="fGV-wy-XbD"/>
-                                    <constraint firstAttribute="height" constant="100.33333333333337" id="gOp-5R-aHN"/>
                                     <constraint firstItem="z7R-1B-pUQ" firstAttribute="top" secondItem="jci-6r-I5f" secondAttribute="top" constant="12.666666666666742" id="rUy-6Q-TBM"/>
+                                    <constraint firstItem="Cbs-0c-dEP" firstAttribute="top" secondItem="z7R-1B-pUQ" secondAttribute="bottom" constant="12.666666666666629" id="xPu-vP-hzv"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" keyboardDismissMode="interactive" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="30" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0I1-tm-nYA">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="30" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0I1-tm-nYA">
                                 <rect key="frame" x="0.0" y="88" width="375" height="589.66666666666663"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -821,11 +816,12 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="jci-6r-I5f" firstAttribute="centerX" secondItem="kU0-xl-hcT" secondAttribute="centerX" id="8Go-5N-x2K"/>
                             <constraint firstItem="0I1-tm-nYA" firstAttribute="top" secondItem="kU0-xl-hcT" secondAttribute="top" id="8J4-Ic-hvi"/>
                             <constraint firstItem="jci-6r-I5f" firstAttribute="leading" secondItem="kU0-xl-hcT" secondAttribute="leading" id="JdQ-ML-1yh"/>
-                            <constraint firstItem="kU0-xl-hcT" firstAttribute="bottom" secondItem="jci-6r-I5f" secondAttribute="bottom" id="MEf-Bd-bor"/>
+                            <constraint firstItem="kU0-xl-hcT" firstAttribute="bottom" secondItem="jci-6r-I5f" secondAttribute="bottom" constant="1.1368683772161603e-13" id="JwM-1a-8e1"/>
                             <constraint firstItem="kU0-xl-hcT" firstAttribute="trailing" secondItem="0I1-tm-nYA" secondAttribute="trailing" id="dTc-h4-4kE"/>
                             <constraint firstItem="jci-6r-I5f" firstAttribute="top" secondItem="0I1-tm-nYA" secondAttribute="bottom" id="dmu-v8-GGj"/>
                             <constraint firstItem="0I1-tm-nYA" firstAttribute="leading" secondItem="kU0-xl-hcT" secondAttribute="leading" id="zHu-Uu-jzA"/>
@@ -833,9 +829,8 @@
                         <viewLayoutGuide key="safeArea" id="kU0-xl-hcT"/>
                     </view>
                     <connections>
-                        <outlet property="bottomConstraint" destination="MEf-Bd-bor" id="9D3-nY-iFF"/>
+                        <outlet property="bottomConstraint" destination="L48-Uy-0aQ" id="p3z-jx-poz"/>
                         <outlet property="inputTextField" destination="XEo-XG-jia" id="ker-JR-Zed"/>
-                        <outlet property="inputViewHeight" destination="gOp-5R-aHN" id="IQt-67-IGd"/>
                         <outlet property="tableView" destination="0I1-tm-nYA" id="mPu-ev-9pn"/>
                         <segue destination="NwW-uj-glC" kind="show" identifier="showLocationVR" id="uLc-NB-hVX"/>
                     </connections>
@@ -1119,16 +1114,16 @@
     </scenes>
     <resources>
         <image name="button" width="60" height="20"/>
-        <image name="close" width="25" height="25"/>
+        <image name="close" width="30" height="30"/>
         <image name="clouds" width="750" height="110"/>
-        <image name="email" width="24" height="24"/>
+        <image name="email" width="30" height="30"/>
         <image name="empty" width="375" height="602"/>
-        <image name="name" width="24" height="24"/>
-        <image name="password" width="24" height="24"/>
-        <image name="profile pic" width="100" height="100"/>
-        <image name="selectCamera" width="32" height="25"/>
-        <image name="selectLocation" width="32" height="25"/>
-        <image name="selectPhoto" width="32" height="25"/>
-        <image name="send" width="32" height="25"/>
+        <image name="name" width="30" height="30"/>
+        <image name="password" width="30" height="30"/>
+        <image name="profile pic" width="30" height="30"/>
+        <image name="selectCamera" width="30" height="30"/>
+        <image name="selectLocation" width="30" height="30"/>
+        <image name="selectPhoto" width="30" height="30"/>
+        <image name="send" width="30" height="30"/>
     </resources>
 </document>
