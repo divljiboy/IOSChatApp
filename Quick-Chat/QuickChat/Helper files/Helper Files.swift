@@ -25,16 +25,17 @@ import UIKit
 
 //Global variables
 struct GlobalVariables {
-    static let blue = UIColor.rbg(red: 129, green: 144, blue: 255)
-    static let purple = UIColor.rbg(red: 161, green: 114, blue: 255)
+//    static let blue = UIColor.rbg(red: 129, green: 144, blue: 255)
+//    static let purple = UIColor.rbg(red: 161, green: 114, blue: 255)
+    static let red = UIColor(red: 177 / 255, green: 13 / 255, blue: 40 / 255, alpha: 1)
 }
 
 //Extensions
 extension UIColor {
-    class func rbg(red: CGFloat, green: CGFloat, blue: CGFloat) -> UIColor {
-        let color = UIColor.init(red: red / 255, green: green / 255, blue: blue / 255, alpha: 1)
-        return color
-    }
+//    class func rbg(red: CGFloat, green: CGFloat, blue: CGFloat) -> UIColor {
+//        let color = UIColor.init(red: red / 255, green: green / 255, blue: blue / 255, alpha: 1)
+//        return color
+//    }
 }
 
 class RoundedImageView: UIImageView {

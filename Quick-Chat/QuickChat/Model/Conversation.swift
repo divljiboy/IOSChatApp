@@ -29,30 +29,7 @@ class Conversation {
     let user: User
     var lastMessage: Message
     
-    class func showConversations(completion: @escaping ([Conversation]) -> Swift.Void) {
-        if let currentUserID = Auth.auth().currentUser?.uid {
-            var conversations = [Conversation]()
-            Database.database().reference().child("users")
-                        .child(currentUserID).child("conversations").observe(.childAdded, with: { snapshot in
-                if snapshot.exists() {
-                    let fromID = snapshot.key
-                    
-                    guard let values = snapshot.value as? [String: String],
-                          let location = values["location"] else {
-                        return
-                    }
-                    UserRemoteRepository.info(forUserID: fromID, completion: { user in
-                        let emptyMessage = Message.init(type: .text, content: "loading", owner: .sender, timestamp: 0, isRead: true)
-                        let conversation = Conversation.init(user: user, lastMessage: emptyMessage)
-                        conversations.append(conversation)
-                        conversation.lastMessage.downloadLastMessage(forLocation: location, completion: { 
-                            completion(conversations)
-                        })
-                    })
-                }
-            })
-        }
-    }
+    
     
     init(user: User, lastMessage: Message) {
         self.user = user

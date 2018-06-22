@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0930"
+   LastUpgradeVersion = "0940"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "1E37FB571421B640275016ED00108578"
+               BlueprintIdentifier = "8B87958676AA31BDF13FA8558BCB9B8E"
                BuildableName = "Pods_QuickChat.framework"
                BlueprintName = "Pods-QuickChat"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "1E37FB571421B640275016ED00108578"
+            BlueprintIdentifier = "8B87958676AA31BDF13FA8558BCB9B8E"
             BuildableName = "Pods_QuickChat.framework"
             BlueprintName = "Pods-QuickChat"
             ReferencedContainer = "container:Pods.xcodeproj">

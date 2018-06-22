@@ -1,4 +1,5 @@
 PODS:
+  - BulletinBoard (2.0.1)
   - Firebase/Auth (5.2.0):
     - Firebase/CoreOnly
     - FirebaseAuth (= 5.0.1)
@@ -44,6 +45,7 @@ PODS:
   - SwiftLint (0.25.1)
 
 DEPENDENCIES:
+  - BulletinBoard
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Database
@@ -52,6 +54,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - BulletinBoard
     - Firebase
     - FirebaseAnalytics
     - FirebaseAuth
@@ -66,6 +69,7 @@ SPEC REPOS:
     - SwiftLint
 
 SPEC CHECKSUMS:
+  BulletinBoard: 99a428f91f64d0ffabf8a8104f79ecd064e2a4db
   Firebase: 25ed0412036d7d008568d1fb4d2e9d81ea8a0a2c
   FirebaseAnalytics: b3628aea54c50464c32c393fb2ea032566e7ecc2
   FirebaseAuth: 463b8ce33bd5d05f706dcd4615499e3212b4132b
@@ -79,6 +83,6 @@ SPEC CHECKSUMS:
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   SwiftLint: ce933681be10c3266e82576dad676fa815a602e9
 
-PODFILE CHECKSUM: a697150662a1112c961338c5557e615fba4a0a72
+PODFILE CHECKSUM: c504e2d7ae473940fbc6d260471eaf0c13fabf0e
 
 COCOAPODS: 1.5.3

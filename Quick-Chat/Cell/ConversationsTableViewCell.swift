@@ -19,14 +19,14 @@ class ConversationsTableViewCell: UITableViewCell {
         self.nameLabel.font = UIFont(name: "AvenirNext-Regular", size: 17.0)
         self.messageLabel.font = UIFont(name: "AvenirNext-Regular", size: 14.0)
         self.timeLabel.font = UIFont(name: "AvenirNext-Regular", size: 13.0)
-        self.profilePic.layer.borderColor = GlobalVariables.purple.cgColor
-        self.messageLabel.textColor = UIColor.rbg(red: 111, green: 113, blue: 121)
+        self.profilePic.layer.borderColor = GlobalVariables.red.cgColor
+        self.messageLabel.textColor = UIColor.red
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         self.profilePic.layer.borderWidth = 2
-        self.profilePic.layer.borderColor = GlobalVariables.purple.cgColor
+        self.profilePic.layer.borderColor = GlobalVariables.red.cgColor
     }
     
 }

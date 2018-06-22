@@ -12,10 +12,15 @@ class BaseViewController: UIViewController {
     
     let colors: [UIColor] = [UIColor.mtsNavigationBarColor, UIColor.mtsMediumNavigationBarColor, UIColor.mtsSecondNavigationBarColor]
     let locations: [NSNumber] = [0.0, 0.5, 0.9]
+    weak var appDelegate: AppDelegate!
     
     let progressHUD = ProgressHUD(text: "Please wait")
     
     override func viewDidLoad() {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        self.appDelegate = appDelegate
         
         super.viewDidLoad()
         self.navigationController?.navigationBar.barTintColor = UIColor(red: 177 / 255, green: 13 / 255, blue: 40 / 255, alpha: 1)
@@ -25,6 +30,7 @@ class BaseViewController: UIViewController {
         self.navigationController?.navigationBar.isTranslucent = false
         self.navigationController?.navigationBar.prefersLargeTitles = false
         self.view.addSubview(progressHUD)
+        self.setVisibleNavigation()
         stopActivityIndicatorSpinner()
     }
     

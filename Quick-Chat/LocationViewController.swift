@@ -14,7 +14,7 @@ import CoreLocation
 class LocationViewController: BaseViewController, ARSCNViewDelegate, CLLocationManagerDelegate {
     
     @IBOutlet weak var sceneView: ARSCNView!
-    @IBOutlet weak var statusTextView: UITextView!
+    @IBOutlet weak var statusTextView: UILabel!
     
     let locationManager = CLLocationManager()
     var userLocation = CLLocation()
@@ -33,7 +33,7 @@ class LocationViewController: BaseViewController, ARSCNViewDelegate, CLLocationM
     }
     
     var modelNode:SCNNode!
-    let rootNodeName = "diamonds1"
+    let rootNodeName = "cone"
     
     var originalTransform:SCNMatrix4!
     
@@ -61,8 +61,6 @@ class LocationViewController: BaseViewController, ARSCNViewDelegate, CLLocationM
         }
         // Set the initial status
         status = ""
-        // Set a padding in the text view
-        statusTextView.textContainerInset = UIEdgeInsetsMake(30.0, 10.0, 10.0, 0.0)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -89,7 +87,7 @@ class LocationViewController: BaseViewController, ARSCNViewDelegate, CLLocationM
     }
     
     func setStatusText() {
-        var text = "Distance: \(String(format: "%.2f m", distance))"
+        let text = "Distance: \(String(format: "%.2f m", distance))"
         print(distance)
         statusTextView.text = text
     }
@@ -117,7 +115,7 @@ class LocationViewController: BaseViewController, ARSCNViewDelegate, CLLocationM
         self.distance = Float(pinLocation.distance(from: self.userLocation))
         
         if self.modelNode == nil {
-            let modelScene = SCNScene(named: "art.scnassets/diamonds1.dae")!
+            let modelScene = SCNScene(named: "art.scnassets/arrow.scn")!
             self.modelNode = modelScene.rootNode.childNode(withName: rootNodeName, recursively: true)!
             
             // Move model's pivot to its center in the Y axis
@@ -160,7 +158,7 @@ class LocationViewController: BaseViewController, ARSCNViewDelegate, CLLocationM
     }
     
     func scaleNode (_ location: CLLocation) -> SCNVector3 {
-        let scale = max( min( Float(1000/distance), 1.5 ), 3 )
+        let scale = max( min( Float(1000 / distance), 1.5 ), 3 )
         return SCNVector3(x: scale, y: scale, z: scale)
     }
     
@@ -182,18 +180,23 @@ class LocationViewController: BaseViewController, ARSCNViewDelegate, CLLocationM
     
     func getTranslationMatrix(_ matrix: simd_float4x4, _ translation : vector_float4) -> simd_float4x4 {
         var matrix = matrix
+        print(matrix)
         matrix.columns.3 = translation
+        print(matrix)
         return matrix
     }
     
     func rotateAroundY(_ matrix: simd_float4x4, _ degrees: Float) -> simd_float4x4 {
         var matrix = matrix
+        print(matrix)
         
         matrix.columns.0.x = cos(degrees)
         matrix.columns.0.z = -sin(degrees)
         
         matrix.columns.2.x = sin(degrees)
         matrix.columns.2.z = cos(degrees)
+        print(matrix)
+        print(matrix.inverse)
         return matrix.inverse
     }
     
