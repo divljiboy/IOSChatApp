@@ -20,6 +20,7 @@
 		22B974C01DE9B5DF00E09490 /* Conversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B974BF1DE9B5DF00E09490 /* Conversation.swift */; };
 		22EA578F1E1D28DD0008FFB2 /* newMessage.wav in Resources */ = {isa = PBXBuildFile; fileRef = 22EA578E1E1D28DD0008FFB2 /* newMessage.wav */; };
 		300BB9E920D26F4F001E81E8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 300BB9E820D26F4F001E81E8 /* GoogleService-Info.plist */; };
+		3023522620E0C2080013AC39 /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3023522520E0C2080013AC39 /* InitialViewController.swift */; };
 		3046952420DCD1BD002B81D4 /* BulletinDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3046952320DCD1BD002B81D4 /* BulletinDataSource.swift */; };
 		3046952620DCD214002B81D4 /* FeedbackPageBLTNItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3046952520DCD214002B81D4 /* FeedbackPageBLTNItem.swift */; };
 		3046952820DCD2F6002B81D4 /* FeedbackGenerators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3046952720DCD2F6002B81D4 /* FeedbackGenerators.swift */; };
@@ -69,6 +70,7 @@
 		22B974BF1DE9B5DF00E09490 /* Conversation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Conversation.swift; path = QuickChat/Model/Conversation.swift; sourceTree = "<group>"; };
 		22EA578E1E1D28DD0008FFB2 /* newMessage.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = newMessage.wav; sourceTree = "<group>"; };
 		300BB9E820D26F4F001E81E8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		3023522520E0C2080013AC39 /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
 		3046952320DCD1BD002B81D4 /* BulletinDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulletinDataSource.swift; sourceTree = "<group>"; };
 		3046952520DCD214002B81D4 /* FeedbackPageBLTNItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackPageBLTNItem.swift; sourceTree = "<group>"; };
 		3046952720DCD2F6002B81D4 /* FeedbackGenerators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackGenerators.swift; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 		224AFA9E1D868371004E7CCD /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				3023522420E0C1D70013AC39 /* ViewController */,
 				3046952220DCD1B0002B81D4 /* Bulletin */,
 				30B2D21D20D28682002BA300 /* Cell */,
 				224AFAA81D86890A004E7CCD /* WelcomeVC.swift */,
@@ -192,6 +195,14 @@
 				307938A220ADACAA00AFDBFF /* LaunchScreen.storyboard */,
 			);
 			path = QuickChat;
+			sourceTree = "<group>";
+		};
+		3023522420E0C1D70013AC39 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				3023522520E0C2080013AC39 /* InitialViewController.swift */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 		3046952220DCD1B0002B81D4 /* Bulletin */ = {
@@ -470,6 +481,7 @@
 				30B2D22C20D293F7002BA300 /* UINavigationBarNavigation.swift in Sources */,
 				307938A920ADB23C00AFDBFF /* ProgressHUD.swift in Sources */,
 				224834B11DB539A50019153C /* User.swift in Sources */,
+				3023522620E0C2080013AC39 /* InitialViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

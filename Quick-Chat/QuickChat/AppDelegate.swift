@@ -30,26 +30,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
-        
-        if let userInformation = UserDefaults.standard.dictionary(forKey: "userInformation") {
-            guard let email = userInformation["email"] as? String,
-                let password = userInformation["password"] as? String else {
-                    return false
-            }
-            UserRemoteRepository.loginUser(withEmail: email, password: password, completion: { [weak weakSelf = self] status in
-                DispatchQueue.main.async {
-                    if status == true {
-                        weakSelf?.pushTo(viewController: .conversations)
-                    } else {
-                        weakSelf?.pushTo(viewController: .welcome)
-                    }
-                    weakSelf = nil
-                }
-            })
-        } else {
-            self.pushTo(viewController: .welcome)
-        }
-        
         return true
     }
     

@@ -24,7 +24,7 @@
                             <constraint firstAttribute="height" relation="lessThanOrEqual" constant="300" id="Fw3-hZ-gZe"/>
                         </constraints>
                     </imageView>
-                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I5z-jT-rnq">
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I5z-jT-rnq">
                         <rect key="frame" x="345" y="6" width="10" height="150.5"/>
                         <constraints>
                             <constraint firstAttribute="height" relation="lessThanOrEqual" constant="300" id="DYu-0h-25p"/>

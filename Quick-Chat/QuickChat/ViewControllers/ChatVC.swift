@@ -45,6 +45,7 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate, CLLocationManag
         super.viewDidLoad()
         self.customization()
         self.fetchData()
+        print(bottomConstraint.constant)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -203,10 +204,14 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate, CLLocationManag
         let animationCurveRaw = animationCurveRawNSN?.uintValue ?? UIViewAnimationOptions().rawValue
         let animationCurve: UIViewAnimationOptions = UIViewAnimationOptions(rawValue: animationCurveRaw)
         if let height = endFrame?.size.height {
-            self.bottomConstraint.constant = height
+            if #available(iOS 11.0, *) {
+                self.bottomConstraint.constant = height - view.safeAreaInsets.bottom
+            } else {
+                self.bottomConstraint.constant = height
+            }
         }
         if !self.items.isEmpty {
-            self.tableView.scrollToRow(at: IndexPath.init(row: self.items.count - 1, section: 0), at: .bottom, animated: true)
+            self.tableView.scrollToRow(at: IndexPath.init(row: self.items.count - 1, section: 0), at: .bottom, animated: false)
         }
         
         UIView.animate(withDuration: duration,
@@ -352,7 +357,8 @@ extension ChatVC: UITableViewDelegate, UITableViewDataSource {
                     cell.message.isHidden = true
                 } else {
                     cell.messageBackground.image = UIImage.init(named: "loading")
-                    MessageRemoteRepository.downloadImage(message: self.items[indexPath.row], indexpathRow: indexPath.row, completion: { state, _, message in
+                    MessageRemoteRepository.downloadImage(message: self.items[indexPath.row],
+                                                          indexpathRow: indexPath.row, completion: { state, _, message in
                         self.items[indexPath.row] = message
                         if state {
                             DispatchQueue.main.async {
@@ -385,7 +391,8 @@ extension ChatVC: UITableViewDelegate, UITableViewDataSource {
                     cell.message.isHidden = true
                 } else {
                     cell.messageBackground.image = UIImage.init(named: "loading")
-                    MessageRemoteRepository.downloadImage(message: self.items[indexPath.row], indexpathRow: indexPath.row, completion: { state, _, message in
+                    MessageRemoteRepository.downloadImage(message: self.items[indexPath.row],
+                                                          indexpathRow: indexPath.row, completion: { state, _, message in
                         self.items[indexPath.row] = message
                         if state {
                             DispatchQueue.main.async {

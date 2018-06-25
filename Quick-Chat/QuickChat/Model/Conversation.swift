@@ -29,8 +29,6 @@ class Conversation {
     let user: User
     var lastMessage: Message
     
-    
-    
     init(user: User, lastMessage: Message) {
         self.user = user
         self.lastMessage = lastMessage

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="TgW-oC-ukH">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -758,7 +758,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jci-6r-I5f">
-                                <rect key="frame" x="0.0" y="711.66666666666663" width="375" height="100.33333333333337"/>
+                                <rect key="frame" x="0.0" y="677.66666666666663" width="375" height="100.33333333333337"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cbs-0c-dEP" userLabel="Container View">
                                         <rect key="frame" x="0.0" y="50.333333333333371" width="375" height="50"/>
@@ -830,7 +830,7 @@
                                     <constraint firstItem="Cbs-0c-dEP" firstAttribute="centerX" secondItem="jci-6r-I5f" secondAttribute="centerX" id="8ef-WT-V3h"/>
                                     <constraint firstItem="wkz-Xg-Poz" firstAttribute="height" secondItem="bPy-aa-pXN" secondAttribute="height" id="D84-jS-Hjr"/>
                                     <constraint firstItem="Cbs-0c-dEP" firstAttribute="leading" secondItem="jci-6r-I5f" secondAttribute="leading" id="GxY-N4-nqW"/>
-                                    <constraint firstAttribute="bottom" secondItem="Cbs-0c-dEP" secondAttribute="bottom" id="L48-Uy-0aQ"/>
+                                    <constraint firstAttribute="bottom" secondItem="Cbs-0c-dEP" secondAttribute="bottom" id="LNC-2m-6qn"/>
                                     <constraint firstItem="z7R-1B-pUQ" firstAttribute="leading" secondItem="jci-6r-I5f" secondAttribute="leading" constant="30" id="Msi-AH-DZW"/>
                                     <constraint firstItem="wkz-Xg-Poz" firstAttribute="top" secondItem="bPy-aa-pXN" secondAttribute="top" id="NL9-eE-W3g"/>
                                     <constraint firstItem="bPy-aa-pXN" firstAttribute="top" secondItem="z7R-1B-pUQ" secondAttribute="top" id="XcF-ws-aNW"/>
@@ -841,7 +841,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" alwaysBounceVertical="YES" keyboardDismissMode="interactive" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="30" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0I1-tm-nYA">
-                                <rect key="frame" x="0.0" y="88" width="375" height="623.66666666666663"/>
+                                <rect key="frame" x="0.0" y="88" width="375" height="589.66666666666663"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <sections/>
                             </tableView>
@@ -852,15 +852,15 @@
                             <constraint firstItem="jci-6r-I5f" firstAttribute="centerX" secondItem="kU0-xl-hcT" secondAttribute="centerX" id="8Go-5N-x2K"/>
                             <constraint firstItem="0I1-tm-nYA" firstAttribute="top" secondItem="kU0-xl-hcT" secondAttribute="top" id="8J4-Ic-hvi"/>
                             <constraint firstItem="jci-6r-I5f" firstAttribute="leading" secondItem="kU0-xl-hcT" secondAttribute="leading" id="JdQ-ML-1yh"/>
-                            <constraint firstAttribute="bottom" secondItem="jci-6r-I5f" secondAttribute="bottom" id="JwM-1a-8e1"/>
                             <constraint firstItem="kU0-xl-hcT" firstAttribute="trailing" secondItem="0I1-tm-nYA" secondAttribute="trailing" id="dTc-h4-4kE"/>
                             <constraint firstItem="jci-6r-I5f" firstAttribute="top" secondItem="0I1-tm-nYA" secondAttribute="bottom" id="dmu-v8-GGj"/>
+                            <constraint firstItem="kU0-xl-hcT" firstAttribute="bottom" secondItem="jci-6r-I5f" secondAttribute="bottom" constant="1.1368683772161603e-13" id="u9O-xL-w36"/>
                             <constraint firstItem="0I1-tm-nYA" firstAttribute="leading" secondItem="kU0-xl-hcT" secondAttribute="leading" id="zHu-Uu-jzA"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="kU0-xl-hcT"/>
                     </view>
                     <connections>
-                        <outlet property="bottomConstraint" destination="L48-Uy-0aQ" id="p3z-jx-poz"/>
+                        <outlet property="bottomConstraint" destination="u9O-xL-w36" id="3Rv-hX-jEw"/>
                         <outlet property="inputTextField" destination="XEo-XG-jia" id="ker-JR-Zed"/>
                         <outlet property="tableView" destination="0I1-tm-nYA" id="mPu-ev-9pn"/>
                         <segue destination="NwW-uj-glC" kind="show" identifier="showLocationVR" id="uLc-NB-hVX"/>
@@ -941,20 +941,44 @@
             </objects>
             <point key="canvasLocation" x="4986.3999999999996" y="-20.689655172413794"/>
         </scene>
-        <!--View Controller-->
+        <!--Initial View Controller-->
         <scene sceneID="uxP-jR-nJs">
             <objects>
-                <viewController id="TgW-oC-ukH" sceneMemberID="viewController">
+                <viewController id="TgW-oC-ukH" customClass="InitialViewController" customModule="QuickChat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ml6-m0-vxy">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PMd-Ad-V8r">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="822"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Magic Chat" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tIv-LM-N1U">
+                                        <rect key="frame" x="20" y="395" width="334" height="31.666666666666686"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="tIv-LM-N1U" firstAttribute="leading" secondItem="PMd-Ad-V8r" secondAttribute="leading" constant="20" id="EQM-f8-2SL"/>
+                                    <constraint firstItem="tIv-LM-N1U" firstAttribute="centerY" secondItem="PMd-Ad-V8r" secondAttribute="centerY" id="Ez6-gG-VNE"/>
+                                    <constraint firstItem="tIv-LM-N1U" firstAttribute="centerX" secondItem="PMd-Ad-V8r" secondAttribute="centerX" id="wJn-qb-4aZ"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="PMd-Ad-V8r" firstAttribute="centerY" secondItem="8wr-I2-B4X" secondAttribute="centerY" id="1xG-z6-Yo5"/>
+                            <constraint firstItem="PMd-Ad-V8r" firstAttribute="leading" secondItem="Ml6-m0-vxy" secondAttribute="leading" id="D7D-lg-T2Q"/>
+                            <constraint firstItem="PMd-Ad-V8r" firstAttribute="top" secondItem="Ml6-m0-vxy" secondAttribute="top" id="bfP-q2-UI5"/>
+                            <constraint firstItem="PMd-Ad-V8r" firstAttribute="centerX" secondItem="8wr-I2-B4X" secondAttribute="centerX" id="meI-Av-X3c"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="8wr-I2-B4X"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8D7-45-FkR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="790" y="92"/>
+            <point key="canvasLocation" x="473" y="429"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="bbf-nv-tj8">
