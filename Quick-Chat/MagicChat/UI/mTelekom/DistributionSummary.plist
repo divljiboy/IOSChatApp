@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>mTelekom Dev.ipa</key>
+	<array>
+		<dict>
+			<key>architectures</key>
+			<array>
+				<string>armv7</string>
+				<string>arm64</string>
+			</array>
+			<key>certificate</key>
+			<dict>
+				<key>SHA1</key>
+				<string>3E2920256FD3F8DF8A8F3761B8594A6F5D5E3320</string>
+				<key>dateExpires</key>
+				<string>2/1/19</string>
+				<key>type</key>
+				<string>iOS Development</string>
+			</dict>
+			<key>embeddedBinaries</key>
+			<array>
+				<dict>
+					<key>architectures</key>
+					<array>
+						<string>armv7</string>
+						<string>arm64</string>
+					</array>
+					<key>certificate</key>
+					<dict>
+						<key>SHA1</key>
+						<string>3E2920256FD3F8DF8A8F3761B8594A6F5D5E3320</string>
+						<key>dateExpires</key>
+						<string>2/1/19</string>
+						<key>type</key>
+						<string>iOS Development</string>
+					</dict>
+					<key>name</key>
+					<string>ECFoundationiOS.framework</string>
+					<key>team</key>
+					<dict>
+						<key>id</key>
+						<string>PH7K4ADL7R</string>
+						<key>name</key>
+						<string>Execom Doo</string>
+					</dict>
+				</dict>
+				<dict>
+					<key>architectures</key>
+					<array>
+						<string>armv7</string>
+						<string>arm64</string>
+					</array>
+					<key>certificate</key>
+					<dict>
+						<key>SHA1</key>
+						<string>3E2920256FD3F8DF8A8F3761B8594A6F5D5E3320</string>
+						<key>dateExpires</key>
+						<string>2/1/19</string>
+						<key>type</key>
+						<string>iOS Development</string>
+					</dict>
+					<key>name</key>
+					<string>EncryptedCoreData.framework</string>
+					<key>team</key>
+					<dict>
+						<key>id</key>
+						<string>PH7K4ADL7R</string>
+						<key>name</key>
+						<string>Execom Doo</string>
+					</dict>
+				</dict>
+				<dict>
+					<key>architectures</key>
+					<array>
+						<string>armv7</string>
+						<string>arm64</string>
+					</array>
+					<key>certificate</key>
+					<dict>
+						<key>SHA1</key>
+						<string>3E2920256FD3F8DF8A8F3761B8594A6F5D5E3320</string>
+						<key>dateExpires</key>
+						<string>2/1/19</string>
+						<key>type</key>
+						<string>iOS Development</string>
+					</dict>
+					<key>name</key>
+					<string>GoogleToolboxForMac.framework</string>
+					<key>team</key>
+					<dict>
+						<key>id</key>
+						<string>PH7K4ADL7R</string>
+						<key>name</key>
+						<string>Execom Doo</string>
+					</dict>
+				</dict>
+				<dict>
+					<key>architectures</key>
+					<array>
+						<string>armv7</string>
+						<string>arm64</string>
+					</array>
+					<key>certificate</key>
+					<dict>
+						<key>SHA1</key>
+						<string>3E2920256FD3F8DF8A8F3761B8594A6F5D5E3320</string>
+						<key>dateExpires</key>
+						<string>2/1/19</string>
+						<key>type</key>
+						<string>iOS Development</string>
+					</dict>
+					<key>name</key>
+					<string>KeychainSwift.framework</string>
+					<key>team</key>
+					<dict>
+						<key>id</key>
+						<string>PH7K4ADL7R</string>
+						<key>name</key>
+						<string>Execom Doo</string>
+					</dict>
+				</dict>
+				<dict>
+					<key>architectures</key>
+					<array>
+						<string>armv7</string>
+						<string>arm64</string>
+					</array>
+					<key>certificate</key>
+					<dict>
+						<key>SHA1</key>
+						<string>3E2920256FD3F8DF8A8F3761B8594A6F5D5E3320</string>
+						<key>dateExpires</key>
+						<string>2/1/19</string>
+						<key>type</key>
+						<string>iOS Development</string>
+					</dict>
+					<key>name</key>
+					<string>ObjectMapper.framework</string>
+					<key>team</key>
+					<dict>
+						<key>id</key>
+						<string>PH7K4ADL7R</string>
+						<key>name</key>
+						<string>Execom Doo</string>
+					</dict>
+				</dict>
+				<dict>
+					<key>architectures</key>
+					<array>
+						<string>armv7</string>
+						<string>arm64</string>
+					</array>
+					<key>certificate</key>
+					<dict>
+						<key>SHA1</key>
+						<string>3E2920256FD3F8DF8A8F3761B8594A6F5D5E3320</string>
+						<key>dateExpires</key>
+						<string>2/1/19</string>
+						<key>type</key>
+						<string>iOS Development</string>
+					</dict>
+					<key>name</key>
+					<string>Protobuf.framework</string>
+					<key>team</key>
+					<dict>
+						<key>id</key>
+						<string>PH7K4ADL7R</string>
+						<key>name</key>
+						<string>Execom Doo</string>
+					</dict>
+				</dict>
+				<dict>
+					<key>architectures</key>
+					<array>
+						<string>armv7</string>
+						<string>arm64</string>
+					</array>
+					<key>certificate</key>
+					<dict>
+						<key>SHA1</key>
+						<string>3E2920256FD3F8DF8A8F3761B8594A6F5D5E3320</string>
+						<key>dateExpires</key>
+						<string>2/1/19</string>
+						<key>type</key>
+						<string>iOS Development</string>
+					</dict>
+					<key>name</key>
+					<string>SQLCipher.framework</string>
+					<key>team</key>
+					<dict>
+						<key>id</key>
+						<string>PH7K4ADL7R</string>
+						<key>name</key>
+						<string>Execom Doo</string>
+					</dict>
+				</dict>
+				<dict>
+					<key>architectures</key>
+					<array>
+						<string>armv7</string>
+						<string>arm64</string>
+					</array>
+					<key>certificate</key>
+					<dict>
+						<key>SHA1</key>
+						<string>3E2920256FD3F8DF8A8F3761B8594A6F5D5E3320</string>
+						<key>dateExpires</key>
+						<string>2/1/19</string>
+						<key>type</key>
+						<string>iOS Development</string>
+					</dict>
+					<key>name</key>
+					<string>SkyFloatingLabelTextField.framework</string>
+					<key>team</key>
+					<dict>
+						<key>id</key>
+						<string>PH7K4ADL7R</string>
+						<key>name</key>
+						<string>Execom Doo</string>
+					</dict>
+				</dict>
+				<dict>
+					<key>architectures</key>
+					<array>
+						<string>armv7</string>
+						<string>arm64</string>
+					</array>
+					<key>certificate</key>
+					<dict>
+						<key>SHA1</key>
+						<string>3E2920256FD3F8DF8A8F3761B8594A6F5D5E3320</string>
+						<key>dateExpires</key>
+						<string>2/1/19</string>
+						<key>type</key>
+						<string>iOS Development</string>
+					</dict>
+					<key>name</key>
+					<string>nanopb.framework</string>
+					<key>team</key>
+					<dict>
+						<key>id</key>
+						<string>PH7K4ADL7R</string>
+						<key>name</key>
+						<string>Execom Doo</string>
+					</dict>
+				</dict>
+			</array>
+			<key>entitlements</key>
+			<dict>
+				<key>application-identifier</key>
+				<string>PH7K4ADL7R.com.execom.mTelekom</string>
+				<key>aps-environment</key>
+				<string>development</string>
+				<key>com.apple.developer.default-data-protection</key>
+				<string>NSFileProtectionComplete</string>
+				<key>com.apple.developer.team-identifier</key>
+				<string>PH7K4ADL7R</string>
+				<key>get-task-allow</key>
+				<true/>
+				<key>keychain-access-groups</key>
+				<array>
+					<string>PH7K4ADL7R.com.execom.mPAY</string>
+				</array>
+			</dict>
+			<key>name</key>
+			<string>mTelekom Dev.app</string>
+			<key>profile</key>
+			<dict>
+				<key>UUID</key>
+				<string>1243f290-913c-4fc5-8270-65082c8a6c15</string>
+				<key>name</key>
+				<string>iOS Team Provisioning Profile: com.execom.mTelekom</string>
+			</dict>
+			<key>team</key>
+			<dict>
+				<key>id</key>
+				<string>PH7K4ADL7R</string>
+				<key>name</key>
+				<string>Execom Doo</string>
+			</dict>
+		</dict>
+	</array>
+</dict>
+</plist>
