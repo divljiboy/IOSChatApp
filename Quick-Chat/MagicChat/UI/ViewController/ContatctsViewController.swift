@@ -87,4 +87,21 @@ extension ContatctsViewController: UICollectionViewDelegate, UICollectionViewDat
                 delegate?.selected(user: self.items[indexPath.row])
             }
         }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        if self.items.isEmpty {
+            return self.collectionView.bounds.size
+        } else {
+            if UIScreen.main.bounds.width > UIScreen.main.bounds.height {
+                let width = (0.3 * UIScreen.main.bounds.height)
+                let height = width + 30
+                return CGSize.init(width: width, height: height)
+            } else {
+                let width = (0.3 * UIScreen.main.bounds.width)
+                let height = width + 30
+                return CGSize.init(width: width, height: height)
+            }
+        }
+    }
 }

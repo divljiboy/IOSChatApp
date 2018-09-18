@@ -35,7 +35,7 @@ class UserUseCase: UserUseCaseProtocol {
     }
     
     func loginUser(withEmail: String, password: String, completion: @escaping (Bool) -> Void) {
-        remoteRepository?.loginUser(withEmail: withEmail, password: password, completion: { isFinished in
+        remoteRepository?.loginUser(email: withEmail, password: password, completion: { isFinished in
             completion(isFinished)
         })
     }

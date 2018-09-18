@@ -51,10 +51,10 @@ class UserRemoteRepository: UserRepositoryProtocol {
         })
     }
     
-    func loginUser(withEmail: String, password: String, completion: @escaping (Bool) -> Swift.Void) {
-        Auth.auth().signIn(withEmail: withEmail, password: password, completion: { _, error in
+    func loginUser(email: String, password: String, completion: @escaping (Bool) -> Swift.Void) {
+        Auth.auth().signIn(withEmail: email, password: password, completion: { _, error in
             if error == nil {
-                let userInfo = ["email": withEmail, "password": password]
+                let userInfo = ["email": email, "password": password]
                 UserDefaults.standard.set(userInfo, forKey: "userInformation")
                 completion(true)
             } else {

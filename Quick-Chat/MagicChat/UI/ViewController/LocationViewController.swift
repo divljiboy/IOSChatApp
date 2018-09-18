@@ -17,15 +17,10 @@ class LocationViewController: BaseViewController, ARSCNViewDelegate, CLLocationM
     @IBOutlet weak var statusTextView: UILabel!
     
     let locationManager = CLLocationManager()
-    var userLocation = CLLocation()
+    var currentLocation = CLLocation()
     var pinLocation = CLLocation()
     
     var distance: Float! = 0.0 {
-        didSet {
-            setStatusText()
-        }
-    }
-    var status: String! {
         didSet {
             setStatusText()
         }
@@ -58,8 +53,6 @@ class LocationViewController: BaseViewController, ARSCNViewDelegate, CLLocationM
             locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
             locationManager.startUpdatingLocation()
         }
-        // Set the initial status
-        status = ""
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -103,14 +96,14 @@ class LocationViewController: BaseViewController, ARSCNViewDelegate, CLLocationM
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.last {
-            userLocation = location
+            currentLocation = location
             updateLocation(pinLocation: pinLocation)
         }
     }
     
     func updateLocation(pinLocation: CLLocation) {
         
-        self.distance = Float(pinLocation.distance(from: self.userLocation))
+        self.distance = Float(pinLocation.distance(from: self.currentLocation))
         
         if self.modelNode == nil {
             guard let modelScene = SCNScene(named: "art.scnassets/arrow.scn"),
@@ -153,8 +146,8 @@ class LocationViewController: BaseViewController, ARSCNViewDelegate, CLLocationM
         self.modelNode.scale = scaleNode(location)
     }
     
-    func translateNode (_ location: CLLocation) -> SCNVector3 {
-        let locationTransform = transformMatrix(matrix_identity_float4x4, userLocation, location)
+    func translateNode (_ pinLocation: CLLocation) -> SCNVector3 {
+        let locationTransform = transformMatrix(matrix_identity_float4x4, currentLocation, pinLocation)
         return positionFromTransform(locationTransform)
     }
     
@@ -167,8 +160,8 @@ class LocationViewController: BaseViewController, ARSCNViewDelegate, CLLocationM
         return SCNVector3Make(transform.columns.3.x, transform.columns.3.y, transform.columns.3.z)
     }
     
-    func transformMatrix(_ matrix: simd_float4x4, _ originLocation: CLLocation, _ driverLocation: CLLocation) -> simd_float4x4 {
-        let bearing = bearingBetweenLocations(userLocation, driverLocation)
+    func transformMatrix(_ matrix: simd_float4x4, _ originLocation: CLLocation, _ pinLocation: CLLocation) -> simd_float4x4 {
+        let bearing = bearingBetweenLocations(currentLocation, pinLocation)
         let rotationMatrix = rotateAroundY(matrix_identity_float4x4, Float(bearing))
         
         let position = vector_float4(0.0, 0.0, -distance, 0.0)
@@ -196,17 +189,15 @@ class LocationViewController: BaseViewController, ARSCNViewDelegate, CLLocationM
         
         matrix.columns.2.x = sin(degrees)
         matrix.columns.2.z = cos(degrees)
-        print(matrix)
-        print(matrix.inverse)
         return matrix.inverse
     }
     
-    func bearingBetweenLocations(_ originLocation: CLLocation, _ driverLocation: CLLocation) -> Double {
-        let lat1 = originLocation.coordinate.latitude.toRadians()
-        let lon1 = originLocation.coordinate.longitude.toRadians()
+    func bearingBetweenLocations(_ currentLocation: CLLocation, _ pinLocation: CLLocation) -> Double {
+        let lat1 = currentLocation.coordinate.latitude.toRadians()
+        let lon1 = currentLocation.coordinate.longitude.toRadians()
         
-        let lat2 = driverLocation.coordinate.latitude.toRadians()
-        let lon2 = driverLocation.coordinate.longitude.toRadians()
+        let lat2 = pinLocation.coordinate.latitude.toRadians()
+        let lon2 = pinLocation.coordinate.longitude.toRadians()
         
         let longitudeDiff = lon2 - lon1
         
@@ -214,14 +205,6 @@ class LocationViewController: BaseViewController, ARSCNViewDelegate, CLLocationM
         let x = cos(lat1) * sin(lat2) - sin(lat1) * cos(lat2) * cos(longitudeDiff)
         
         return atan2(y, x)
-    }
-    
-    func makeBillboardNode(_ image: UIImage) -> SCNNode {
-        let plane = SCNPlane(width: 10, height: 10)
-        plane.firstMaterial?.diffuse.contents = image
-        let node = SCNNode(geometry: plane)
-        node.constraints = [SCNBillboardConstraint()]
-        return node
     }
     
 }
